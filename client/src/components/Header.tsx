@@ -16,12 +16,12 @@ function NavigationItem({
   return (
     <div className="relative group">
       <Link href={href}>
-        <a className={cn(
-          "transition-colors duration-300 font-medium",
+        <span className={cn(
+          "transition-colors duration-300 font-medium cursor-pointer",
           active ? "text-white" : "text-[#AAAAAA] hover:text-white"
         )}>
           {children}
-        </a>
+        </span>
       </Link>
       <div className={cn(
         "absolute -bottom-1 left-1/2 transform -translate-x-1/2 w-1 h-1 bg-[#0066FF] rounded-full",
@@ -56,16 +56,8 @@ export default function Header() {
     setMobileMenuOpen(false);
   }, [location]);
 
-  // Get current section from path or hash
-  const getCurrentSection = () => {
-    if (location === "/") return "home";
-    
-    // Handle hash navigation
-    const hash = window.location.hash.replace("#", "");
-    return hash || "home";
-  };
-
-  const currentSection = getCurrentSection();
+  // This section is now handled directly in the NavigationItem components
+  // by checking the location against the route path
 
   return (
     <header className={cn(
@@ -75,35 +67,35 @@ export default function Header() {
       <div className="container mx-auto px-4 flex justify-between items-center">
         {/* Logo */}
         <Link href="/">
-          <a className="flex items-center space-x-2">
+          <span className="flex items-center space-x-2 cursor-pointer">
             <div className="w-10 h-10 bg-[#0066FF] rounded flex items-center justify-center shadow-[0_0_15px_rgba(0,102,255,0.5),0_0_30px_rgba(0,102,255,0.3)]">
               <span className="text-white font-bold text-xl">T</span>
             </div>
             <span className="text-white font-bold text-xl">Troibits</span>
-          </a>
+          </span>
         </Link>
         
         {/* Desktop Navigation */}
         <nav className="hidden md:flex space-x-8 items-center">
-          <NavigationItem href="/" active={currentSection === "home"}>
+          <NavigationItem href="/" active={location === "/"}>
             Home
           </NavigationItem>
-          <NavigationItem href="#services" active={currentSection === "services"}>
+          <NavigationItem href="/services" active={location === "/services"}>
             Services
           </NavigationItem>
-          <NavigationItem href="#work" active={currentSection === "work"}>
+          <NavigationItem href="/work" active={location === "/work"}>
             Work
           </NavigationItem>
-          <NavigationItem href="#company" active={currentSection === "company"}>
+          <NavigationItem href="/company" active={location === "/company"}>
             Company
           </NavigationItem>
-          <NavigationItem href="#contact" active={currentSection === "contact"}>
+          <NavigationItem href="/contact" active={location === "/contact"}>
             Contact
           </NavigationItem>
         </nav>
         
         {/* CTA Button */}
-        <Link href="#contact">
+        <Link href="/contact">
           <Button className="hidden md:block bg-[#0066FF] hover:bg-blue-700 text-white" size="default">
             Let's Chat
           </Button>
@@ -128,25 +120,25 @@ export default function Header() {
       )}>
         <div className="px-4 py-3 space-y-3">
           <Link href="/">
-            <a className="block text-white font-medium py-2">Home</a>
+            <span className="block text-white font-medium py-2 cursor-pointer">Home</span>
           </Link>
-          <Link href="#services">
-            <a className="block text-[#AAAAAA] hover:text-white py-2">Services</a>
+          <Link href="/services">
+            <span className="block text-[#AAAAAA] hover:text-white py-2 cursor-pointer">Services</span>
           </Link>
-          <Link href="#work">
-            <a className="block text-[#AAAAAA] hover:text-white py-2">Work</a>
+          <Link href="/work">
+            <span className="block text-[#AAAAAA] hover:text-white py-2 cursor-pointer">Work</span>
           </Link>
-          <Link href="#company">
-            <a className="block text-[#AAAAAA] hover:text-white py-2">Company</a>
+          <Link href="/company">
+            <span className="block text-[#AAAAAA] hover:text-white py-2 cursor-pointer">Company</span>
           </Link>
-          <Link href="#contact">
-            <a className="block text-[#AAAAAA] hover:text-white py-2">Contact</a>
+          <Link href="/contact">
+            <span className="block text-[#AAAAAA] hover:text-white py-2 cursor-pointer">Contact</span>
           </Link>
           
-          <Link href="#contact">
-            <a className="block bg-[#0066FF] text-white font-medium py-2 px-4 rounded-md text-center mt-4">
+          <Link href="/contact">
+            <span className="block bg-[#0066FF] text-white font-medium py-2 px-4 rounded-md text-center mt-4 cursor-pointer">
               Let's Chat
-            </a>
+            </span>
           </Link>
         </div>
       </div>
