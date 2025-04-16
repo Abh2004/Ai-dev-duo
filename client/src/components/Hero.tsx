@@ -14,11 +14,11 @@ export default function Hero() {
       <ParticlesBackground count={100} color="#0066FF" minSize={1} maxSize={4} speed={0.5} />
       
       {/* 3D Elements */}
-      <div className="absolute right-[10%] top-32 w-96 h-96 opacity-60 hidden lg:block">
+      <div className="absolute right-[10%] top-32 w-[400px] h-[400px] opacity-100 hidden lg:block">
         <Cube3D 
-          size={3.5} 
-          color="#0066FF" 
-          wireframe={true} 
+          size={3} 
+          color="#0080FF" 
+          wireframe={false} 
           rotation={{ x: 0.007, y: 0.012, z: 0.003 }}
         />
       </div>
