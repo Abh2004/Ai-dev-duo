@@ -2,7 +2,7 @@ import { Link } from "wouter";
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import ThemeCube from "./ThemeCube";
-import NetworkGraph3D from "./NetworkGraph3D";
+import CodeParticles3D from "./CodeParticles3D";
 import ParticlesBackground from "./ParticlesBackground";
 import AnimatedText from "./AnimatedText";
 
@@ -12,10 +12,9 @@ export default function Hero() {
       {/* Enhanced Particle Background */}
       <ParticlesBackground count={100} color="#0066FF" minSize={1} maxSize={4} speed={0.5} />
       
-      {/* 3D Network Graph */}
+      {/* 3D Code Animation */}
       <div className="absolute inset-0 opacity-100 z-0 hidden lg:block">
-        <NetworkGraph3D 
-          nodeCount={70}
+        <CodeParticles3D 
           color="#0080FF"
         />
       </div>
