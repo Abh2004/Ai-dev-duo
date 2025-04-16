@@ -1,4 +1,4 @@
-import Services from "@/components/Services";
+import ServiceDetails from "@/components/ServiceDetails";
 import ThemeCube from "@/components/ThemeCube";
 import { motion } from "framer-motion";
 
@@ -35,10 +35,8 @@ export default function ServicesPage() {
         </div>
       </div>
       
-      {/* Services Content */}
-      <div className="container mx-auto px-4 py-16 relative z-10">
-        <Services />
-      </div>
+      {/* Interactive Service Details Section */}
+      <ServiceDetails />
     </main>
   );
 }
