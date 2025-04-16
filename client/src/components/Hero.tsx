@@ -23,24 +23,6 @@ export default function Hero() {
         />
       </div>
       
-      <div className="absolute left-[15%] bottom-32 w-72 h-72 opacity-40 hidden lg:block">
-        <Cube3D 
-          size={2.5} 
-          color="#FF3366" 
-          wireframe={true} 
-          rotation={{ x: -0.005, y: 0.008, z: -0.004 }}
-        />
-      </div>
-      
-      <div className="absolute right-[25%] bottom-48 w-48 h-48 opacity-30 hidden lg:block">
-        <Sphere3D 
-          radius={1.5} 
-          color="#00EEFF" 
-          wireframe={true} 
-          rotation={{ x: 0.004, y: -0.009, z: 0.002 }}
-        />
-      </div>
-      
       {/* Decorative elements */}
       <ThemeCube className="top-20 left-[5%]" opacity={30} />
       <ThemeCube className="bottom-20 right-[10%]" opacity={40} />
