@@ -57,7 +57,9 @@ export default function AnimatedText({
     </motion.span>
   ));
   
-  const combinedClassName = `${className} flex flex-wrap overflow-hidden justify-center`;
+  // Check if text-center is in the className to decide whether to add justify-center
+  const needsJustifyCenter = className.includes('text-center');
+  const combinedClassName = `${className} flex flex-wrap overflow-hidden ${needsJustifyCenter ? 'justify-center' : ''}`;
   
   // Render based on selected tag
   switch (tagName) {

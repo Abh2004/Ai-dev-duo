@@ -33,7 +33,7 @@ export default function Hero() {
           <AnimatedText 
             text="Let's Build Something Together!" 
             tagName="h1"
-            className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight"
+            className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight text-left"
             duration={0.08}
           />
           
