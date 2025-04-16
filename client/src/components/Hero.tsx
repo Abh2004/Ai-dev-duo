@@ -69,79 +69,11 @@ export default function Hero() {
             </Link>
           </motion.div>
           
-          {/* Floating badges */}
-          <div className="mt-16 flex flex-wrap gap-4">
-            <motion.div
-              className="bg-[#111111] border border-[#333333] text-white px-4 py-2 rounded-full text-sm font-medium"
-              initial={{ opacity: 0, x: -20 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              transition={{ delay: 0.9, duration: 0.5 }}
-              viewport={{ once: true }}
-              whileHover={{ scale: 1.05, backgroundColor: "#222222" }}
-            >
-              Mobile Apps
-            </motion.div>
-            
-            <motion.div
-              className="bg-[#111111] border border-[#333333] text-white px-4 py-2 rounded-full text-sm font-medium"
-              initial={{ opacity: 0, x: -20 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              transition={{ delay: 1.0, duration: 0.5 }}
-              viewport={{ once: true }}
-              whileHover={{ scale: 1.05, backgroundColor: "#222222" }}
-            >
-              Web Applications
-            </motion.div>
-            
-            <motion.div
-              className="bg-[#111111] border border-[#333333] text-white px-4 py-2 rounded-full text-sm font-medium"
-              initial={{ opacity: 0, x: -20 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              transition={{ delay: 1.1, duration: 0.5 }}
-              viewport={{ once: true }}
-              whileHover={{ scale: 1.05, backgroundColor: "#222222" }}
-            >
-              UX/UI Design
-            </motion.div>
-            
-            <motion.div
-              className="bg-[#111111] border border-[#333333] text-white px-4 py-2 rounded-full text-sm font-medium"
-              initial={{ opacity: 0, x: -20 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              transition={{ delay: 1.2, duration: 0.5 }}
-              viewport={{ once: true }}
-              whileHover={{ scale: 1.05, backgroundColor: "#222222" }}
-            >
-              Cloud Services
-            </motion.div>
-          </div>
+
         </div>
       </div>
       
-      {/* Our Services Link */}
-      <div className="absolute bottom-0 left-0 w-full flex justify-start pl-8">
-        <motion.div
-          className="mb-6 flex items-center gap-2"
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 1.4, duration: 0.5 }}
-        >
-          <a 
-            href="#services" 
-            className="flex flex-col items-start"
-            onClick={(e) => {
-              e.preventDefault();
-              const element = document.getElementById('services');
-              if (element) {
-                element.scrollIntoView({ behavior: 'smooth' });
-              }
-            }}
-          >
-            <span className="text-sm font-medium uppercase tracking-wider">Our Services</span>
-            <ChevronDown className="mt-1 w-5 h-5 animate-bounce" />
-          </a>
-        </motion.div>
-      </div>
+
     </section>
   );
 }

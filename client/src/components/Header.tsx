@@ -93,13 +93,6 @@ export default function Header() {
           </NavigationItem>
         </nav>
         
-        {/* CTA Button */}
-        <Link href="/contact">
-          <Button className="hidden md:block bg-[#0066FF] hover:bg-blue-700 text-white" size="default">
-            Let's Chat
-          </Button>
-        </Link>
-        
         {/* Mobile Menu Button */}
         <Button 
           variant="ghost" 
@@ -149,11 +142,7 @@ export default function Header() {
             )}>Contact</span>
           </Link>
           
-          <Link href="/contact">
-            <span className="block bg-[#0066FF] text-white font-medium py-2 px-4 rounded-md text-center mt-4 cursor-pointer">
-              Let's Chat
-            </span>
-          </Link>
+
         </div>
       </div>
     </header>
