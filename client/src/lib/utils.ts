@@ -105,13 +105,18 @@ export const partnersData = [
   "IBM"
 ];
 
+import project1 from "@/assets/images/project1.svg";
+import project2 from "@/assets/images/project2.svg";
+import project3 from "@/assets/images/project3.svg";
+import project4 from "@/assets/images/project4.svg";
+
 export const showcaseProjects = [
   {
     id: "skylarks",
     title: "Skylark Feeds",
     category: "Sales Automation",
     description: "Internal Sales App for one of the Asia's Biggest Group",
-    image: "https://source.unsplash.com/random/600x900/?app,sales",
+    image: project1,
     platforms: ["Web", "Android", "iOS"],
   },
   {
@@ -119,7 +124,7 @@ export const showcaseProjects = [
     title: "Poultryfy",
     category: "Inventory Management",
     description: "Comprehensive inventory and supply chain management solution for the poultry industry",
-    image: "https://source.unsplash.com/random/600x900/?app,inventory",
+    image: project2,
     platforms: ["Web", "Android"],
   },
   {
@@ -127,7 +132,7 @@ export const showcaseProjects = [
     title: "Bit7Pay",
     category: "Finance",
     description: "Secure payment platform with advanced encryption and transaction management",
-    image: "https://source.unsplash.com/random/600x900/?app,payment",
+    image: project3,
     platforms: ["Web", "iOS"],
   },
   {
@@ -135,7 +140,7 @@ export const showcaseProjects = [
     title: "SSB Wings",
     category: "E-Learning",
     description: "Educational platform for students preparing for Special Services Board exams",
-    image: "https://source.unsplash.com/random/600x900/?app,education",
+    image: project4,
     platforms: ["Web", "Android", "iOS"],
   }
 ];

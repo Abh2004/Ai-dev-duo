@@ -4,15 +4,14 @@ import { Button } from "@/components/ui/button";
 import ThemeCube from "./ThemeCube";
 import AnimatedText from "./AnimatedText";
 import Sphere3D from "./Sphere3D";
+import about1 from "@/assets/images/about1.svg";
+import about2 from "@/assets/images/about2.svg";
+import about3 from "@/assets/images/about3.svg";
+import about4 from "@/assets/images/about4.svg";
 
 export default function About() {
-  // Generate unique but consistent image URLs
-  const images = [
-    "https://source.unsplash.com/random/500x300/?collaboration,team",
-    "https://source.unsplash.com/random/500x300/?office,modern",
-    "https://source.unsplash.com/random/500x300/?meeting,tech",
-    "https://source.unsplash.com/random/500x300/?design,workshop"
-  ];
+  // Use local images
+  const images = [about1, about2, about3, about4];
 
   return (
     <section id="company" className="py-20 relative overflow-hidden">

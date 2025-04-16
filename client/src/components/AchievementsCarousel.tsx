@@ -1,6 +1,10 @@
 import { useState, useRef, useEffect } from "react";
 import { motion } from "framer-motion";
 import { ChevronLeft, ChevronRight } from "lucide-react";
+import project1 from "@/assets/images/project1.svg";
+import project2 from "@/assets/images/project2.svg";
+import project3 from "@/assets/images/project3.svg";
+import project4 from "@/assets/images/project4.svg";
 
 interface Project {
   id: string;
@@ -17,7 +21,7 @@ const projects: Project[] = [
     title: "Glaucus Logistics",
     subtitle: "Warehouse Management System",
     description: "We made a perfect design and UI in Angular Js for Glaucus Logistics. They have been founded by a team with exhaustive experience of supply chain solutions, advisory, warehouse design and technology product development. They are the preferred supply chain management partner for small and mid-sized companies focusing on trading, retail & wholesale distribution allowing businesses to effectively compete with their larger competitors on efficiency and effectiveness.",
-    image: "https://source.unsplash.com/random/600x400/?logistics,warehouse",
+    image: project1,
     platforms: ["Mac", "Windows", "Web"]
   },
   {
@@ -25,7 +29,7 @@ const projects: Project[] = [
     title: "HealthMate",
     subtitle: "Telehealth Platform",
     description: "Developed a comprehensive telehealth platform using React and Node.js that connects patients with healthcare providers for virtual consultations. The platform includes features such as appointment scheduling, secure video calls, electronic health records, and prescription management. It has significantly improved healthcare access for patients in remote areas and streamlined operations for medical practices.",
-    image: "https://source.unsplash.com/random/600x400/?medical,telehealth",
+    image: project2,
     platforms: ["Web", "iOS", "Android"]
   },
   {
@@ -33,7 +37,7 @@ const projects: Project[] = [
     title: "FinFlow",
     subtitle: "Banking Solution",
     description: "Created a robust banking application with Vue.js and Spring Boot that provides users with secure access to financial services. The solution includes features for account management, fund transfers, bill payments, expense tracking, and financial insights. Enhanced security measures like biometric authentication and real-time fraud detection ensure safe transactions for all users.",
-    image: "https://source.unsplash.com/random/600x400/?finance,banking",
+    image: project3,
     platforms: ["Web", "iOS", "Android"]
   },
   {
@@ -41,7 +45,7 @@ const projects: Project[] = [
     title: "RetailInsight",
     subtitle: "Inventory Management System",
     description: "Built a comprehensive inventory management system for retail businesses using Angular and .NET Core. The platform helps retailers track inventory levels, automate reordering, analyze sales patterns, and improve supply chain efficiency. Integration with POS systems and real-time data synchronization has helped clients reduce excess inventory costs by 25% and increase sales through improved stock availability.",
-    image: "https://source.unsplash.com/random/600x400/?retail,inventory",
+    image: project4,
     platforms: ["Web", "Windows", "Mac"]
   }
 ];
