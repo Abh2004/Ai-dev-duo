@@ -123,7 +123,7 @@ const itemVariants = {
 
 export default function WhatWeDo() {
   return (
-    <section className="py-24 bg-black">
+    <section id="services" className="py-24 bg-black">
       <div className="container mx-auto px-4">
         {/* Section Title */}
         <div className="text-center mb-16">
