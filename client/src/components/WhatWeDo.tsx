@@ -144,8 +144,8 @@ export default function WhatWeDo() {
             transition={{ duration: 0.6, delay: 0.2 }}
             viewport={{ once: true }}
           >
-            Your search for end-to-end technology partner ends here. We are<br />
-            Top-Rated on Clutch, Google and the trusted choice of Fortune 500 Companies.
+            Your search for end-to-end technology partner ends here. We are Top-Rated on Clutch, Google<br />
+            and the trusted choice of Fortune 500 Companies.
           </motion.p>
         </div>
         
