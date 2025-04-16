@@ -1,23 +1,20 @@
 import { useEffect, useRef } from 'react';
 import * as THREE from 'three';
-import { FontLoader } from 'three/examples/jsm/loaders/FontLoader.js';
-import { TextGeometry } from 'three/examples/jsm/geometries/TextGeometry.js';
 
-interface CodeParticles3DProps {
+interface SimpleCodeParticlesProps {
   className?: string;
   color?: string;
 }
 
-export default function CodeParticles3D({ 
+export default function SimpleCodeParticles({ 
   className = '', 
   color = '#0066FF'
-}: CodeParticles3DProps) {
+}: SimpleCodeParticlesProps) {
   const containerRef = useRef<HTMLDivElement>(null);
   const rendererRef = useRef<THREE.WebGLRenderer | null>(null);
   const sceneRef = useRef<THREE.Scene | null>(null);
   const cameraRef = useRef<THREE.PerspectiveCamera | null>(null);
   const particlesRef = useRef<THREE.Points | null>(null);
-  const codeTexts = useRef<THREE.Mesh[]>([]);
   const frameIdRef = useRef<number | null>(null);
   const clockRef = useRef(new THREE.Clock());
 
@@ -50,13 +47,14 @@ export default function CodeParticles3D({
     containerRef.current.appendChild(renderer.domElement);
     rendererRef.current = renderer;
 
-    // Create background particles
-    const createParticles = () => {
-      const particleCount = 500;
+    // Create enhanced particles that look like code
+    const createCodeParticles = () => {
+      const particleCount = 800;
       const positions = new Float32Array(particleCount * 3);
       const sizes = new Float32Array(particleCount);
       const colors = new Float32Array(particleCount * 3);
       const speeds = new Float32Array(particleCount);
+      const types = new Float32Array(particleCount);
       
       const mainColor = new THREE.Color(color);
       const secondaryColor = new THREE.Color(0xffffff);
@@ -71,11 +69,24 @@ export default function CodeParticles3D({
         const layerDepth = -20 - layerIndex * 20;
         positions[i * 3 + 2] = layerDepth + (Math.random() - 0.5) * 10; // z
         
-        // Random sizes weighted towards smaller particles
-        sizes[i] = Math.random() * 1.5 + 0.5;
+        // Vary particle sizes to create different "characters"
+        const particleType = Math.random();
+        types[i] = particleType;
+        
+        // Make some particles larger to look like code blocks
+        if (particleType > 0.9) {
+          // Larger particles (code blocks)
+          sizes[i] = Math.random() * 3 + 2;
+        } else if (particleType > 0.7) {
+          // Medium particles (operators)
+          sizes[i] = Math.random() * 1.5 + 1.2;
+        } else {
+          // Small particles (characters)
+          sizes[i] = Math.random() * 1 + 0.5;
+        }
         
         // Alternate between main color and white
-        const particleColor = Math.random() > 0.7 ? mainColor : secondaryColor;
+        const particleColor = Math.random() > 0.8 ? mainColor : secondaryColor;
         colors[i * 3] = particleColor.r;
         colors[i * 3 + 1] = particleColor.g;
         colors[i * 3 + 2] = particleColor.b;
@@ -89,8 +100,9 @@ export default function CodeParticles3D({
       geometry.setAttribute('size', new THREE.BufferAttribute(sizes, 1));
       geometry.setAttribute('color', new THREE.BufferAttribute(colors, 3));
       geometry.setAttribute('speed', new THREE.BufferAttribute(speeds, 1));
+      geometry.setAttribute('type', new THREE.BufferAttribute(types, 1));
       
-      // Custom shader material for better looking particles
+      // Custom shader material for better looking code-like particles
       const particleMaterial = new THREE.ShaderMaterial({
         uniforms: {
           time: { value: 0 },
@@ -100,16 +112,26 @@ export default function CodeParticles3D({
           attribute float size;
           attribute vec3 color;
           attribute float speed;
+          attribute float type;
+          
           uniform float time;
           uniform float pixelRatio;
+          
           varying vec3 vColor;
+          varying float vType;
           
           void main() {
             vColor = color;
+            vType = type;
             
-            // Animate vertical position
+            // Animate vertical position (digital rain effect)
             vec3 pos = position;
             pos.y = mod(pos.y - time * speed * 15.0, 200.0) - 100.0;
+            
+            // Add some horizontal wobble for particles based on type
+            if (type > 0.7) {
+              pos.x += sin(time * 0.5 + pos.y * 0.1) * 2.0 * type;
+            }
             
             vec4 mvPosition = modelViewMatrix * vec4(pos, 1.0);
             
@@ -123,18 +145,41 @@ export default function CodeParticles3D({
         `,
         fragmentShader: `
           varying vec3 vColor;
+          varying float vType;
           
           void main() {
-            // Create soft circular particle
+            // Create different shapes based on type
             vec2 center = vec2(0.5, 0.5);
             float dist = distance(gl_PointCoord, center);
-            if (dist > 0.5) discard;
+            
+            // Different particle shapes
+            if (vType > 0.9) { 
+              // Square/block particles
+              if (gl_PointCoord.x < 0.2 || gl_PointCoord.x > 0.8 || 
+                  gl_PointCoord.y < 0.2 || gl_PointCoord.y > 0.8) {
+                discard;
+              }
+            } else if (vType > 0.7) {
+              // Diamond-shaped particles
+              if (abs(gl_PointCoord.x - 0.5) + abs(gl_PointCoord.y - 0.5) > 0.5) {
+                discard;
+              }
+            } else {
+              // Circular particles
+              if (dist > 0.5) discard;
+            }
             
             // Add soft edge and glow
-            float intensity = 1.0 - dist * 2.0;
-            intensity = pow(intensity, 1.2);
+            float intensity = 1.0 - dist * 1.5;
+            intensity = pow(intensity, 1.5);
             
-            gl_FragColor = vec4(vColor, intensity);
+            // Make some particles pulse
+            float pulse = 1.0;
+            if (vType > 0.85) {
+              pulse = sin(vType * 10.0) * 0.2 + 0.8;
+            }
+            
+            gl_FragColor = vec4(vColor, intensity * pulse);
           }
         `,
         transparent: true,
@@ -145,107 +190,6 @@ export default function CodeParticles3D({
       const particles = new THREE.Points(geometry, particleMaterial);
       scene.add(particles);
       particlesRef.current = particles;
-    };
-    
-    // Create floating code snippets
-    const createCodeSnippets = () => {
-      const codeSnippets = [
-        "function app() {",
-        "  return (",
-        "    <Component />",
-        "  );",
-        "}",
-        "const data = api.get();",
-        "async function init() {",
-        "class Service {",
-        "interface Props {",
-        "export default App;",
-        "<div className=''>",
-        "npm install",
-        "git commit -m 'fix'",
-        "const [state, setState]",
-        "useEffect(() => {",
-        "@tailwind base;",
-        "docker-compose up",
-        "import React from 'react';"
-      ];
-      
-      const fontLoader = new FontLoader();
-      
-      // Since we don't have direct access to the fonts, let's just create particles
-      // This section is commented out since the font may not be accessible
-      /*
-      fontLoader.load('/node_modules/three/examples/fonts/helvetiker_regular.typeface.json', 
-      (font: any) => {
-        codeSnippets.forEach((snippet, index) => {
-          const textGeometry = new TextGeometry(snippet, {
-            font: font,
-            size: 3,
-            depth: 0.1,
-            curveSegments: 4,
-            bevelEnabled: false
-          });
-          
-          // Create gradient material
-          const textMaterial = new THREE.ShaderMaterial({
-            uniforms: {
-              color1: { value: new THREE.Color(color) },
-              color2: { value: new THREE.Color('#ffffff') },
-              time: { value: 0 }
-            },
-            vertexShader: `
-              varying vec2 vUv;
-              
-              void main() {
-                vUv = uv;
-                gl_Position = projectionMatrix * modelViewMatrix * vec4(position, 1.0);
-              }
-            `,
-            fragmentShader: `
-              uniform vec3 color1;
-              uniform vec3 color2;
-              uniform float time;
-              varying vec2 vUv;
-              
-              void main() {
-                // Animated gradient
-                float pulse = sin(time * 2.0 + vUv.x * 3.0) * 0.5 + 0.5;
-                vec3 finalColor = mix(color1, color2, vUv.x * 0.8 + pulse * 0.2);
-                
-                // Add subtle scan line effect
-                float scanLine = sin(vUv.y * 40.0 + time * 5.0) * 0.05 + 0.95;
-                
-                gl_FragColor = vec4(finalColor * scanLine, 0.8);
-              }
-            `,
-            transparent: true,
-            depthWrite: false
-          });
-          
-          const textMesh = new THREE.Mesh(textGeometry, textMaterial);
-          textGeometry.computeBoundingBox();
-          
-          // Center pivot point
-          if (textGeometry.boundingBox) {
-            const width = textGeometry.boundingBox.max.x - textGeometry.boundingBox.min.x;
-            textMesh.position.x = -width / 2;
-          }
-          
-          // Random position
-          textMesh.position.x += (Math.random() - 0.5) * 100;
-          textMesh.position.y = (Math.random() - 0.5) * 100;
-          textMesh.position.z = -30 - Math.random() * 50;
-          
-          // Slight random rotation
-          textMesh.rotation.x = (Math.random() - 0.5) * 0.2;
-          textMesh.rotation.y = (Math.random() - 0.5) * 0.2;
-          textMesh.rotation.z = (Math.random() - 0.5) * 0.1;
-          
-          scene.add(textMesh);
-          codeTexts.current.push(textMesh);
-        });
-      });
-      */
     };
 
     // Create lighting
@@ -265,8 +209,7 @@ export default function CodeParticles3D({
     };
     
     // Initialize the scene
-    createParticles();
-    createCodeSnippets();
+    createCodeParticles();
     createLighting();
     
     // Animation loop
@@ -278,21 +221,6 @@ export default function CodeParticles3D({
       // Update particle shader time uniform
       const particleMaterial = particlesRef.current.material as THREE.ShaderMaterial;
       particleMaterial.uniforms.time.value = elapsedTime;
-      
-      // Animate code snippets
-      codeTexts.current.forEach((textMesh, index) => {
-        // Gently move up and down
-        textMesh.position.y += Math.sin(elapsedTime * 0.5 + index) * 0.03;
-        
-        // Slow rotation
-        textMesh.rotation.y += 0.001;
-        
-        // Update shader time uniform
-        const material = textMesh.material as THREE.ShaderMaterial;
-        if (material.uniforms && material.uniforms.time) {
-          material.uniforms.time.value = elapsedTime;
-        }
-      });
       
       // Gentle camera movement
       camera.position.x = Math.sin(elapsedTime * 0.1) * 5;
@@ -344,12 +272,6 @@ export default function CodeParticles3D({
         particlesRef.current.geometry.dispose();
         (particlesRef.current.material as THREE.Material).dispose();
       }
-      
-      codeTexts.current.forEach(textMesh => {
-        textMesh.geometry.dispose();
-        (textMesh.material as THREE.Material).dispose();
-        scene.remove(textMesh);
-      });
       
       if (rendererRef.current) {
         rendererRef.current.dispose();

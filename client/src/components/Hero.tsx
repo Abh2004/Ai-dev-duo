@@ -2,7 +2,7 @@ import { Link } from "wouter";
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import ThemeCube from "./ThemeCube";
-import CodeParticles3D from "./CodeParticles3D";
+import SimpleCodeParticles from "./SimpleCodeParticles";
 import ParticlesBackground from "./ParticlesBackground";
 import AnimatedText from "./AnimatedText";
 
@@ -14,7 +14,7 @@ export default function Hero() {
       
       {/* 3D Code Animation */}
       <div className="absolute inset-0 opacity-100 z-0 hidden lg:block">
-        <CodeParticles3D 
+        <SimpleCodeParticles 
           color="#0080FF"
         />
       </div>
