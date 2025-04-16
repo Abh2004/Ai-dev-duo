@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="70px" height="100px" viewBox="0 0 70 100" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <defs>
+        <linearGradient x1="50%" y1="0%" x2="50%" y2="100%" id="gradient1">
+            <stop stop-color="#FF6B6B" offset="0%"></stop>
+            <stop stop-color="#FF3F3F" offset="100%"></stop>
+        </linearGradient>
+        <linearGradient x1="50%" y1="0%" x2="50%" y2="100%" id="gradient2">
+            <stop stop-color="#FFB347" offset="0%"></stop>
+            <stop stop-color="#FF8C00" offset="100%"></stop>
+        </linearGradient>
+        <linearGradient x1="50%" y1="0%" x2="50%" y2="100%" id="gradient3">
+            <stop stop-color="#FFEC94" offset="0%"></stop>
+            <stop stop-color="#FFD700" offset="100%"></stop>
+        </linearGradient>
+    </defs>
+    <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <path d="M10,20 C10,50 35,60 35,90 C35,60 60,50 60,20 C60,10 50,0 35,0 C20,0 10,10 10,20 Z" fill="url(#gradient1)"></path>
+        <path d="M20,30 C20,50 35,60 35,80 C35,60 50,50 50,30 C50,20 42.5,10 35,10 C27.5,10 20,20 20,30 Z" fill="url(#gradient2)"></path>
+        <path d="M25,40 C25,55 35,60 35,70 C35,60 45,55 45,40 C45,30 40,20 35,20 C30,20 25,30 25,40 Z" fill="url(#gradient3)"></path>
+    </g>
+</svg>
