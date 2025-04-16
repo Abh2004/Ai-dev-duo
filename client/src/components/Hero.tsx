@@ -10,7 +10,7 @@ import './RocketAnimation.css';
 
 export default function Hero() {
   return (
-    <section className="relative pt-32 pb-20 md:pt-40 md:pb-32 overflow-hidden bg-[#1a032b]">
+    <section className="relative pt-32 pb-20 md:pt-40 md:pb-32 overflow-visible bg-[#1a032b]">
       {/* Particle Background */}
       <ParticlesBackground count={60} color="#0066FF" minSize={1} maxSize={3} speed={0.3} />
       
@@ -72,16 +72,14 @@ export default function Hero() {
             </motion.div>
           </div>
           
-          <motion.div 
-            className="hidden lg:block h-[500px]"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 1 }}
-          >
-            <RocketAnimation className="w-full h-full" />
-          </motion.div>
+          {/* The right column is just a placeholder to maintain grid layout */}
+          <div className="hidden lg:block h-[500px] relative"></div>
         </div>
       </div>
+      
+      {/* Rocket Animation */}
+      {/* We position it absolutely on the page, independent of the grid */}
+      <RocketAnimation className="rocket-global" />
     </section>
   );
 }

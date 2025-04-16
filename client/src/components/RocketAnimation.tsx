@@ -1,83 +1,33 @@
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useState } from 'react';
 
 interface RocketAnimationProps {
   className?: string;
 }
 
 export default function RocketAnimation({ className = '' }: RocketAnimationProps) {
-  const rocketRef = useRef<HTMLDivElement>(null);
-  const [animationComplete, setAnimationComplete] = useState(false);
+  const [trails, setTrails] = useState<Array<{ id: number; delay: number; duration: number; offset: number }>>([]);
   
+  // Generate trails with varying properties
   useEffect(() => {
-    if (!rocketRef.current) return;
+    // Start generating trails after 2 seconds (when rocket animation is well underway)
+    const timerId = setTimeout(() => {
+      const newTrails = Array.from({ length: 15 }).map((_, i) => ({
+        id: i,
+        delay: Math.random() * 2,
+        duration: 1 + Math.random() * 1.5, // 1-2.5s duration
+        offset: Math.random() * 20 - 10 // -10 to +10px offset
+      }));
+      setTrails(newTrails);
+    }, 2000);
     
-    // Initial animation - rocket coming from bottom to center
-    const rocket = rocketRef.current;
-    let startPosition = window.innerHeight;
-    let currentPosition = startPosition;
-    let targetPosition = 0;
-    let speed = 15; // pixels per frame
-    let animationFrameId: number;
-    
-    const initialAnimation = () => {
-      if (!rocket) return;
-      
-      if (currentPosition > targetPosition) {
-        currentPosition -= speed;
-        rocket.style.transform = `translateY(${currentPosition}px)`;
-        animationFrameId = requestAnimationFrame(initialAnimation);
-      } else {
-        cancelAnimationFrame(animationFrameId);
-        setAnimationComplete(true);
-      }
-    };
-    
-    // Start the initial animation
-    initialAnimation();
-    
-    return () => {
-      if (animationFrameId) {
-        cancelAnimationFrame(animationFrameId);
-      }
-    };
+    return () => clearTimeout(timerId);
   }, []);
-  
-  // Secondary hover animation after initial animation completes
-  useEffect(() => {
-    if (!animationComplete || !rocketRef.current) return;
-    
-    const rocket = rocketRef.current;
-    let posY = 0;
-    let direction = 1;
-    let animationFrameId: number;
-    
-    const hoverAnimation = () => {
-      if (!rocket) return;
-      
-      posY += 0.2 * direction;
-      
-      // Oscillate within a range
-      if (posY > 10) direction = -1;
-      if (posY < -10) direction = 1;
-      
-      rocket.style.transform = `translateY(${posY}px)`;
-      animationFrameId = requestAnimationFrame(hoverAnimation);
-    };
-    
-    hoverAnimation();
-    
-    return () => {
-      if (animationFrameId) {
-        cancelAnimationFrame(animationFrameId);
-      }
-    };
-  }, [animationComplete]);
 
   return (
     <div className={`rocket-animation-container relative ${className}`}>
       {/* Stars/particles */}
       <div className="stars">
-        {Array.from({ length: 20 }).map((_, i) => (
+        {Array.from({ length: 30 }).map((_, i) => (
           <div 
             key={i} 
             className="star"
@@ -85,15 +35,15 @@ export default function RocketAnimation({ className = '' }: RocketAnimationProps
               top: `${Math.random() * 100}%`,
               left: `${Math.random() * 100}%`,
               animationDelay: `${Math.random() * 5}s`,
-              width: `${Math.random() * 3 + 1}px`,
-              height: `${Math.random() * 3 + 1}px`
+              width: `${Math.random() * 4 + 1}px`,
+              height: `${Math.random() * 4 + 1}px`
             }}
           />
         ))}
       </div>
       
-      {/* Rocket SVG */}
-      <div ref={rocketRef} className="rocket-wrapper">
+      {/* Rocket with SVG - now uses CSS for animation instead of JS */}
+      <div className="rocket-wrapper">
         <img src="/rocket.svg" alt="Rocket" className="rocket" />
         
         {/* Fire animation */}
@@ -102,16 +52,35 @@ export default function RocketAnimation({ className = '' }: RocketAnimationProps
         </div>
       </div>
       
-      {/* Trailing particles */}
+      {/* Trailing particles - dynamically created with different timing */}
       <div className="trails">
-        {Array.from({ length: 10 }).map((_, i) => (
+        {trails.map(trail => (
           <div 
-            key={i} 
+            key={trail.id} 
             className="trail"
             style={{
-              left: `${45 + Math.random() * 10}%`,
-              animationDuration: `${Math.random() * 2 + 1}s`,
-              animationDelay: `${Math.random() * 2}s`
+              left: `calc(75% + ${trail.offset}px)`,
+              animationDuration: `${trail.duration}s`,
+              animationDelay: `${trail.delay}s`
+            }}
+          />
+        ))}
+      </div>
+      
+      {/* Additional particle effects */}
+      <div className="particles">
+        {Array.from({ length: 8 }).map((_, i) => (
+          <div 
+            key={i} 
+            className="particle"
+            style={{
+              top: `${20 + Math.random() * 60}%`,
+              left: `${65 + Math.random() * 20}%`,
+              animationDuration: `${2 + Math.random() * 3}s`,
+              animationDelay: `${Math.random() * 2}s`,
+              width: `${Math.random() * 6 + 3}px`,
+              height: `${Math.random() * 6 + 3}px`,
+              opacity: Math.random() * 0.5 + 0.2
             }}
           />
         ))}
