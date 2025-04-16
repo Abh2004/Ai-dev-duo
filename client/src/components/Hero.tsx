@@ -2,10 +2,9 @@ import { Link } from "wouter";
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import ThemeCube from "./ThemeCube";
-import Cube3D from "./Cube3D";
-import Sphere3D from "./Sphere3D";
 import ParticlesBackground from "./ParticlesBackground";
 import AnimatedText from "./AnimatedText";
+import Rocket3D from "./Rocket3D";
 
 export default function Hero() {
   return (
@@ -13,15 +12,8 @@ export default function Hero() {
       {/* Enhanced Particle Background */}
       <ParticlesBackground count={100} color="#0066FF" minSize={1} maxSize={4} speed={0.5} />
       
-      {/* 3D Elements */}
-      <div className="absolute right-[10%] top-32 w-96 h-96 opacity-60 hidden lg:block">
-        <Cube3D 
-          size={3.5} 
-          color="#0066FF" 
-          wireframe={true} 
-          rotation={{ x: 0.007, y: 0.012, z: 0.003 }}
-        />
-      </div>
+      {/* 3D Rocket Animation */}
+      <Rocket3D className="hidden lg:block" />
       
       {/* Decorative elements */}
       <ThemeCube className="top-20 left-[5%]" opacity={30} />
