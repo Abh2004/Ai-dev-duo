@@ -9,7 +9,7 @@ import {
   TrendingUp,
   Shield
 } from "lucide-react";
-import { cn } from "@/lib/utils";
+import { cn, ServiceIconType } from "@/lib/utils";
 import { motion } from "framer-motion";
 
 const iconMap = {
@@ -24,7 +24,7 @@ const iconMap = {
 };
 
 interface ServiceCardProps {
-  icon: keyof typeof iconMap;
+  icon: ServiceIconType;
   title: string;
   description: string;
   hoverDetails?: string;
