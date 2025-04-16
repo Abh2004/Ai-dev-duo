@@ -18,15 +18,14 @@ function NavigationItem({
       <Link href={href}>
         <span className={cn(
           "transition-colors duration-300 font-medium cursor-pointer",
-          active ? "text-white" : "text-[#AAAAAA] hover:text-white"
+          active ? "text-[#0066FF]" : "text-white hover:text-[#0066FF]"
         )}>
           {children}
         </span>
       </Link>
-      <div className={cn(
-        "absolute -bottom-1 left-1/2 transform -translate-x-1/2 w-1 h-1 bg-[#0066FF] rounded-full",
-        active ? "opacity-100" : "opacity-0 group-hover:opacity-100 transition-opacity duration-300"
-      )}></div>
+      {active && (
+        <div className="absolute bottom-[-8px] left-1/2 transform -translate-x-1/2 w-1 h-1 bg-[#0066FF] rounded-full"></div>
+      )}
     </div>
   );
 }
@@ -115,24 +114,39 @@ export default function Header() {
       
       {/* Mobile Navigation */}
       <div className={cn(
-        "md:hidden bg-[#222222] transition-all duration-300 overflow-hidden",
+        "md:hidden bg-black transition-all duration-300 overflow-hidden",
         mobileMenuOpen ? "max-h-[300px] opacity-100" : "max-h-0 opacity-0"
       )}>
         <div className="px-4 py-3 space-y-3">
           <Link href="/">
-            <span className="block text-white font-medium py-2 cursor-pointer">Home</span>
+            <span className={cn(
+              "block font-medium py-2 cursor-pointer",
+              location === "/" ? "text-[#0066FF]" : "text-white hover:text-[#0066FF]"
+            )}>Home</span>
           </Link>
           <Link href="/services">
-            <span className="block text-[#AAAAAA] hover:text-white py-2 cursor-pointer">Services</span>
+            <span className={cn(
+              "block font-medium py-2 cursor-pointer",
+              location === "/services" ? "text-[#0066FF]" : "text-white hover:text-[#0066FF]"
+            )}>Services</span>
           </Link>
           <Link href="/work">
-            <span className="block text-[#AAAAAA] hover:text-white py-2 cursor-pointer">Work</span>
+            <span className={cn(
+              "block font-medium py-2 cursor-pointer",
+              location === "/work" ? "text-[#0066FF]" : "text-white hover:text-[#0066FF]"
+            )}>Work</span>
           </Link>
           <Link href="/company">
-            <span className="block text-[#AAAAAA] hover:text-white py-2 cursor-pointer">Company</span>
+            <span className={cn(
+              "block font-medium py-2 cursor-pointer",
+              location === "/company" ? "text-[#0066FF]" : "text-white hover:text-[#0066FF]"
+            )}>Company</span>
           </Link>
           <Link href="/contact">
-            <span className="block text-[#AAAAAA] hover:text-white py-2 cursor-pointer">Contact</span>
+            <span className={cn(
+              "block font-medium py-2 cursor-pointer",
+              location === "/contact" ? "text-[#0066FF]" : "text-white hover:text-[#0066FF]"
+            )}>Contact</span>
           </Link>
           
           <Link href="/contact">

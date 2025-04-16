@@ -1,21 +1,42 @@
 import Work from "@/components/Work";
 import ThemeCube from "@/components/ThemeCube";
+import { motion } from "framer-motion";
 
 export default function WorkPage() {
   return (
-    <main className="pt-24 relative">
+    <main className="pt-24 relative bg-black">
       {/* Background Elements */}
       <ThemeCube className="absolute top-40 -left-20" opacity={0.03} />
       <ThemeCube className="absolute top-60 right-10" opacity={0.02} />
       
-      <div className="container mx-auto px-4 py-16 relative z-10">
-        <div className="max-w-3xl mx-auto text-center mb-16">
-          <h1 className="text-4xl md:text-5xl font-bold mb-6">Our Portfolio</h1>
-          <p className="text-[#AAAAAA] text-lg">
-            Explore our featured projects and success stories across various industries and platforms.
-          </p>
+      {/* Hero Section */}
+      <div className="container mx-auto px-4 py-32 relative z-10">
+        <div className="max-w-4xl mx-auto text-center mb-16">
+          <motion.h1 
+            className="text-5xl md:text-6xl font-bold mb-8"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+          >
+            <span className="text-white">Our </span>
+            <span className="text-[#0066FF]">Featured Work</span>
+          </motion.h1>
+          
+          <motion.p 
+            className="text-[#999] text-lg max-w-3xl mx-auto leading-relaxed"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+          >
+            Explore our featured projects and success stories that showcase our expertise
+            across various industries and platforms. These case studies demonstrate our
+            commitment to delivering exceptional digital solutions.
+          </motion.p>
         </div>
-        
+      </div>
+      
+      {/* Work Content */}
+      <div className="container mx-auto px-4 py-16 relative z-10">
         <Work />
       </div>
     </main>
