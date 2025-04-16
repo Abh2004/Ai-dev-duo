@@ -44,9 +44,9 @@ export default function Hero() {
             transition={{ delay: 0.5, duration: 0.8 }}
             viewport={{ once: true }}
           >
-            We create innovative digital solutions that transform businesses. 
-            Our team of experts specializes in mobile app development, web applications, 
-            and digital transformation.
+            We handle tech for startups and companies, building innovative software solutions 
+            that transform businesses. Our expert team specializes in tailored development
+            for all your technology needs.
           </motion.p>
           
           <motion.div 

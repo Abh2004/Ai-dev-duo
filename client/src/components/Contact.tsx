@@ -44,8 +44,8 @@ export default function Contact() {
             
             <div className="mb-8">
               <h4 className="text-[#777] mb-4">Email</h4>
-              <a href="mailto:contact@troibits.com" className="text-white hover:text-[#0066FF]">
-                contact@troibits.com
+              <a href="mailto:contact@aidevduo.com" className="text-white hover:text-[#0066FF]">
+                contact@aidevduo.com
               </a>
             </div>
             

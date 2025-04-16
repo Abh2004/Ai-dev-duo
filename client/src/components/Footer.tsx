@@ -169,13 +169,13 @@ export default function Footer() {
         <div className="flex flex-col md:flex-row items-center justify-between pt-8">
           <div className="flex items-center space-x-2 mb-4 md:mb-0">
             <div className="h-8 w-8 bg-transparent border border-white flex items-center justify-center mr-2">
-              <span className="text-white font-bold text-xs">T</span>
+              <span className="text-white font-bold text-xs">A</span>
             </div>
-            <span className="text-white font-medium text-sm">Troibits</span>
+            <span className="text-white font-medium text-sm">Ai DevDuo</span>
           </div>
           
           <p className="text-[#777] text-sm mb-4 md:mb-0">
-            2025 Troibits infotech private limited
+            2025 Ai DevDuo Technologies
           </p>
           
           <div className="flex space-x-6">

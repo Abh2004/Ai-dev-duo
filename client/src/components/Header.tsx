@@ -68,9 +68,9 @@ export default function Header() {
         <Link href="/">
           <span className="flex items-center space-x-2 cursor-pointer">
             <div className="w-10 h-10 bg-[#0066FF] rounded flex items-center justify-center shadow-[0_0_15px_rgba(0,102,255,0.5),0_0_30px_rgba(0,102,255,0.3)]">
-              <span className="text-white font-bold text-xl">T</span>
+              <span className="text-white font-bold text-xl">A</span>
             </div>
-            <span className="text-white font-bold text-xl">Troibits</span>
+            <span className="text-white font-bold text-xl">Ai DevDuo</span>
           </span>
         </Link>
         

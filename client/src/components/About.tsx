@@ -50,8 +50,8 @@ export default function About() {
               transition={{ delay: 0.3, duration: 0.7 }}
               viewport={{ once: true }}
             >
-              Since our founding in 2015, Troibits has been at the forefront of digital innovation. 
-              We combine technical expertise with creative thinking to deliver solutions 
+              Since our founding, Ai DevDuo has been dedicated to handling tech challenges for startups and companies.
+              We combine AI expertise with creative development to deliver software solutions
               that not only meet but exceed our clients' expectations.
             </motion.p>
             
@@ -62,10 +62,10 @@ export default function About() {
               transition={{ delay: 0.5, duration: 0.7 }}
               viewport={{ once: true }}
             >
-              Our team of passionate developers, designers, and strategists work collaboratively 
-              to transform ideas into impactful digital experiences. We believe in building 
-              long-term partnerships with our clients, understanding their business goals, 
-              and delivering solutions that drive growth.
+              Our team of passionate developers, AI specialists, and strategists work collaboratively 
+              to transform ideas into impactful technical solutions. We focus on building 
+              long-term partnerships with startups and companies, understanding their business goals, 
+              and developing software that drives growth.
             </motion.p>
             
             <motion.div 

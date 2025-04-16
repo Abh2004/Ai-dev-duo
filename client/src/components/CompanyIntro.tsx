@@ -38,19 +38,18 @@ export default function CompanyIntro() {
             
             <div className="text-[#999] leading-relaxed space-y-4">
               <p>
-                Troibits Infotech is a leading app development company that specializes in creating intuitive, 
-                user-friendly smart apps to transform businesses. We stay ahead of the curve by keeping up-to-date 
-                with the latest trends and technologies, such as Internet of Things, business automation, 
-                content management system (CMS), customer relationship management (CRM), point of sale 
-                systems (POS), search engine optimization (SEO), and marketing strategy.
+                Ai DevDuo is a specialized tech company that handles technology needs for startups and companies, building
+                innovative software solutions that transform businesses. We stay ahead of the curve by leveraging 
+                AI and the latest technologies, focusing on custom software development, artificial intelligence solutions, 
+                business automation, cloud infrastructure, and technology consulting for growing businesses.
               </p>
               
               <p>
                 We take a collaborative and transparent approach to every project, working closely with our clients to 
-                understand their goals and challenges. With our attention to detail, professionalism, and 
-                commitment to excellence, we have earned a reputation as a trusted partner for businesses of 
-                all sizes. Let Troibits Infotech help you unlock the full potential of your business with our forte in 
-                design and app development, along with our comprehensive suite of services. Contact us today 
+                understand their technology challenges and business goals. With our expertise in AI, software development,
+                and commitment to excellence, we have earned a reputation as a trusted tech partner for startups
+                and established companies. Let Ai DevDuo help you unlock the full potential of your business with our
+                technology solutions and comprehensive suite of services. Contact us today 
                 to learn more about how we can help you achieve your digital transformation goals.
               </p>
             </div>
