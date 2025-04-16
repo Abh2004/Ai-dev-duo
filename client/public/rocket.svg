@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="200px" height="400px" viewBox="0 0 200 400" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <defs>
+        <linearGradient x1="50%" y1="0%" x2="50%" y2="100%" id="rocketBody">
+            <stop stop-color="#2C3E50" offset="0%"></stop>
+            <stop stop-color="#1A1A2E" offset="100%"></stop>
+        </linearGradient>
+        <linearGradient x1="50%" y1="0%" x2="50%" y2="100%" id="rocketWindow">
+            <stop stop-color="#4FC3F7" offset="0%"></stop>
+            <stop stop-color="#0066FF" offset="100%"></stop>
+        </linearGradient>
+        <linearGradient x1="50%" y1="0%" x2="50%" y2="100%" id="rocketFin">
+            <stop stop-color="#0066FF" offset="0%"></stop>
+            <stop stop-color="#2C3E50" offset="100%"></stop>
+        </linearGradient>
+    </defs>
+    <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <!-- Rocket Body -->
+        <path d="M100,20 C60,20 60,150 60,300 L140,300 C140,150 140,20 100,20 Z" fill="url(#rocketBody)"></path>
+        
+        <!-- Rocket Nose -->
+        <path d="M100,20 C80,20 60,0 100,0 C140,0 120,20 100,20 Z" fill="#0066FF"></path>
+        
+        <!-- Window -->
+        <circle cx="100" cy="100" r="15" fill="url(#rocketWindow)"></circle>
+        
+        <!-- Left Fin -->
+        <path d="M60,250 L30,330 L60,330 L60,250 Z" fill="url(#rocketFin)"></path>
+        
+        <!-- Right Fin -->
+        <path d="M140,250 L170,330 L140,330 L140,250 Z" fill="url(#rocketFin)"></path>
+        
+        <!-- Bottom Fin -->
+        <path d="M90,300 L90,350 L110,350 L110,300 Z" fill="url(#rocketFin)"></path>
+        
+        <!-- Exhaust Base -->
+        <path d="M70,300 L70,320 C70,330 90,340 100,340 C110,340 130,330 130,320 L130,300 Z" fill="#34495E"></path>
+    </g>
+</svg>
