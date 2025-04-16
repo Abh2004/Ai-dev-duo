@@ -1,6 +1,7 @@
 import { Link } from "wouter";
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
+import { ChevronDown } from "lucide-react";
 import ThemeCube from "./ThemeCube";
 import Cube3D from "./Cube3D";
 import ParticlesBackground from "./ParticlesBackground";
@@ -115,6 +116,31 @@ export default function Hero() {
             </motion.div>
           </div>
         </div>
+      </div>
+      
+      {/* Our Services Link */}
+      <div className="absolute bottom-0 left-0 w-full flex justify-start pl-8">
+        <motion.div
+          className="mb-6 flex items-center gap-2"
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 1.4, duration: 0.5 }}
+        >
+          <a 
+            href="#services" 
+            className="flex flex-col items-start"
+            onClick={(e) => {
+              e.preventDefault();
+              const element = document.getElementById('services');
+              if (element) {
+                element.scrollIntoView({ behavior: 'smooth' });
+              }
+            }}
+          >
+            <span className="text-sm font-medium uppercase tracking-wider">Our Services</span>
+            <ChevronDown className="mt-1 w-5 h-5 animate-bounce" />
+          </a>
+        </motion.div>
       </div>
     </section>
   );
