@@ -108,15 +108,15 @@ export default function ProjectShowcase() {
           >
             <div className="relative">
               {/* Computer frame */}
-              <div className="relative mx-auto" style={{ maxWidth: "700px" }}>
-                <div className="bg-[#222] rounded-t-xl p-2 border-t border-l border-r border-[#444]">
+              <div className="relative mx-auto flex justify-center" style={{ maxWidth: "700px" }}>
+                <div className="bg-[#222] rounded-t-xl p-2 border-t border-l border-r border-[#444] w-full">
                   <div className="flex items-center space-x-2 mb-1">
                     <div className="w-3 h-3 rounded-full bg-red-500"></div>
                     <div className="w-3 h-3 rounded-full bg-yellow-500"></div>
                     <div className="w-3 h-3 rounded-full bg-green-500"></div>
                   </div>
                 </div>
-                <div className="border-2 border-[#444] rounded-b-xl overflow-hidden relative">
+                <div className="border-2 border-[#444] rounded-b-xl overflow-hidden relative w-full">
                   <AnimatePresence mode="wait">
                     <motion.div
                       key={activeProject.id}
@@ -135,7 +135,7 @@ export default function ProjectShowcase() {
               {/* Project selection sidebar */}
               <div className="absolute right-0 top-1/2 transform -translate-y-1/2 bg-black/20 backdrop-blur-sm p-2 rounded-l-lg hidden lg:block">
                 <div className="flex flex-col space-y-6 items-end pr-2">
-                  <div className="text-sm text-white text-right mb-2">App Showcase</div>
+                  <div className="text-lg font-medium text-[#0066FF] text-right mb-2 pb-1 border-b-2 border-[#0066FF]">App Showcase</div>
                   {showcaseProjects.map(project => (
                     <div 
                       key={project.id}
