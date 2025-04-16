@@ -7,44 +7,52 @@ export function cn(...inputs: ClassValue[]) {
 
 export const serviceData = [
   {
-    icon: "mobile",
-    title: "Mobile App Development",
-    description: "Native and cross-platform solutions for iOS and Android that deliver exceptional user experiences."
+    icon: "rocket",
+    title: "StartUp Acceleration",
+    description: "Strategic planning, MVP development, and scaling solutions for startups at any stage.",
+    hoverDetails: "Business Analysis, MVP Development, Funding Preparation, Market Validation"
   },
   {
-    icon: "globe",
-    title: "Web Development",
-    description: "Responsive websites and progressive web apps that engage users across all devices."
+    icon: "smartphone",
+    title: "Mobile App Development",
+    description: "Native and cross-platform mobile applications with exceptional user experiences.",
+    hoverDetails: "Android App, iOS App Development, Hybrid App Development, Flutter and IoT"
+  },
+  {
+    icon: "monitor",
+    title: "Website Development",
+    description: "Responsive websites and web applications optimized for performance and conversion.",
+    hoverDetails: "Frontend Development, Backend Development, CMS, Progressive Web Apps"
+  },
+  {
+    icon: "laptop",
+    title: "Enterprise App Development",
+    description: "Custom enterprise solutions that streamline operations and improve efficiency.",
+    hoverDetails: "ERP Solutions, CRM Development, Business Process Automation, Legacy Modernization"
   },
   {
     icon: "palette",
-    title: "UI/UX Design",
-    description: "Intuitive interfaces and seamless user experiences that delight your customers."
+    title: "Product Design and Branding",
+    description: "User-centered design and branding solutions that create memorable experiences.",
+    hoverDetails: "UI/UX Design, Brand Identity, Design Systems, Prototyping and User Testing"
   },
   {
     icon: "cloud",
-    title: "Cloud Services",
-    description: "Scalable cloud solutions that ensure performance, security, and reliability."
+    title: "Next Gen Technology",
+    description: "Cutting-edge solutions leveraging the latest technological advancements.",
+    hoverDetails: "AI/ML, Blockchain, IoT Solutions, Extended Reality (AR/VR)"
   },
   {
-    icon: "brain",
-    title: "AI & Machine Learning",
-    description: "Intelligent solutions that analyze data and deliver actionable insights."
+    icon: "trending-up",
+    title: "Growth Marketing",
+    description: "Data-driven marketing strategies to accelerate growth and expand market reach.",
+    hoverDetails: "SEO/SEM, Content Marketing, Social Media Strategy, Analytics and Optimization"
   },
   {
-    icon: "shopping-cart",
-    title: "E-Commerce Solutions",
-    description: "Digital storefronts and marketplaces that drive conversions and sales."
-  },
-  {
-    icon: "pie-chart",
-    title: "Digital Marketing",
-    description: "Strategic campaigns that increase brand visibility and customer engagement."
-  },
-  {
-    icon: "clipboard",
-    title: "IT Consulting",
-    description: "Expert guidance on technology strategy, architecture, and implementation."
+    icon: "shield",
+    title: "Maintenance and Support",
+    description: "Ongoing support and maintenance services to ensure optimal system performance.",
+    hoverDetails: "Proactive Monitoring, Technical Support, Security Updates, Performance Optimization"
   }
 ];
 

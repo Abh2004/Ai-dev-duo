@@ -1,52 +1,86 @@
+import { useState } from "react";
 import {
   Smartphone,
-  Globe,
-  PaintBucket,
+  Monitor,
   Cloud,
-  Brain,
-  ShoppingCart,
-  PieChart,
-  Clipboard
+  Rocket,
+  Laptop,
+  PaintBucket,
+  TrendingUp,
+  Shield
 } from "lucide-react";
 import { cn } from "@/lib/utils";
+import { motion } from "framer-motion";
 
 const iconMap = {
-  mobile: Smartphone,
-  globe: Globe,
-  palette: PaintBucket,
+  smartphone: Smartphone,
+  monitor: Monitor,
   cloud: Cloud,
-  brain: Brain,
-  "shopping-cart": ShoppingCart,
-  "pie-chart": PieChart,
-  clipboard: Clipboard
+  rocket: Rocket,
+  laptop: Laptop,
+  palette: PaintBucket,
+  "trending-up": TrendingUp,
+  shield: Shield
 };
 
 interface ServiceCardProps {
   icon: keyof typeof iconMap;
   title: string;
   description: string;
+  hoverDetails?: string;
   className?: string;
 }
 
 export default function ServiceCard({ 
   icon, 
   title, 
-  description, 
+  description,
+  hoverDetails,
   className 
 }: ServiceCardProps) {
+  const [isHovered, setIsHovered] = useState(false);
   const IconComponent = iconMap[icon];
 
   return (
-    <div className={cn(
-      "bg-[#222222] rounded-xl p-6 transition-all duration-300 hover:transform hover:-translate-y-1 hover:shadow-[0_10px_20px_rgba(0,102,255,0.2)]",
-      className
-    )}>
-      <div className="w-12 h-12 rounded-full bg-[#0066FF]/10 flex items-center justify-center mb-4">
-        <IconComponent className="h-6 w-6 text-[#0066FF]" />
-      </div>
+    <motion.div 
+      className={cn(
+        "relative border border-[#333] group h-full cursor-pointer",
+        isHovered ? "bg-[#0066FF]" : "bg-[#111]",
+        className
+      )}
+      onHoverStart={() => setIsHovered(true)}
+      onHoverEnd={() => setIsHovered(false)}
+      initial={{ opacity: 0.5 }}
+      whileInView={{ opacity: 1 }}
+      viewport={{ once: true }}
+      whileHover={{ 
+        scale: 1.02,
+        boxShadow: "0 10px 30px rgba(0,102,255,0.3)"
+      }}
+      transition={{ duration: 0.3 }}
+    >
+      {/* Blue accent line */}
+      <div className="absolute left-0 top-0 w-1 h-full bg-[#0066FF]" />
       
-      <h3 className="text-xl font-medium mb-2">{title}</h3>
-      <p className="text-[#AAAAAA]">{description}</p>
-    </div>
+      <div className="p-6 pl-8">
+        <div className="flex items-start space-x-4">
+          <IconComponent className="h-6 w-6 text-white mt-1" />
+          <div>
+            <h3 className="text-lg font-medium text-white mb-2">{title}</h3>
+            
+            {isHovered && (
+              <motion.p 
+                className="text-white/90 text-sm"
+                initial={{ opacity: 0, height: 0 }}
+                animate={{ opacity: 1, height: 'auto' }}
+                transition={{ duration: 0.3 }}
+              >
+                {hoverDetails}
+              </motion.p>
+            )}
+          </div>
+        </div>
+      </div>
+    </motion.div>
   );
 }

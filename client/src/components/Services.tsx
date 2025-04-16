@@ -2,99 +2,79 @@ import { serviceData } from "@/lib/utils";
 import { motion } from "framer-motion";
 import ServiceCard from "./ServiceCard";
 import AnimatedText from "./AnimatedText";
-import Cube3D from "./Cube3D";
-import AnimatedCard from "./AnimatedCard";
 
 export default function Services() {
   return (
-    <section id="services" className="py-20 relative overflow-hidden">
-      {/* Background 3D Elements */}
-      <div className="absolute -left-32 top-32 w-64 h-64 opacity-10 hidden lg:block">
-        <Cube3D 
-          size={3} 
-          color="#0066FF" 
-          wireframe={true} 
-          rotation={{ x: 0.002, y: 0.003, z: 0.001 }}
-        />
-      </div>
-      
-      <div className="absolute -right-32 bottom-32 w-64 h-64 opacity-10 hidden lg:block">
-        <Cube3D 
-          size={3} 
-          color="#0066FF" 
-          wireframe={true} 
-          rotation={{ x: -0.003, y: 0.002, z: 0.001 }}
-        />
-      </div>
-      
-      {/* Gradient orbs */}
-      <motion.div 
-        className="absolute top-40 left-1/4 w-64 h-64 rounded-full bg-gradient-to-r from-[#0066FF]/5 to-transparent blur-3xl"
-        animate={{
-          scale: [1, 1.2, 1],
-          opacity: [0.1, 0.15, 0.1]
-        }}
-        transition={{
-          duration: 8,
-          repeat: Infinity,
-          repeatType: "reverse"
-        }}
-      />
-      
-      <motion.div 
-        className="absolute bottom-40 right-1/4 w-64 h-64 rounded-full bg-gradient-to-r from-[#0066FF]/5 to-transparent blur-3xl"
-        animate={{
-          scale: [1, 1.3, 1],
-          opacity: [0.1, 0.2, 0.1]
-        }}
-        transition={{
-          duration: 10,
-          repeat: Infinity,
-          repeatType: "reverse",
-          delay: 2
-        }}
-      />
-      
+    <section id="services" className="py-20 relative overflow-hidden bg-black">
       <div className="container mx-auto px-4 relative z-10">
+        <div className="flex items-center mb-2">
+          <motion.div
+            initial={{ opacity: 0, x: -20 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.5 }}
+            viewport={{ once: true }}
+            className="flex items-center"
+          >
+            <span className="text-white font-medium mr-2">Our Services</span>
+            <svg 
+              xmlns="http://www.w3.org/2000/svg" 
+              width="20" 
+              height="20" 
+              viewBox="0 0 24 24" 
+              fill="none" 
+              stroke="currentColor" 
+              strokeWidth="2" 
+              strokeLinecap="round" 
+              strokeLinejoin="round" 
+              className="text-white"
+            >
+              <path d="M6 9l6 6 6-6"/>
+            </svg>
+          </motion.div>
+        </div>
+        
         <motion.div 
-          className="text-center mb-16"
+          className="mb-16"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7 }}
           viewport={{ once: true }}
         >
           <AnimatedText 
-            text="Mobile App Development & Digital Transformation" 
+            text="What we do?" 
             tagName="h2"
-            className="text-3xl md:text-4xl font-bold mb-4"
+            className="text-3xl md:text-5xl font-bold mb-4 text-center"
             duration={0.05}
           />
           
           <motion.p 
-            className="text-[#AAAAAA] max-w-3xl mx-auto"
+            className="text-[#AAAAAA] max-w-3xl mx-auto text-center mb-12"
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
-            transition={{ delay: 0.7, duration: 0.7 }}
+            transition={{ delay: 0.5, duration: 0.7 }}
             viewport={{ once: true }}
           >
-            Our comprehensive suite of software development and digital services 
-            designed to transform your business and elevate your digital presence.
+            Your search for end-to-end technology partner ends here. We are 
+            Top-Rated on Clutch, Google and the trusted choice of Fortune 500 Companies.
           </motion.p>
         </motion.div>
         
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
           {serviceData.map((service, index) => (
-            <AnimatedCard 
-              key={index} 
-              delay={0.1 * index}
-              glowEffect={true}
+            <motion.div
+              key={index}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.1 * index, duration: 0.5 }}
+              viewport={{ once: true }}
             >
               <ServiceCard
                 icon={service.icon}
                 title={service.title}
                 description={service.description}
+                hoverDetails={service.hoverDetails}
               />
-            </AnimatedCard>
+            </motion.div>
           ))}
         </div>
       </div>
