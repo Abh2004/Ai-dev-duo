@@ -1,6 +1,7 @@
 import ServiceDetails from "@/components/ServiceDetails";
 import TechStack from "@/components/TechStack";
 import AchievementsCarousel from "@/components/AchievementsCarousel";
+import AdvancingExperience from "@/components/AdvancingExperience";
 import ThemeCube from "@/components/ThemeCube";
 import { motion } from "framer-motion";
 
@@ -45,6 +46,9 @@ export default function ServicesPage() {
       
       {/* Achievements and Challenges Carousel */}
       <AchievementsCarousel />
+      
+      {/* Advancing Experience Section */}
+      <AdvancingExperience />
     </main>
   );
 }
