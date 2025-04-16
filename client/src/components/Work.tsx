@@ -73,7 +73,31 @@ export default function Work() {
       </motion.div>
 
       <div className="container mx-auto px-4 relative z-10">
-
+        <motion.div 
+          className="text-center mb-16"
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.7 }}
+          viewport={{ once: true }}
+        >
+          <AnimatedText 
+            text="We Create Websites and Apps" 
+            tagName="h2"
+            className="text-3xl md:text-4xl font-bold mb-4"
+            duration={0.05}
+          />
+          
+          <motion.p 
+            className="text-[#AAAAAA] max-w-3xl mx-auto"
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            transition={{ delay: 0.5, duration: 0.7 }}
+            viewport={{ once: true }}
+          >
+            Our portfolio showcases innovative solutions across multiple platforms and industries.
+            Each project is crafted with attention to detail and a focus on delivering exceptional results.
+          </motion.p>
+        </motion.div>
         
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {portfolioData.map((project, index) => (

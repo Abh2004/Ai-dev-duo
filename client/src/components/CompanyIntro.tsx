@@ -74,7 +74,7 @@ export default function CompanyIntro() {
             transition={{ duration: 0.6 }}
             viewport={{ once: true }}
           >
-            <h2 className="text-3xl text-[#0066FF] font-semibold mb-8 text-center">
+            <h2 className="text-3xl text-[#0066FF] font-semibold mb-8">
               What We Do
             </h2>
             
@@ -86,7 +86,7 @@ export default function CompanyIntro() {
                   whileInView={{ opacity: 1, y: 0 }}
                   transition={{ delay: index * 0.1, duration: 0.4 }}
                   viewport={{ once: true }}
-                  className="border-b border-[#333] pb-4 text-center"
+                  className="border-b border-[#333] pb-4"
                 >
                   <Link to={`/services`} className="text-lg hover:text-[#0066FF] transition-colors duration-300">
                     {service}
