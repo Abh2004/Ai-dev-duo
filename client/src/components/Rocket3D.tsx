@@ -170,238 +170,246 @@ export default function Rocket3D({ className = '' }: Rocket3DProps) {
     };
   }, []);
   
-  // Create rocket model
+  // Create rocket model (cartoon style)
   const createRocket = () => {
     const rocketGroup = new THREE.Group();
     
-    // Body (cylinder)
-    const bodyGeometry = new THREE.CylinderGeometry(0.5, 0.5, 3, 32);
+    // Body (rounded capsule shape to better match reference)
+    // Create a group for the body to achieve a more capsule-like shape
+    const bodyGroup = new THREE.Group();
+
+    // Main body cylinder (slightly tapered)
+    const bodyGeometry = new THREE.CylinderGeometry(0.5, 0.45, 2.7, 32);
     const bodyMaterial = new THREE.MeshStandardMaterial({ 
-      color: 0x2c3e50,
-      roughness: 0.3,
-      metalness: 0.7,
-      envMapIntensity: 1.0,
+      color: 0xffffff, // White body
+      roughness: 0.6,
+      metalness: 0.1,
     });
     const body = new THREE.Mesh(bodyGeometry, bodyMaterial);
-    rocketGroup.add(body);
+    body.position.y = 0; // Center position
+    bodyGroup.add(body);
     
-    // Nose cone
+    // Add a sphere at the bottom for rounded transition to thruster
+    const bottomSphereGeometry = new THREE.SphereGeometry(0.45, 32, 16, 0, Math.PI * 2, 0, Math.PI / 2);
+    const bottomSphere = new THREE.Mesh(bottomSphereGeometry, bodyMaterial);
+    bottomSphere.position.y = -1.35;
+    bodyGroup.add(bottomSphere);
+    
+    // Add the body group to the rocket
+    rocketGroup.add(bodyGroup);
+    
+    // Nose cone (red, rounded)
     const noseGeometry = new THREE.ConeGeometry(0.5, 1, 32);
     const noseMaterial = new THREE.MeshStandardMaterial({ 
-      color: 0x0066ff,
-      roughness: 0.2,
-      metalness: 0.8,
-      envMapIntensity: 1.0
+      color: 0xff4757, // Red nose like in the reference
+      roughness: 0.6,
+      metalness: 0.1,
     });
     const nose = new THREE.Mesh(noseGeometry, noseMaterial);
-    nose.position.y = 2;
+    nose.position.y = 1.85;
     rocketGroup.add(nose);
     
-    // Windows (multiple)
-    const createWindow = (x: number, y: number, z: number, rotation: number = 0) => {
-      const windowGeometry = new THREE.CircleGeometry(0.15, 32);
-      const windowMaterial = new THREE.MeshPhysicalMaterial({ 
-        color: 0x3498db,
-        emissive: 0x0066ff,
-        emissiveIntensity: 0.5,
-        roughness: 0.1,
-        metalness: 0.2,
-        clearcoat: 1.0,
-        clearcoatRoughness: 0.1,
-        transmission: 0.9, // Makes it glass-like
-      });
-      const windowMesh = new THREE.Mesh(windowGeometry, windowMaterial);
-      windowMesh.position.set(x, y, z);
-      windowMesh.rotation.y = rotation;
-      return windowMesh;
-    };
+    // Add a small sphere at the top for a rounded tip
+    const tipSphereGeometry = new THREE.SphereGeometry(0.08, 16, 16);
+    const tipSphere = new THREE.Mesh(tipSphereGeometry, noseMaterial);
+    tipSphere.position.y = 2.4;
+    rocketGroup.add(tipSphere);
     
-    // Add multiple windows around the rocket
-    rocketGroup.add(createWindow(0, 0.5, 0.51));
-    rocketGroup.add(createWindow(0.51, 0.7, 0, Math.PI/2));
-    rocketGroup.add(createWindow(0, 0.9, -0.51, Math.PI));
-    rocketGroup.add(createWindow(-0.51, 0.3, 0, -Math.PI/2));
-    
-    // Body details - rings
-    const addBodyRing = (y: number, scale: number = 1) => {
-      const ringGeometry = new THREE.TorusGeometry(0.53, 0.03, 16, 36);
-      const ringMaterial = new THREE.MeshStandardMaterial({
-        color: 0x0066ff,
-        roughness: 0.3,
-        metalness: 0.7,
-      });
-      const ring = new THREE.Mesh(ringGeometry, ringMaterial);
-      ring.rotation.x = Math.PI / 2;
-      ring.position.y = y;
-      ring.scale.set(scale, scale, scale);
-      return ring;
-    };
-    
-    // Add decorative rings
-    rocketGroup.add(addBodyRing(1.5, 1.01));
-    rocketGroup.add(addBodyRing(0, 1.02));
-    rocketGroup.add(addBodyRing(-1.5, 1.01));
-    
-    // Add logo/badge
-    const badgeGeometry = new THREE.CircleGeometry(0.2, 32);
-    const badgeMaterial = new THREE.MeshStandardMaterial({
-      color: 0xffffff,
-      roughness: 0.2,
-      metalness: 0.8,
-      map: createLogoTexture(),
-    });
-    const badge = new THREE.Mesh(badgeGeometry, badgeMaterial);
-    badge.position.set(0, 1.3, 0.505);
-    rocketGroup.add(badge);
-    
-    // Enhanced fins
-    const leftFin = createEnhancedFin();
-    leftFin.position.set(-0.6, -1.3, 0);
-    leftFin.rotation.z = 0.3;
-    rocketGroup.add(leftFin);
-    
-    const rightFin = createEnhancedFin();
-    rightFin.position.set(0.6, -1.3, 0);
-    rightFin.rotation.z = -0.3;
-    rocketGroup.add(rightFin);
-    
-    const backFin = createEnhancedFin();
-    backFin.position.set(0, -1.3, -0.6);
-    backFin.rotation.x = -0.3;
-    rocketGroup.add(backFin);
-    
-    const frontFin = createEnhancedFin();
-    frontFin.position.set(0, -1.3, 0.6);
-    frontFin.rotation.x = 0.3;
-    rocketGroup.add(frontFin);
-    
-    // Enhanced thruster
-    const thrusterGroup = new THREE.Group();
-    
-    // Main thruster
-    const thrusterGeometry = new THREE.CylinderGeometry(0.4, 0.5, 0.5, 32);
-    const thrusterMaterial = new THREE.MeshStandardMaterial({ 
-      color: 0x95a5a6, 
-      roughness: 0.6,
-      metalness: 0.8
-    });
-    const thruster = new THREE.Mesh(thrusterGeometry, thrusterMaterial);
-    thrusterGroup.add(thruster);
-    
-    // Thruster inner ring
-    const thrusterInnerGeometry = new THREE.TorusGeometry(0.45, 0.03, 16, 36);
-    const thrusterInnerMaterial = new THREE.MeshStandardMaterial({
-      color: 0x555555,
+    // Circular window with border (like in the reference)
+    const windowGeometry = new THREE.CircleGeometry(0.25, 32);
+    // Create window glass with gradient-like effect for more depth
+    const windowMaterial = new THREE.MeshStandardMaterial({ 
+      color: 0x2bbdfa, // Light blue window
       roughness: 0.2,
       metalness: 0.9,
+      emissive: 0x0088cc, // Slight glow
+      emissiveIntensity: 0.2,
+      side: THREE.DoubleSide
     });
-    const thrusterInner = new THREE.Mesh(thrusterInnerGeometry, thrusterInnerMaterial);
-    thrusterInner.rotation.x = Math.PI / 2;
-    thrusterInner.position.y = -0.25;
-    thrusterGroup.add(thrusterInner);
     
-    // Thruster interior (glowing)
-    const thrusterInteriorGeometry = new THREE.CylinderGeometry(0.35, 0.35, 0.1, 32);
+    // Window border
+    const windowBorderGeometry = new THREE.RingGeometry(0.25, 0.32, 32);
+    const windowBorderMaterial = new THREE.MeshStandardMaterial({ 
+      color: 0x333333, // Dark window border
+      roughness: 0.4,
+      metalness: 0.6,
+      side: THREE.DoubleSide
+    });
+    
+    // Create a window group for better positioning
+    const windowGroup = new THREE.Group();
+    const windowMesh = new THREE.Mesh(windowGeometry, windowMaterial);
+    windowMesh.position.z = 0.01; // Slight offset to prevent z-fighting
+    windowGroup.add(windowMesh);
+    
+    const windowBorder = new THREE.Mesh(windowBorderGeometry, windowBorderMaterial);
+    windowGroup.add(windowBorder);
+    
+    windowGroup.position.set(0, 0.6, 0.52); // Position on the front of the rocket
+    rocketGroup.add(windowGroup);
+    
+    // Create curved fins like in the reference image
+    const createCurvedFin = () => {
+      // Create a curved shape using bezier curves
+      const finShape = new THREE.Shape();
+      finShape.moveTo(0, 0); // Start at rocket body
+      
+      // Create a curved fin shape using bezier curves to match reference
+      finShape.bezierCurveTo(
+        0.8, -0.4,    // control point 1
+        1.0, -0.6,    // control point 2
+        0.9, -0.8     // end point
+      );
+      finShape.bezierCurveTo(
+        0.7, -0.5,    // control point 1
+        0.5, 0.2,     // control point 2
+        0, 0.4        // end point back at body
+      );
+      finShape.lineTo(0, 0); // Close shape
+      
+      const finGeometry = new THREE.ShapeGeometry(finShape);
+      const finMaterial = new THREE.MeshStandardMaterial({ 
+        color: 0xff4757, // Red fins matching nose cone
+        roughness: 0.6,
+        metalness: 0.1,
+      });
+      
+      return new THREE.Mesh(finGeometry, finMaterial);
+    };
+    
+    // Add large curved fins on either side (like in reference)
+    const leftFin = createCurvedFin();
+    leftFin.position.set(-0.47, -1.0, 0);
+    leftFin.rotation.z = 0.1;
+    rocketGroup.add(leftFin);
+    
+    const rightFin = createCurvedFin();
+    rightFin.position.set(0.47, -1.0, 0);
+    rightFin.rotation.z = -0.1;
+    rightFin.rotation.y = Math.PI;
+    rocketGroup.add(rightFin);
+    
+    // Thruster section (darker gray at bottom)
+    const thrusterGroup = new THREE.Group();
+    
+    // Main thruster ring
+    const thrusterRingGeometry = new THREE.TorusGeometry(0.45, 0.07, 16, 32);
+    const thrusterMaterial = new THREE.MeshStandardMaterial({ 
+      color: 0x4b4b4b, // Dark gray thruster base
+      roughness: 0.4,
+      metalness: 0.6,
+    });
+    const thrusterRing = new THREE.Mesh(thrusterRingGeometry, thrusterMaterial);
+    thrusterRing.rotation.x = Math.PI / 2; // Rotate to horizontal
+    thrusterRing.position.y = -1.65;
+    thrusterGroup.add(thrusterRing);
+    
+    // Thruster interior (recessed)
+    const thrusterInteriorGeometry = new THREE.CylinderGeometry(0.38, 0.38, 0.1, 32);
     const thrusterInteriorMaterial = new THREE.MeshStandardMaterial({
-      color: 0xff3300,
-      emissive: 0xff5500,
-      emissiveIntensity: 0.5,
-      roughness: 1.0,
-      metalness: 0.0,
+      color: 0x333333,
+      roughness: 0.7,
+      metalness: 0.3,
     });
     const thrusterInterior = new THREE.Mesh(thrusterInteriorGeometry, thrusterInteriorMaterial);
-    thrusterInterior.position.y = -0.3;
+    thrusterInterior.position.y = -1.7;
     thrusterGroup.add(thrusterInterior);
     
-    thrusterGroup.position.y = -1.75;
     rocketGroup.add(thrusterGroup);
     
-    // Enhanced fire effects
+    // Create fire (closely matching the narrower cone shape in reference)
     const fireGroup = new THREE.Group();
     fireGroup.name = "fire";
     
-    // Main fire cone
-    const fireGeometry = new THREE.ConeGeometry(0.4, 1.5, 32);
-    const fireMaterial = new THREE.MeshBasicMaterial({ 
-      color: 0xff5722,
+    // Main outer fire cone (orange) - narrower and longer like in reference
+    const outerFireGeometry = new THREE.ConeGeometry(0.37, 2.2, 16);
+    const outerFireMaterial = new THREE.MeshBasicMaterial({ 
+      color: 0xff6600, // Deep orange
       transparent: true,
       opacity: 0.9
     });
-    const fire = new THREE.Mesh(fireGeometry, fireMaterial);
-    fire.rotation.x = Math.PI; // Flip to point downward
-    fireGroup.add(fire);
+    const outerFire = new THREE.Mesh(outerFireGeometry, outerFireMaterial);
+    outerFire.rotation.x = Math.PI; // Flip to point downward
+    fireGroup.add(outerFire);
     
-    // Inner fire cone (brighter)
-    const innerFireGeometry = new THREE.ConeGeometry(0.25, 1.2, 32);
+    // Wide base for the fire at thruster exit
+    const baseFireGeometry = new THREE.CylinderGeometry(0.37, 0.32, 0.2, 16);
+    const baseFireMaterial = new THREE.MeshBasicMaterial({ 
+      color: 0xff5500, // Darker orange at base
+      transparent: true,
+      opacity: 0.95
+    });
+    const baseFire = new THREE.Mesh(baseFireGeometry, baseFireMaterial);
+    baseFire.rotation.x = Math.PI; // Flip to point downward
+    baseFire.position.y = 1.1; // Position at the thruster exit
+    fireGroup.add(baseFire);
+    
+    // Middle fire cone (yellow-orange) - narrower with oval shape
+    const middleFireGeometry = new THREE.ConeGeometry(0.25, 1.8, 16);
+    const middleFireMaterial = new THREE.MeshBasicMaterial({ 
+      color: 0xff9500, // Yellow-orange
+      transparent: true,
+      opacity: 0.95
+    });
+    const middleFire = new THREE.Mesh(middleFireGeometry, middleFireMaterial);
+    middleFire.rotation.x = Math.PI;
+    middleFire.position.y = 0.2;
+    middleFire.name = "middleFire";
+    fireGroup.add(middleFire);
+    
+    // Inner fire cone (yellow) - more elongated
+    const innerFireGeometry = new THREE.ConeGeometry(0.18, 1.4, 16);
     const innerFireMaterial = new THREE.MeshBasicMaterial({ 
-      color: 0xffcc00,
+      color: 0xffcc00, // Yellow
       transparent: true,
       opacity: 0.95
     });
     const innerFire = new THREE.Mesh(innerFireGeometry, innerFireMaterial);
     innerFire.rotation.x = Math.PI;
-    innerFire.position.y = 0.15;
+    innerFire.position.y = 0.4;
     innerFire.name = "innerFire";
     fireGroup.add(innerFire);
     
-    // Core fire (brightest)
-    const coreFireGeometry = new THREE.ConeGeometry(0.1, 0.8, 32);
+    // Core fire (brightest) - thin and straight like in reference
+    const coreFireGeometry = new THREE.ConeGeometry(0.08, 1.1, 12);
     const coreFireMaterial = new THREE.MeshBasicMaterial({ 
-      color: 0xffffff,
+      color: 0xffffa0, // Light yellow/white core
       transparent: true,
-      opacity: 0.9
+      opacity: 0.95
     });
     const coreFire = new THREE.Mesh(coreFireGeometry, coreFireMaterial);
     coreFire.rotation.x = Math.PI;
-    coreFire.position.y = 0.3;
+    coreFire.position.y = 0.55;
     coreFire.name = "coreFire";
     fireGroup.add(coreFire);
     
-    fireGroup.position.y = -2.75;
+    fireGroup.position.y = -2.8;
     rocketGroup.add(fireGroup);
     
-    // Enhanced particles
+    // Simple particles for fire effect
     const particlesGroup = new THREE.Group();
     particlesGroup.name = "particles";
     
-    // Generate more particles with variety
-    for (let i = 0; i < 25; i++) {
-      // Vary the particle shapes
-      let particleGeometry;
-      const shapeType = Math.floor(Math.random() * 3);
+    for (let i = 0; i < 20; i++) {
+      // Use simple sphere particles
+      const particleGeometry = new THREE.SphereGeometry(0.06 + Math.random() * 0.08, 8, 8);
       
-      if (shapeType === 0) {
-        particleGeometry = new THREE.SphereGeometry(0.05 + Math.random() * 0.07, 8, 8);
-      } else if (shapeType === 1) {
-        particleGeometry = new THREE.BoxGeometry(
-          0.05 + Math.random() * 0.07, 
-          0.05 + Math.random() * 0.07, 
-          0.05 + Math.random() * 0.07
-        );
-      } else {
-        particleGeometry = new THREE.TetrahedronGeometry(0.07 + Math.random() * 0.08);
-      }
-      
-      // Vary the particle colors
-      const colorChoice = Math.floor(Math.random() * 3);
-      let particleColor;
-      
-      if (colorChoice === 0) particleColor = 0xff9800; // Orange
-      else if (colorChoice === 1) particleColor = 0xff5722; // Deep orange
-      else particleColor = 0xffeb3b; // Yellow
+      // Either orange or yellow particles
+      const colorChoice = Math.random() > 0.5;
+      const particleColor = colorChoice ? 0xff7700 : 0xffcc00;
       
       const particleMaterial = new THREE.MeshBasicMaterial({
         color: particleColor,
         transparent: true,
-        opacity: Math.random() * 0.6 + 0.2
+        opacity: Math.random() * 0.6 + 0.3
       });
       
       const particle = new THREE.Mesh(particleGeometry, particleMaterial);
       
       // Random position below thruster
       const angle = Math.random() * Math.PI * 2;
-      const radius = Math.random() * 0.5;
-      const yOffset = -3 - Math.random() * 1.8;
+      const radius = Math.random() * 0.4;
+      const yOffset = -3 - Math.random() * 1.5;
       
       particle.position.set(
         Math.cos(angle) * radius,
@@ -409,23 +417,11 @@ export default function Rocket3D({ className = '' }: Rocket3DProps) {
         Math.sin(angle) * radius
       );
       
-      // Add rotation for more dynamic movement
-      particle.rotation.set(
-        Math.random() * Math.PI * 2,
-        Math.random() * Math.PI * 2,
-        Math.random() * Math.PI * 2
-      );
-      
-      // Store original position, speed and other animation properties
+      // Store original position and speed
       Object.assign(particle.userData, {
         originalY: particle.position.y,
-        speed: Math.random() * 0.12 + 0.06,
-        rotationSpeed: {
-          x: (Math.random() - 0.5) * 0.1,
-          y: (Math.random() - 0.5) * 0.1,
-          z: (Math.random() - 0.5) * 0.1
-        },
-        horizontalDrift: (Math.random() - 0.5) * 0.01 // Add some sideways movement
+        speed: Math.random() * 0.12 + 0.08,
+        horizontalDrift: (Math.random() - 0.5) * 0.01
       });
       
       particlesGroup.add(particle);
@@ -502,42 +498,36 @@ export default function Rocket3D({ className = '' }: Rocket3DProps) {
     return finGroup;
   };
   
-  // Enhanced lighting setup
+  // Cartoon-style lighting setup
   const addLights = (scene: THREE.Scene) => {
-    // Ambient light
-    const ambientLight = new THREE.AmbientLight(0xffffff, 0.4);
+    // Strong ambient light for flat cartoon look
+    const ambientLight = new THREE.AmbientLight(0xffffff, 0.7);
     scene.add(ambientLight);
     
-    // Key light (main directional light)
-    const keyLight = new THREE.DirectionalLight(0xffffff, 1.0);
-    keyLight.position.set(2, 3, 5);
-    keyLight.castShadow = true;
-    scene.add(keyLight);
+    // Main directional light (less harsh shadows for cartoon look)
+    const mainLight = new THREE.DirectionalLight(0xffffff, 0.7);
+    mainLight.position.set(2, 3, 5);
+    scene.add(mainLight);
     
-    // Fill light (softer, from opposite side)
-    const fillLight = new THREE.DirectionalLight(0x9eafff, 0.5);
-    fillLight.position.set(-3, 2, -3);
+    // Add a subtle blue fill light for dimension
+    const fillLight = new THREE.DirectionalLight(0xaaccff, 0.3);
+    fillLight.position.set(-1, 1, -2);
     scene.add(fillLight);
     
-    // Rim light (back light for definition)
-    const rimLight = new THREE.DirectionalLight(0xaaaaff, 0.3);
-    rimLight.position.set(0, -2, -5);
-    scene.add(rimLight);
-    
-    // Thruster glow (pulsating)
-    const thrusterLight = new THREE.PointLight(0xff5722, 4, 5);
+    // Orange thruster glow
+    const thrusterLight = new THREE.PointLight(0xff7700, 2, 5);
     thrusterLight.position.set(0, -3, 0);
     thrusterLight.name = "thrusterLight";
     scene.add(thrusterLight);
     
-    // Add a second, inner thruster light
-    const innerThrusterLight = new THREE.PointLight(0xffcc00, 2, 3);
+    // Yellow inner thruster light
+    const innerThrusterLight = new THREE.PointLight(0xffcc00, 1, 3);
     innerThrusterLight.position.set(0, -2.7, 0);
     innerThrusterLight.name = "innerThrusterLight";
     scene.add(innerThrusterLight);
   };
   
-  // Enhanced fire and particles animation
+  // Enhanced fire and particles animation to match the cartoon style
   const animateRocketFire = (rocket: THREE.Group) => {
     // Get the current time for animations
     const time = Date.now() * 0.001;
@@ -545,39 +535,65 @@ export default function Rocket3D({ className = '' }: Rocket3DProps) {
     // Animate fire group
     const fireGroup = rocket.getObjectByName("fire") as THREE.Group;
     if (fireGroup) {
-      // Animate main fire
-      const fire = fireGroup.children[0] as THREE.Mesh;
-      if (fire && fire.material) {
-        const material = fire.material as THREE.MeshBasicMaterial;
+      // Animate main outer fire - small subtle pulsing
+      const outerFire = fireGroup.children[0] as THREE.Mesh;
+      if (outerFire && outerFire.material) {
+        const material = outerFire.material as THREE.MeshBasicMaterial;
         
-        // Pulse the fire opacity with a complex pattern
-        material.opacity = 0.7 + 0.2 * Math.sin(time * 8) + 0.1 * Math.sin(time * 12);
+        // Subtle pulse for the outer fire - minimal movement for cartoon-like stable look
+        material.opacity = 0.85 + 0.15 * Math.sin(time * 5);
         
-        // Dynamic fire shape
-        const fireScale = 0.9 + 0.15 * Math.sin(time * 5) + 0.05 * Math.sin(time * 15);
-        fire.scale.set(fireScale, 1 + 0.2 * Math.sin(time * 7), fireScale);
+        // Very small scale changes for outer fire
+        const outerFireScale = 0.98 + 0.04 * Math.sin(time * 3);
+        outerFire.scale.set(outerFireScale, 1 + 0.05 * Math.sin(time * 4), outerFireScale);
       }
       
-      // Animate inner fire (more rapid)
+      // Animate base fire - steady glow at thruster exit
+      const baseFire = fireGroup.children[1] as THREE.Mesh;
+      if (baseFire && baseFire.material) {
+        const material = baseFire.material as THREE.MeshBasicMaterial;
+        
+        // Pulsating glow at the base
+        material.opacity = 0.9 + 0.1 * Math.sin(time * 7);
+      }
+      
+      // Animate middle fire - medium pulsing
+      const middleFire = fireGroup.getObjectByName("middleFire") as THREE.Mesh;
+      if (middleFire && middleFire.material) {
+        const material = middleFire.material as THREE.MeshBasicMaterial;
+        
+        // Medium pulse for the middle fire
+        material.opacity = 0.85 + 0.15 * Math.sin(time * 8);
+        
+        // Medium scale changes
+        const middleFireScale = 0.95 + 0.08 * Math.sin(time * 6);
+        middleFire.scale.set(middleFireScale, 1 + 0.1 * Math.sin(time * 5), middleFireScale);
+      }
+      
+      // Animate inner fire - more vibrant pulsing
       const innerFire = fireGroup.getObjectByName("innerFire") as THREE.Mesh;
       if (innerFire && innerFire.material) {
         const material = innerFire.material as THREE.MeshBasicMaterial;
         
-        material.opacity = 0.8 + 0.2 * Math.sin(time * 12);
+        // More vibrant pulsing for inner fire
+        material.opacity = 0.8 + 0.2 * Math.sin(time * 10);
         
-        const innerFireScale = 0.95 + 0.25 * Math.sin(time * 9);
-        innerFire.scale.set(innerFireScale, 1 + 0.3 * Math.sin(time * 10), innerFireScale);
+        // Larger scale changes for inner fire
+        const innerFireScale = 0.92 + 0.15 * Math.sin(time * 8);
+        innerFire.scale.set(innerFireScale, 1 + 0.2 * Math.sin(time * 7), innerFireScale);
       }
       
-      // Animate core fire (most rapid)
+      // Animate core fire (most rapid) - create the flickering effect
       const coreFire = fireGroup.getObjectByName("coreFire") as THREE.Mesh;
       if (coreFire && coreFire.material) {
         const material = coreFire.material as THREE.MeshBasicMaterial;
         
-        material.opacity = 0.9 + 0.1 * Math.sin(time * 20);
+        // Rapid pulsing for core
+        material.opacity = 0.85 + 0.15 * Math.sin(time * 15);
         
-        const coreFireScale = 0.9 + 0.3 * Math.sin(time * 15);
-        coreFire.scale.set(coreFireScale, 1 + 0.4 * Math.sin(time * 18), coreFireScale);
+        // Most dynamic scale changes for the core
+        const coreFireScale = 0.9 + 0.15 * Math.sin(time * 12);
+        coreFire.scale.set(coreFireScale, 1 + 0.25 * Math.sin(time * 10), coreFireScale);
       }
     }
     
