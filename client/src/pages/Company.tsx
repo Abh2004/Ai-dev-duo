@@ -1,5 +1,8 @@
 import About from "@/components/About";
 import Partners from "@/components/Partners";
+import CompanyIntro from "@/components/CompanyIntro";
+import WhatWeStandFor from "@/components/WhatWeStandFor";
+import OurProcess from "@/components/OurProcess";
 import ThemeCube from "@/components/ThemeCube";
 import { motion } from "framer-motion";
 
@@ -36,7 +39,16 @@ export default function CompanyPage() {
         </div>
       </div>
       
-      {/* Company Content */}
+      {/* Company Introduction with What We Do */}
+      <CompanyIntro />
+      
+      {/* What We Stand For */}
+      <WhatWeStandFor />
+      
+      {/* Our Process */}
+      <OurProcess />
+      
+      {/* About & Partners */}
       <div className="container mx-auto px-4 py-16 relative z-10">
         <About />
         <Partners />
