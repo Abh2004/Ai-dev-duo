@@ -3,29 +3,49 @@ import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import ThemeCube from "./ThemeCube";
 import Cube3D from "./Cube3D";
+import Sphere3D from "./Sphere3D";
 import ParticlesBackground from "./ParticlesBackground";
 import AnimatedText from "./AnimatedText";
 
 export default function Hero() {
   return (
     <section className="relative pt-32 pb-20 md:pt-40 md:pb-32 overflow-hidden bg-black">
-      {/* Particle Background */}
-      <ParticlesBackground count={60} color="#0066FF" minSize={1} maxSize={3} speed={0.3} />
+      {/* Enhanced Particle Background */}
+      <ParticlesBackground count={100} color="#0066FF" minSize={1} maxSize={4} speed={0.5} />
       
       {/* 3D Elements */}
-      <div className="absolute right-[5%] top-32 w-64 h-64 opacity-40 hidden lg:block">
+      <div className="absolute right-[10%] top-32 w-96 h-96 opacity-60 hidden lg:block">
         <Cube3D 
-          size={2} 
+          size={3.5} 
           color="#0066FF" 
           wireframe={true} 
-          rotation={{ x: 0.005, y: 0.01, z: 0.002 }}
+          rotation={{ x: 0.007, y: 0.012, z: 0.003 }}
+        />
+      </div>
+      
+      <div className="absolute left-[15%] bottom-32 w-72 h-72 opacity-40 hidden lg:block">
+        <Cube3D 
+          size={2.5} 
+          color="#FF3366" 
+          wireframe={true} 
+          rotation={{ x: -0.005, y: 0.008, z: -0.004 }}
+        />
+      </div>
+      
+      <div className="absolute right-[25%] bottom-48 w-48 h-48 opacity-30 hidden lg:block">
+        <Sphere3D 
+          radius={1.5} 
+          color="#00EEFF" 
+          wireframe={true} 
+          rotation={{ x: 0.004, y: -0.009, z: 0.002 }}
         />
       </div>
       
       {/* Decorative elements */}
-      <ThemeCube className="top-20 left-[5%]" opacity={20} />
-      <ThemeCube className="bottom-20 right-[10%]" opacity={30} />
-      <ThemeCube className="top-40 right-[20%]" opacity={15} />
+      <ThemeCube className="top-20 left-[5%]" opacity={30} />
+      <ThemeCube className="bottom-20 right-[10%]" opacity={40} />
+      <ThemeCube className="top-40 right-[40%]" opacity={25} />
+      <ThemeCube className="bottom-40 left-[25%]" opacity={35} />
       
       <div className="container mx-auto px-4 relative z-10">
         <div className="max-w-3xl">
