@@ -7,13 +7,19 @@ export default function Services() {
   return (
     <section id="services" className="py-20 relative overflow-hidden bg-black">
       <div className="container mx-auto px-4 relative z-10">
-        <div className="flex items-center mb-2">
+        <motion.div 
+          className="mb-16 text-center"
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.7 }}
+          viewport={{ once: true }}
+        >
           <motion.div
-            initial={{ opacity: 0, x: -20 }}
-            whileInView={{ opacity: 1, x: 0 }}
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
             transition={{ duration: 0.5 }}
             viewport={{ once: true }}
-            className="flex items-center"
+            className="flex items-center justify-center mb-4"
           >
             <span className="text-white font-medium mr-2">Our Services</span>
             <svg 
@@ -31,15 +37,7 @@ export default function Services() {
               <path d="M6 9l6 6 6-6"/>
             </svg>
           </motion.div>
-        </div>
         
-        <motion.div 
-          className="mb-16"
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.7 }}
-          viewport={{ once: true }}
-        >
           <AnimatedText 
             text="What we do?" 
             tagName="h2"
