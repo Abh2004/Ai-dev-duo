@@ -6,6 +6,7 @@ import ThemeCube from "./ThemeCube";
 import Cube3D from "./Cube3D";
 import ParticlesBackground from "./ParticlesBackground";
 import AnimatedText from "./AnimatedText";
+import RocketAnimation from "./RocketAnimation";
 
 export default function Hero() {
   return (
@@ -27,6 +28,9 @@ export default function Hero() {
       <ThemeCube className="top-20 left-[5%]" opacity={20} />
       <ThemeCube className="bottom-20 right-[10%]" opacity={30} />
       <ThemeCube className="top-40 right-[20%]" opacity={15} />
+      
+      {/* Rocket Animation */}
+      <RocketAnimation />
       
       <div className="container mx-auto px-4 relative z-10">
         <div className="max-w-3xl">

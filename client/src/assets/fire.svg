@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 200">
+  <defs>
+    <linearGradient id="fireGradient" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#0066FF" stop-opacity="0.8" />
+      <stop offset="60%" stop-color="#0042a5" stop-opacity="0.5" />
+      <stop offset="100%" stop-color="#001e4d" stop-opacity="0.3" />
+    </linearGradient>
+  </defs>
+  <path d="M20,0 Q50,40 30,90 Q0,140 50,200 Q100,140 70,90 Q50,40 80,0 Q50,20 20,0" fill="url(#fireGradient)">
+    <animate attributeName="d" dur="0.8s" repeatCount="indefinite"
+      values="M20,0 Q50,40 30,90 Q0,140 50,200 Q100,140 70,90 Q50,40 80,0 Q50,20 20,0;
+              M30,0 Q60,30 40,90 Q10,150 50,200 Q90,150 60,90 Q40,30 70,0 Q50,10 30,0;
+              M20,0 Q50,40 30,90 Q0,140 50,200 Q100,140 70,90 Q50,40 80,0 Q50,20 20,0"
+      calcMode="spline" keySplines="0.45 0.05 0.55 0.95;0.45 0.05 0.55 0.95" />
+  </path>
+</svg>
