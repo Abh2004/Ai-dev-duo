@@ -81,7 +81,7 @@ export default function Work() {
           viewport={{ once: true }}
         >
           <AnimatedText 
-            text="We Create Websites and Apps" 
+            text="Our Featured Projects" 
             tagName="h2"
             className="text-3xl md:text-4xl font-bold mb-4"
             duration={0.05}
@@ -94,8 +94,8 @@ export default function Work() {
             transition={{ delay: 0.5, duration: 0.7 }}
             viewport={{ once: true }}
           >
-            Our portfolio showcases innovative solutions across multiple platforms and industries.
-            Each project is crafted with attention to detail and a focus on delivering exceptional results.
+            Explore our portfolio of successful projects that delivered substantial value to our clients.
+            Each project demonstrates our commitment to quality and innovation.
           </motion.p>
         </motion.div>
         

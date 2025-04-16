@@ -117,9 +117,9 @@ export default function WorkPage() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
           >
-            <span className="text-white">We </span>
-            <span className="text-[#0066FF]">Create</span>
-            <span className="text-white"> Websites and Apps</span>
+            <span className="text-white">Our </span>
+            <span className="text-[#0066FF]">Portfolio</span>
+            <span className="text-white"> of Solutions</span>
           </motion.h1>
           
           <motion.p 
@@ -128,8 +128,8 @@ export default function WorkPage() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.2 }}
           >
-            Our design is a key factor why we are able to create better products as we do a proper research and planning before ideations 
-            and create something on a blank piece of paper which stands out and is minimal.
+            We take a thoughtful approach to every project, beginning with thorough research and strategic planning before 
+            implementing innovative solutions that deliver exceptional value to our clients.
           </motion.p>
         </div>
       </div>
@@ -152,7 +152,7 @@ export default function WorkPage() {
           viewport={{ once: true }}
         >
           <h2 className="text-3xl font-semibold mb-8">
-            Want us to craft well designed apps and digitally transform<br /> your business?
+            Need innovative software solutions to handle your tech needs<br /> and transform your business?
           </h2>
           
           <Link to="/contact">
