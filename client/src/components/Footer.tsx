@@ -1,170 +1,199 @@
 import { Link } from "wouter";
-import { Instagram, Facebook, Linkedin, Twitter } from "lucide-react";
 
 export default function Footer() {
   return (
-    <footer className="bg-black border-t border-[#222222] pt-16 pb-8">
+    <footer className="bg-black border-t border-[#111] py-16">
       <div className="container mx-auto px-4">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-6 gap-8 mb-12">
-          <div className="lg:col-span-2">
-            <div className="flex items-center space-x-2 mb-4">
-              <div className="w-10 h-10 bg-[#0066FF] rounded flex items-center justify-center">
-                <span className="text-white font-bold text-xl">T</span>
-              </div>
-              <span className="text-white font-bold text-xl">Troibits</span>
-            </div>
-            <p className="text-[#AAAAAA] mb-6">
-              We create innovative digital solutions that transform businesses and 
-              deliver exceptional user experiences.
-            </p>
-            <p className="text-white font-medium">
-              123 Tech Park, Innovation Street<br />
-              Silicon Valley, CA 94025
-            </p>
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8 mb-12">
+          {/* Mobile Column */}
+          <div>
+            <h4 className="text-white font-medium mb-6">Mobile</h4>
+            <ul className="space-y-3">
+              <li>
+                <a href="#" className="text-[#777] hover:text-white transition-colors duration-300">
+                  Android Apps
+                </a>
+              </li>
+              <li>
+                <a href="#" className="text-[#777] hover:text-white transition-colors duration-300">
+                  iPhone Apps
+                </a>
+              </li>
+              <li>
+                <a href="#" className="text-[#777] hover:text-white transition-colors duration-300">
+                  Hybrid Apps
+                </a>
+              </li>
+              <li>
+                <a href="#" className="text-[#777] hover:text-white transition-colors duration-300">
+                  Swift
+                </a>
+              </li>
+              <li>
+                <a href="#" className="text-[#777] hover:text-white transition-colors duration-300">
+                  Kotlin
+                </a>
+              </li>
+            </ul>
           </div>
           
+          {/* Web Column */}
           <div>
-            <h4 className="text-white font-medium mb-4">Company</h4>
-            <ul className="space-y-2">
+            <h4 className="text-white font-medium mb-6">Web</h4>
+            <ul className="space-y-3">
               <li>
-                <a href="#" className="text-[#AAAAAA] hover:text-white transition-colors duration-300">
+                <a href="#" className="text-[#777] hover:text-white transition-colors duration-300">
+                  React Js
+                </a>
+              </li>
+              <li>
+                <a href="#" className="text-[#777] hover:text-white transition-colors duration-300">
+                  Angular Js
+                </a>
+              </li>
+              <li>
+                <a href="#" className="text-[#777] hover:text-white transition-colors duration-300">
+                  Vue Js
+                </a>
+              </li>
+              <li>
+                <a href="#" className="text-[#777] hover:text-white transition-colors duration-300">
+                  Java
+                </a>
+              </li>
+              <li>
+                <a href="#" className="text-[#777] hover:text-white transition-colors duration-300">
+                  WordPress
+                </a>
+              </li>
+            </ul>
+          </div>
+          
+          {/* Game Column */}
+          <div>
+            <h4 className="text-white font-medium mb-6">Game</h4>
+            <ul className="space-y-3">
+              <li>
+                <a href="#" className="text-[#777] hover:text-white transition-colors duration-300">
+                  Unity 3D
+                </a>
+              </li>
+              <li>
+                <a href="#" className="text-[#777] hover:text-white transition-colors duration-300">
+                  Unreal Engine
+                </a>
+              </li>
+              <li>
+                <a href="#" className="text-[#777] hover:text-white transition-colors duration-300">
+                  Augmented Reality
+                </a>
+              </li>
+              <li>
+                <a href="#" className="text-[#777] hover:text-white transition-colors duration-300">
+                  Virtual Reality
+                </a>
+              </li>
+              <li>
+                <a href="#" className="text-[#777] hover:text-white transition-colors duration-300">
+                  Metaverse
+                </a>
+              </li>
+            </ul>
+          </div>
+          
+          {/* IOT Column */}
+          <div>
+            <h4 className="text-white font-medium mb-6">IOT</h4>
+            <ul className="space-y-3">
+              <li>
+                <a href="#" className="text-[#777] hover:text-white transition-colors duration-300">
+                  Automation
+                </a>
+              </li>
+              <li>
+                <a href="#" className="text-[#777] hover:text-white transition-colors duration-300">
+                  Connected Hardware
+                </a>
+              </li>
+              <li>
+                <a href="#" className="text-[#777] hover:text-white transition-colors duration-300">
+                  AI and ML
+                </a>
+              </li>
+              <li>
+                <a href="#" className="text-[#777] hover:text-white transition-colors duration-300">
+                  Robotics
+                </a>
+              </li>
+              <li>
+                <a href="#" className="text-[#777] hover:text-white transition-colors duration-300">
+                  Drone Tech
+                </a>
+              </li>
+            </ul>
+          </div>
+          
+          {/* Quicklinks Column */}
+          <div>
+            <h4 className="text-white font-medium mb-6">Quicklinks</h4>
+            <ul className="space-y-3">
+              <li>
+                <a href="#" className="text-[#777] hover:text-white transition-colors duration-300">
+                  Services
+                </a>
+              </li>
+              <li>
+                <a href="#" className="text-[#777] hover:text-white transition-colors duration-300">
                   About Us
                 </a>
               </li>
               <li>
-                <a href="#" className="text-[#AAAAAA] hover:text-white transition-colors duration-300">
-                  Our Team
+                <a href="#" className="text-[#777] hover:text-white transition-colors duration-300">
+                  Our Work
                 </a>
               </li>
               <li>
-                <a href="#" className="text-[#AAAAAA] hover:text-white transition-colors duration-300">
-                  Careers
+                <a href="#" className="text-[#777] hover:text-white transition-colors duration-300">
+                  Company Policy
                 </a>
               </li>
               <li>
-                <a href="#" className="text-[#AAAAAA] hover:text-white transition-colors duration-300">
-                  Blog
-                </a>
-              </li>
-              <li>
-                <a href="#contact" className="text-[#AAAAAA] hover:text-white transition-colors duration-300">
+                <a href="#contact" className="text-[#777] hover:text-white transition-colors duration-300">
                   Contact
-                </a>
-              </li>
-            </ul>
-          </div>
-          
-          <div>
-            <h4 className="text-white font-medium mb-4">Services</h4>
-            <ul className="space-y-2">
-              <li>
-                <a href="#" className="text-[#AAAAAA] hover:text-white transition-colors duration-300">
-                  Mobile Development
-                </a>
-              </li>
-              <li>
-                <a href="#" className="text-[#AAAAAA] hover:text-white transition-colors duration-300">
-                  Web Development
-                </a>
-              </li>
-              <li>
-                <a href="#" className="text-[#AAAAAA] hover:text-white transition-colors duration-300">
-                  UI/UX Design
-                </a>
-              </li>
-              <li>
-                <a href="#" className="text-[#AAAAAA] hover:text-white transition-colors duration-300">
-                  Cloud Services
-                </a>
-              </li>
-              <li>
-                <a href="#" className="text-[#AAAAAA] hover:text-white transition-colors duration-300">
-                  Digital Marketing
-                </a>
-              </li>
-            </ul>
-          </div>
-          
-          <div>
-            <h4 className="text-white font-medium mb-4">Resources</h4>
-            <ul className="space-y-2">
-              <li>
-                <a href="#" className="text-[#AAAAAA] hover:text-white transition-colors duration-300">
-                  Case Studies
-                </a>
-              </li>
-              <li>
-                <a href="#" className="text-[#AAAAAA] hover:text-white transition-colors duration-300">
-                  Documentation
-                </a>
-              </li>
-              <li>
-                <a href="#" className="text-[#AAAAAA] hover:text-white transition-colors duration-300">
-                  FAQs
-                </a>
-              </li>
-              <li>
-                <a href="#" className="text-[#AAAAAA] hover:text-white transition-colors duration-300">
-                  Support
-                </a>
-              </li>
-              <li>
-                <a href="#" className="text-[#AAAAAA] hover:text-white transition-colors duration-300">
-                  API
-                </a>
-              </li>
-            </ul>
-          </div>
-          
-          <div>
-            <h4 className="text-white font-medium mb-4">Legal</h4>
-            <ul className="space-y-2">
-              <li>
-                <a href="#" className="text-[#AAAAAA] hover:text-white transition-colors duration-300">
-                  Privacy Policy
-                </a>
-              </li>
-              <li>
-                <a href="#" className="text-[#AAAAAA] hover:text-white transition-colors duration-300">
-                  Terms of Service
-                </a>
-              </li>
-              <li>
-                <a href="#" className="text-[#AAAAAA] hover:text-white transition-colors duration-300">
-                  Cookies Policy
-                </a>
-              </li>
-              <li>
-                <a href="#" className="text-[#AAAAAA] hover:text-white transition-colors duration-300">
-                  GDPR
-                </a>
-              </li>
-              <li>
-                <a href="#" className="text-[#AAAAAA] hover:text-white transition-colors duration-300">
-                  Licenses
                 </a>
               </li>
             </ul>
           </div>
         </div>
         
-        <div className="border-t border-[#222222] pt-8 flex flex-col md:flex-row justify-between items-center">
-          <p className="text-[#AAAAAA] text-sm mb-4 md:mb-0">
-            © 2025 Troibits Infotech Private Limited. All rights reserved.
+        <div className="flex flex-col md:flex-row items-center justify-between pt-8">
+          <div className="flex items-center space-x-2 mb-4 md:mb-0">
+            <div className="h-8 w-8 bg-transparent border border-white flex items-center justify-center mr-2">
+              <span className="text-white font-bold text-xs">T</span>
+            </div>
+            <span className="text-white font-medium text-sm">Troibits</span>
+          </div>
+          
+          <p className="text-[#777] text-sm mb-4 md:mb-0">
+            2025 Troibits infotech private limited
           </p>
+          
           <div className="flex space-x-6">
-            <a href="#" className="text-[#AAAAAA] hover:text-white transition-colors duration-300">
-              <Instagram className="h-5 w-5" />
-            </a>
-            <a href="#" className="text-[#AAAAAA] hover:text-white transition-colors duration-300">
-              <Facebook className="h-5 w-5" />
-            </a>
-            <a href="#" className="text-[#AAAAAA] hover:text-white transition-colors duration-300">
-              <Linkedin className="h-5 w-5" />
-            </a>
-            <a href="#" className="text-[#AAAAAA] hover:text-white transition-colors duration-300">
-              <Twitter className="h-5 w-5" />
-            </a>
+            <Link to="/" className="text-[#777] hover:text-white transition-colors duration-300">
+              Home
+            </Link>
+            <Link to="/services" className="text-[#777] hover:text-white transition-colors duration-300">
+              Services
+            </Link>
+            <Link to="/company" className="text-[#777] hover:text-white transition-colors duration-300">
+              Company
+            </Link>
+            <Link to="/work" className="text-[#777] hover:text-white transition-colors duration-300">
+              Work
+            </Link>
+            <Link to="/contact" className="text-[#777] hover:text-white transition-colors duration-300">
+              Contact
+            </Link>
           </div>
         </div>
       </div>

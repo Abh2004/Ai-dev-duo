@@ -3,19 +3,19 @@ import { z } from "zod";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { Button } from "@/components/ui/button";
-import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form";
+import { Form, FormControl, FormField, FormItem, FormMessage } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { apiRequest } from "@/lib/queryClient";
 import { useToast } from "@/hooks/use-toast";
+import { ArrowRight } from "lucide-react";
 
 // Define form schema
 const formSchema = z.object({
   name: z.string().min(2, { message: "Name must be at least 2 characters" }),
   email: z.string().email({ message: "Please enter a valid email address" }),
   phone: z.string().optional(),
-  subject: z.string().min(1, { message: "Please select a subject" }),
+  subject: z.string().min(2, { message: "Subject must be at least 2 characters" }),
   message: z.string().min(10, { message: "Message must be at least 10 characters" })
 });
 
@@ -73,12 +73,11 @@ export default function ContactForm() {
             name="name"
             render={({ field }) => (
               <FormItem>
-                <FormLabel className="text-sm font-medium text-[#AAAAAA]">Name</FormLabel>
                 <FormControl>
                   <Input
                     {...field}
-                    className="bg-[#444444] border-0 rounded-md py-3 px-4 text-white focus:ring-2 focus:ring-[#0066FF]"
-                    placeholder="Your name"
+                    className="bg-transparent border-b border-[#333] rounded-none py-2 px-0 text-white focus:border-white focus:ring-0 placeholder:text-[#555]"
+                    placeholder="Name"
                   />
                 </FormControl>
                 <FormMessage />
@@ -91,13 +90,12 @@ export default function ContactForm() {
             name="email"
             render={({ field }) => (
               <FormItem>
-                <FormLabel className="text-sm font-medium text-[#AAAAAA]">Email</FormLabel>
                 <FormControl>
                   <Input
                     {...field}
                     type="email"
-                    className="bg-[#444444] border-0 rounded-md py-3 px-4 text-white focus:ring-2 focus:ring-[#0066FF]"
-                    placeholder="your.email@example.com"
+                    className="bg-transparent border-b border-[#333] rounded-none py-2 px-0 text-white focus:border-white focus:ring-0 placeholder:text-[#555]"
+                    placeholder="Email"
                   />
                 </FormControl>
                 <FormMessage />
@@ -112,15 +110,12 @@ export default function ContactForm() {
             name="phone"
             render={({ field }) => (
               <FormItem>
-                <FormLabel className="text-sm font-medium text-[#AAAAAA]">
-                  Phone (Optional)
-                </FormLabel>
                 <FormControl>
                   <Input
                     {...field}
                     type="tel"
-                    className="bg-[#444444] border-0 rounded-md py-3 px-4 text-white focus:ring-2 focus:ring-[#0066FF]"
-                    placeholder="Your phone number"
+                    className="bg-transparent border-b border-[#333] rounded-none py-2 px-0 text-white focus:border-white focus:ring-0 placeholder:text-[#555]"
+                    placeholder="Phone or Skype"
                   />
                 </FormControl>
                 <FormMessage />
@@ -133,25 +128,13 @@ export default function ContactForm() {
             name="subject"
             render={({ field }) => (
               <FormItem>
-                <FormLabel className="text-sm font-medium text-[#AAAAAA]">Subject</FormLabel>
-                <Select
-                  onValueChange={field.onChange}
-                  defaultValue={field.value}
-                >
-                  <FormControl>
-                    <SelectTrigger className="bg-[#444444] border-0 rounded-md py-3 px-4 text-white focus:ring-2 focus:ring-[#0066FF]">
-                      <SelectValue placeholder="Select a subject" />
-                    </SelectTrigger>
-                  </FormControl>
-                  <SelectContent className="bg-[#333333] text-white border-[#444444]">
-                    <SelectItem value="mobile-app">Mobile App Development</SelectItem>
-                    <SelectItem value="web-dev">Web Development</SelectItem>
-                    <SelectItem value="ui-ux">UI/UX Design</SelectItem>
-                    <SelectItem value="cloud">Cloud Services</SelectItem>
-                    <SelectItem value="ai-ml">AI & Machine Learning</SelectItem>
-                    <SelectItem value="other">Other</SelectItem>
-                  </SelectContent>
-                </Select>
+                <FormControl>
+                  <Input
+                    {...field}
+                    className="bg-transparent border-b border-[#333] rounded-none py-2 px-0 text-white focus:border-white focus:ring-0 placeholder:text-[#555]"
+                    placeholder="Subject"
+                  />
+                </FormControl>
                 <FormMessage />
               </FormItem>
             )}
@@ -163,13 +146,11 @@ export default function ContactForm() {
           name="message"
           render={({ field }) => (
             <FormItem>
-              <FormLabel className="text-sm font-medium text-[#AAAAAA]">Message</FormLabel>
               <FormControl>
                 <Textarea
                   {...field}
-                  rows={5}
-                  className="bg-[#444444] border-0 rounded-md py-3 px-4 text-white focus:ring-2 focus:ring-[#0066FF] resize-none"
-                  placeholder="Tell us about your project"
+                  className="bg-transparent border-b border-[#333] rounded-none py-2 px-0 text-white focus:border-white focus:ring-0 resize-none min-h-[100px] placeholder:text-[#555]"
+                  placeholder="Message"
                 />
               </FormControl>
               <FormMessage />
@@ -180,9 +161,10 @@ export default function ContactForm() {
         <Button 
           type="submit" 
           disabled={isSubmitting}
-          className="w-full bg-[#0066FF] hover:bg-blue-700 text-white font-medium py-3 px-6 shadow-[0_0_15px_rgba(0,102,255,0.5),0_0_30px_rgba(0,102,255,0.3)]"
+          className="bg-[#0066FF] hover:bg-[#0055DD] text-white font-medium py-2 px-8 rounded-none flex items-center space-x-2 float-right"
         >
-          {isSubmitting ? "Sending..." : "Send Message"}
+          <span>{isSubmitting ? "Submitting" : "Submit"}</span>
+          <ArrowRight className="h-4 w-4" />
         </Button>
       </form>
     </Form>
