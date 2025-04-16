@@ -6,7 +6,8 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  perspective: 800px;
+  perspective: 1500px;
+  transform-style: preserve-3d;
 }
 
 /* Rocket styles */
@@ -14,9 +15,11 @@
   position: relative;
   height: 300px;
   z-index: 10;
-  transform-origin: bottom center;
-  transform: translateY(1000px); /* Initial position off-screen */
+  transform-origin: center center;
+  transform: translateY(1000px) rotateY(0deg) rotateX(0deg); /* Initial position off-screen */
   will-change: transform;
+  transform-style: preserve-3d;
+  perspective: 1000px;
 }
 
 .rocket {
