@@ -2,8 +2,7 @@ import { Link } from "wouter";
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import ThemeCube from "./ThemeCube";
-import Cube3D from "./Cube3D";
-import Sphere3D from "./Sphere3D";
+import NetworkGraph3D from "./NetworkGraph3D";
 import ParticlesBackground from "./ParticlesBackground";
 import AnimatedText from "./AnimatedText";
 
@@ -13,13 +12,11 @@ export default function Hero() {
       {/* Enhanced Particle Background */}
       <ParticlesBackground count={100} color="#0066FF" minSize={1} maxSize={4} speed={0.5} />
       
-      {/* 3D Elements */}
-      <div className="absolute right-[10%] top-32 w-[400px] h-[400px] opacity-100 hidden lg:block">
-        <Cube3D 
-          size={3} 
-          color="#0080FF" 
-          wireframe={false} 
-          rotation={{ x: 0.007, y: 0.012, z: 0.003 }}
+      {/* 3D Network Graph */}
+      <div className="absolute inset-0 opacity-100 z-0 hidden lg:block">
+        <NetworkGraph3D 
+          nodeCount={70}
+          color="#0080FF"
         />
       </div>
       
