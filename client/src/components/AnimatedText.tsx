@@ -57,7 +57,7 @@ export default function AnimatedText({
     </motion.span>
   ));
   
-  const combinedClassName = `${className} flex flex-wrap overflow-hidden`;
+  const combinedClassName = `${className} flex flex-wrap overflow-hidden justify-center`;
   
   // Render based on selected tag
   switch (tagName) {

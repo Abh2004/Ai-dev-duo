@@ -14,34 +14,38 @@ export default function Services() {
           transition={{ duration: 0.7 }}
           viewport={{ once: true }}
         >
-          <motion.div
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            transition={{ duration: 0.5 }}
-            viewport={{ once: true }}
-            className="flex items-center justify-center mb-4"
-          >
-            <span className="text-white font-medium mr-2">Our Services</span>
-            <svg 
-              xmlns="http://www.w3.org/2000/svg" 
-              width="20" 
-              height="20" 
-              viewBox="0 0 24 24" 
-              fill="none" 
-              stroke="currentColor" 
-              strokeWidth="2" 
-              strokeLinecap="round" 
-              strokeLinejoin="round" 
-              className="text-white"
+          <div className="flex justify-between items-center mb-8">
+            <div className="w-1/3"></div>
+            <motion.div
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
+              transition={{ duration: 0.5 }}
+              viewport={{ once: true }}
+              className="w-1/3 flex items-center justify-center"
             >
-              <path d="M6 9l6 6 6-6"/>
-            </svg>
-          </motion.div>
+              <span className="text-white font-medium mr-2">Our Services</span>
+              <svg 
+                xmlns="http://www.w3.org/2000/svg" 
+                width="20" 
+                height="20" 
+                viewBox="0 0 24 24" 
+                fill="none" 
+                stroke="currentColor" 
+                strokeWidth="2" 
+                strokeLinecap="round" 
+                strokeLinejoin="round" 
+                className="text-white"
+              >
+                <path d="M6 9l6 6 6-6"/>
+              </svg>
+            </motion.div>
+            <div className="w-1/3"></div>
+          </div>
         
           <AnimatedText 
             text="What we do?" 
             tagName="h2"
-            className="text-3xl md:text-5xl font-bold mb-4 text-center"
+            className="text-3xl md:text-5xl font-bold mb-4 text-center mx-auto"
             duration={0.05}
           />
           
