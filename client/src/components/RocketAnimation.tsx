@@ -16,8 +16,6 @@ export default function RocketAnimation({ className = '' }: RocketAnimationProps
     let startPosition = window.innerHeight;
     let currentPosition = startPosition;
     let targetPosition = 0;
-    let rotationX = 0;
-    let rotationY = 0;
     let speed = 15; // pixels per frame
     let animationFrameId: number;
     
@@ -26,11 +24,7 @@ export default function RocketAnimation({ className = '' }: RocketAnimationProps
       
       if (currentPosition > targetPosition) {
         currentPosition -= speed;
-        // Add rotation as rocket flies up
-        rotationX = 15 * (1 - (currentPosition / startPosition)); // Gradually rotate up to 15 degrees
-        rotationY += 5; // Continuous rotation around y-axis
-        
-        rocket.style.transform = `translateY(${currentPosition}px) rotateX(${rotationX}deg) rotateY(${rotationY}deg)`;
+        rocket.style.transform = `translateY(${currentPosition}px)`;
         animationFrameId = requestAnimationFrame(initialAnimation);
       } else {
         cancelAnimationFrame(animationFrameId);
@@ -54,8 +48,6 @@ export default function RocketAnimation({ className = '' }: RocketAnimationProps
     
     const rocket = rocketRef.current;
     let posY = 0;
-    let rotationX = 15; // Initial rotation from the first animation
-    let rotationY = 0;
     let direction = 1;
     let animationFrameId: number;
     
@@ -63,19 +55,12 @@ export default function RocketAnimation({ className = '' }: RocketAnimationProps
       if (!rocket) return;
       
       posY += 0.2 * direction;
-      rotationY += 2; // Continue rotating around y-axis
       
       // Oscillate within a range
       if (posY > 10) direction = -1;
       if (posY < -10) direction = 1;
       
-      // Add small rotation oscillation when hovering
-      const hoverRotation = rotationX + (direction * 2);
-      
-      // Keep y rotation between 0-360 to avoid large numbers
-      if (rotationY >= 360) rotationY = 0;
-      
-      rocket.style.transform = `translateY(${posY}px) rotateX(${hoverRotation}deg) rotateY(${rotationY}deg)`;
+      rocket.style.transform = `translateY(${posY}px)`;
       animationFrameId = requestAnimationFrame(hoverAnimation);
     };
     
