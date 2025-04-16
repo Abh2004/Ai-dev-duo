@@ -1,4 +1,6 @@
 import ServiceDetails from "@/components/ServiceDetails";
+import TechStack from "@/components/TechStack";
+import AchievementsCarousel from "@/components/AchievementsCarousel";
 import ThemeCube from "@/components/ThemeCube";
 import { motion } from "framer-motion";
 
@@ -37,6 +39,12 @@ export default function ServicesPage() {
       
       {/* Interactive Service Details Section */}
       <ServiceDetails />
+      
+      {/* Technology Stack Section */}
+      <TechStack />
+      
+      {/* Achievements and Challenges Carousel */}
+      <AchievementsCarousel />
     </main>
   );
 }
