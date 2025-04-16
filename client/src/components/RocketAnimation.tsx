@@ -11,11 +11,12 @@ export default function RocketAnimation({ className = '' }: RocketAnimationProps
   useEffect(() => {
     if (!rocketRef.current) return;
     
-    // Initial animation - rocket coming from bottom to center
+    // Initial animation - rocket coming from bottom to center with rotation
     const rocket = rocketRef.current;
     let startPosition = window.innerHeight;
     let currentPosition = startPosition;
     let targetPosition = 0;
+    let rotationAngle = -10; // Start with a slight tilt
     let speed = 15; // pixels per frame
     let animationFrameId: number;
     
@@ -24,7 +25,12 @@ export default function RocketAnimation({ className = '' }: RocketAnimationProps
       
       if (currentPosition > targetPosition) {
         currentPosition -= speed;
-        rocket.style.transform = `translateY(${currentPosition}px)`;
+        
+        // Calculate rotation angle - starts tilted and gradually straightens
+        rotationAngle = -10 + (10 * (1 - (currentPosition / startPosition)));
+        
+        // Apply both translation and rotation
+        rocket.style.transform = `translateY(${currentPosition}px) rotate(${rotationAngle}deg)`;
         animationFrameId = requestAnimationFrame(initialAnimation);
       } else {
         cancelAnimationFrame(animationFrameId);
@@ -49,18 +55,25 @@ export default function RocketAnimation({ className = '' }: RocketAnimationProps
     const rocket = rocketRef.current;
     let posY = 0;
     let direction = 1;
+    let rotationAngle = 0;
+    let rotationDirection = 1;
     let animationFrameId: number;
     
     const hoverAnimation = () => {
       if (!rocket) return;
       
       posY += 0.2 * direction;
+      rotationAngle += 0.05 * rotationDirection;
       
       // Oscillate within a range
       if (posY > 10) direction = -1;
       if (posY < -10) direction = 1;
       
-      rocket.style.transform = `translateY(${posY}px)`;
+      // Small rotation oscillation to simulate slight adjustments
+      if (rotationAngle > 2) rotationDirection = -1;
+      if (rotationAngle < -2) rotationDirection = 1;
+      
+      rocket.style.transform = `translateY(${posY}px) rotate(${rotationAngle}deg)`;
       animationFrameId = requestAnimationFrame(hoverAnimation);
     };
     
@@ -104,7 +117,7 @@ export default function RocketAnimation({ className = '' }: RocketAnimationProps
       
       {/* Trailing particles */}
       <div className="trails">
-        {Array.from({ length: 10 }).map((_, i) => (
+        {Array.from({ length: 15 }).map((_, i) => (
           <div 
             key={i} 
             className="trail"
