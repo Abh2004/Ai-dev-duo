@@ -28,32 +28,52 @@
   transform-origin: bottom center;
   left: 75%;
   bottom: -300px; /* Start off-screen at the bottom of viewport */
-  animation: rocket-entry 3s forwards cubic-bezier(0.22, 0.61, 0.36, 1);
+  animation: rocket-entry 6s forwards cubic-bezier(0.42, 0, 0.58, 1);
   will-change: transform;
 }
 
 @keyframes rocket-entry {
   0% {
     bottom: -300px;
+    left: 50%;
     opacity: 0;
     transform: rotate(5deg);
   }
-  20% {
+  15% {
     opacity: 1;
+    bottom: 10%;
+    left: 30%;
+    transform: rotate(-15deg);
+  }
+  30% {
+    bottom: 30%;
+    left: 20%;
+    transform: rotate(10deg);
+  }
+  45% {
+    bottom: 50%;
+    left: 30%;
     transform: rotate(-5deg);
   }
-  40% {
-    transform: rotate(3deg);
-  }
   60% {
-    transform: rotate(-2deg);
+    bottom: 60%;
+    left: 50%;
+    transform: rotate(5deg);
   }
-  80% {
-    transform: rotate(1deg);
+  75% {
+    bottom: 50%;
+    left: 70%;
+    transform: rotate(-5deg);
+  }
+  90% {
+    bottom: 30%;
+    left: 80%;
+    transform: rotate(5deg);
   }
   100% {
     bottom: 50%;
-    transform: rotate(0) translateY(50%);
+    left: 75%;
+    transform: rotate(0);
   }
 }
 
@@ -171,20 +191,19 @@
 
 .trail {
   position: absolute;
-  left: 75%;
   width: 2px;
-  height: 80px;
+  height: 40px;
   background: linear-gradient(to bottom, rgba(0, 102, 255, 0.8), transparent);
   border-radius: 50px;
-  animation: trail-animation 1.5s ease-in-out infinite;
+  animation: trail-animation 1.5s ease-in-out forwards;
   opacity: 0;
   filter: blur(1px);
   z-index: 9999;
+  /* Positioning is handled dynamically in the component */
 }
 
 @keyframes trail-animation {
   0% {
-    bottom: 50%;
     transform: translateY(0) translateX(0) rotate(0);
     opacity: 0;
     height: 0;
@@ -193,14 +212,15 @@
     opacity: 0.9;
     height: 20px;
   }
-  90% {
-    opacity: 0.2;
-    height: 80px;
+  80% {
+    opacity: 0.3;
+    height: 60px;
+    transform: translateY(100px) translateX(10px) rotate(-10deg);
   }
   100% {
-    bottom: -100px;
-    transform: translateY(300px) translateX(-5px) rotate(-2deg);
+    transform: translateY(160px) translateX(-5px) rotate(-20deg);
     opacity: 0;
+    height: 20px;
   }
 }
 

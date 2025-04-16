@@ -10,7 +10,7 @@ import './RocketAnimation.css';
 
 export default function Hero() {
   return (
-    <section className="relative pt-32 pb-20 md:pt-40 md:pb-32 overflow-visible bg-[#1a032b]">
+    <section className="relative pt-32 pb-20 md:pt-40 md:pb-32 overflow-visible">
       {/* Particle Background */}
       <ParticlesBackground count={60} color="#0066FF" minSize={1} maxSize={3} speed={0.3} />
       
