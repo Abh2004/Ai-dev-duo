@@ -74,17 +74,17 @@
     <animate attributeName="cy" values="300;310;300" dur="3.5s" repeatCount="indefinite" />
   </circle>
   
-  <!-- Element labels -->
-  <text x="243" y="30" font-family="sans-serif" font-size="10" fill="white">ANALYSIS</text>
-  <text x="435" y="255" font-family="sans-serif" font-size="10" fill="white">DEVELOPMENT</text>
-  <text x="233" y="460" font-family="sans-serif" font-size="10" fill="white">LAUNCH</text>
-  <text x="40" y="255" font-family="sans-serif" font-size="10" fill="white">PLANNING</text>
+  <!-- Element labels - Positioned further away from the arrows -->
+  <text x="243" y="20" font-family="sans-serif" font-size="10" fill="white">ANALYSIS</text>
+  <text x="455" y="255" font-family="sans-serif" font-size="10" fill="white">DEVELOPMENT</text>
+  <text x="233" y="475" font-family="sans-serif" font-size="10" fill="white">LAUNCH</text>
+  <text x="10" y="255" font-family="sans-serif" font-size="10" fill="white">PLANNING</text>
   
-  <!-- Process flow arrow indicators -->
-  <path d="M250 50 L255 60 L245 60 Z" fill="#0066FF" />
-  <path d="M450 250 L440 255 L440 245 Z" fill="#0066FF" />
+  <!-- Process flow arrow indicators - Moved away from text -->
+  <path d="M250 40 L255 50 L245 50 Z" fill="#0066FF" />
+  <path d="M440 250 L430 255 L430 245 Z" fill="#0066FF" />
   <path d="M250 450 L245 440 L255 440 Z" fill="#0066FF" />
-  <path d="M50 250 L60 245 L60 255 Z" fill="#0066FF" />
+  <path d="M60 250 L70 245 L70 255 Z" fill="#0066FF" />
   
   <!-- Definitions of gradients used in the illustration -->
   <defs>

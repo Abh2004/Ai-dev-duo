@@ -46,12 +46,22 @@ const processSteps = [
   }
 ];
 
+// Background particle type
+interface Particle {
+  id: number;
+  size: number;
+  x: number;
+  y: number;
+  delay: number;
+  duration: number;
+}
+
 export default function OurProcess() {
   const [activeStep, setActiveStep] = useState<number | null>(null);
-  const [isDotHovered, setIsDotHovered] = useState<boolean>(false);
+  const [isDotHovered, setIsDotHovered] = useState(false);
   
   // Generate random particles for background animation
-  const particles = Array.from({ length: 20 }, (_, i) => ({
+  const particles: Particle[] = Array.from({ length: 20 }, (_, i) => ({
     id: i,
     size: 1 + Math.random() * 2,
     x: Math.random() * 100,
@@ -65,7 +75,7 @@ export default function OurProcess() {
       {/* Background elements */}
       <div className="absolute inset-0 opacity-10">
         {/* Animated particles */}
-        {particles.map(particle => (
+        {particles.map((particle) => (
           <div 
             key={particle.id}
             className="absolute rounded-full bg-blue-400"
@@ -79,12 +89,12 @@ export default function OurProcess() {
               animation: `float ${particle.duration}s ease-in-out infinite`,
               animationDelay: `${particle.delay}s`
             }}
-          ></div>
+          />
         ))}
         
         {/* Background glow */}
-        <div className="absolute top-0 left-1/4 w-1/2 h-1/2 bg-blue-500 rounded-full filter blur-[150px] opacity-5"></div>
-        <div className="absolute bottom-0 right-1/4 w-1/2 h-1/2 bg-indigo-600 rounded-full filter blur-[150px] opacity-5"></div>
+        <div className="absolute top-0 left-1/4 w-1/2 h-1/2 bg-blue-500 rounded-full filter blur-[150px] opacity-5" />
+        <div className="absolute bottom-0 right-1/4 w-1/2 h-1/2 bg-indigo-600 rounded-full filter blur-[150px] opacity-5" />
       </div>
       
       <div className="container mx-auto px-4 relative z-10">
@@ -101,13 +111,13 @@ export default function OurProcess() {
               Our Process
               
               {/* Decorative digital elements */}
-              <div className="absolute -left-8 -top-8 w-6 h-6 border-t-2 border-l-2 border-[#0066FF] opacity-60"></div>
-              <div className="absolute -right-8 -bottom-8 w-6 h-6 border-b-2 border-r-2 border-[#0066FF] opacity-60"></div>
+              <div className="absolute -left-8 -top-8 w-6 h-6 border-t-2 border-l-2 border-[#0066FF] opacity-60" />
+              <div className="absolute -right-8 -bottom-8 w-6 h-6 border-b-2 border-r-2 border-[#0066FF] opacity-60" />
               
               {/* Underline effect */}
               <div className="absolute -bottom-3 left-0 right-0 h-[3px]">
-                <div className="absolute inset-0 bg-gradient-to-r from-transparent via-[#0066FF] to-transparent"></div>
-                <div className="absolute inset-0 bg-gradient-to-r from-transparent via-[#0066FF] to-transparent animate-pulse opacity-70"></div>
+                <div className="absolute inset-0 bg-gradient-to-r from-transparent via-[#0066FF] to-transparent" />
+                <div className="absolute inset-0 bg-gradient-to-r from-transparent via-[#0066FF] to-transparent animate-pulse opacity-70" />
               </div>
             </h2>
             
@@ -192,15 +202,15 @@ export default function OurProcess() {
             transition={{ duration: 0.8 }}
             viewport={{ once: true }}
           >
-            {/* Vertical Line with gradient */}
-            <div className="absolute top-0 bottom-0 left-[10px] w-[2px] bg-gradient-to-b from-[#0066FF] via-[#0066FF] to-[#0066FF]/30"></div>
+            {/* Vertical Line with gradient - Centered with the dots */}
+            <div className="absolute top-0 bottom-0 left-[12px] w-[2px] bg-gradient-to-b from-[#0066FF] via-[#0066FF] to-[#0066FF]/30" />
             
             {/* Timeline Steps with enhanced interactive elements */}
             <div className="space-y-8 relative">
               {processSteps.map((step, index) => (
                 <motion.div
                   key={index}
-                  className="pl-10 relative"
+                  className="pl-12 relative"
                   initial={{ opacity: 0, y: 10 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.5, delay: index * 0.1 }}
@@ -214,9 +224,9 @@ export default function OurProcess() {
                     setIsDotHovered(false);
                   }}
                 >
-                  {/* Enhanced dot with glow effect */}
+                  {/* Enhanced dot with glow effect - Properly centered */}
                   <motion.div 
-                    className="absolute left-0 top-[9px] w-5 h-5 rounded-full bg-[#0066FF] z-10 flex items-center justify-center"
+                    className="absolute left-0 top-1/2 -translate-y-1/2 w-6 h-6 rounded-full bg-[#0066FF] z-10 flex items-center justify-center"
                     animate={{
                       boxShadow: activeStep === index 
                         ? "0 0 10px 2px rgba(0, 102, 255, 0.7)" 
@@ -225,7 +235,6 @@ export default function OurProcess() {
                     whileHover={{ scale: 1.2 }}
                     transition={{ duration: 0.3 }}
                   >
-                    {/* Pulsing inner circle when active */}
                     {activeStep === index && (
                       <motion.div 
                         className="w-2 h-2 rounded-full bg-white"
@@ -245,7 +254,7 @@ export default function OurProcess() {
                   {/* Dot connecting line when hovered */}
                   {activeStep === index && (
                     <motion.div 
-                      className="absolute top-[12px] left-[20px] h-[1px] bg-[#0066FF]"
+                      className="absolute top-1/2 -translate-y-1/2 left-[24px] h-[1px] bg-[#0066FF]"
                       initial={{ width: 0 }}
                       animate={{ width: 15 }}
                       transition={{ duration: 0.3 }}
