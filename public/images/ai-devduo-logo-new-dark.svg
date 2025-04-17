@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="180" height="48" viewBox="0 0 180 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Glow filter -->
+  <defs>
+    <filter id="glow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="1.5" result="blur"/>
+      <feComposite in="SourceGraphic" in2="blur" operator="over"/>
+    </filter>
+    <linearGradient id="hexGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#3684FF"/>
+      <stop offset="100%" stop-color="#0066FF"/>
+    </linearGradient>
+  </defs>
+  
+  <!-- Hexagon with glow -->
+  <g filter="url(#glow)">
+    <!-- Hexagon shape -->
+    <path d="M26 10L40 18V34L26 42L12 34V18L26 10Z" fill="url(#hexGradient)"/>
+    <path d="M26 14L36 19.5V30.5L26 36L16 30.5V19.5L26 14Z" fill="#05050D"/>
+    
+    <!-- House icon -->
+    <path d="M26 18L31 21.5V27.5H29V23H23V27.5H21V21.5L26 18Z" fill="#FFFFFF"/>
+    <path d="M25 24H27V27H25V24Z" fill="#FFFFFF"/>
+  </g>
+  
+  <!-- Dev text -->
+  <g>
+    <path d="M50 16H55C57.2091 16 59 17.7909 59 20V20.5C59 22.1569 57.9255 23.5687 56.5 24.0834C57.9255 24.5981 59 26.0099 59 27.6667V31H55V27.6667C55 26.7462 54.2538 26 53.3333 26H53V31H50V16ZM53 20V22H53.3333C54.2538 22 55 21.2538 55 20.3333V20C55 20 54.5 20 54 20H53Z" fill="#FFFFFF"/>
+    <path d="M61 16H66C68.2091 16 70 17.7909 70 20V27C70 29.2091 68.2091 31 66 31H61V16ZM65 20V27H66C66.5523 27 67 26.5523 67 26V21C67 20.4477 66.5523 20 66 20H65Z" fill="#FFFFFF"/>
+    <path d="M72 16H77L78 19L79 16H84V31H81V23L80 31H76L75 23V31H72V16Z" fill="#FFFFFF"/>
+  </g>
+  
+  <!-- Duo text in blue -->
+  <g>
+    <path d="M86 16H91C93.2091 16 95 17.7909 95 20V27C95 29.2091 93.2091 31 91 31H86V16ZM90 20V27H91C91.5523 27 92 26.5523 92 26V21C92 20.4477 91.5523 20 91 20H90Z" fill="#0066FF"/>
+    <path d="M97 16H102C104.209 16 106 17.7909 106 20V23C106 24.6569 104.925 26.0687 103.5 26.5834C104.925 27.0981 106 28.5099 106 30.1667V31H102V30.1667C102 29.2462 101.254 28.5 100.333 28.5H100V31H97V16ZM100 20V24.5H100.333C101.254 24.5 102 23.7538 102 22.8333V20C102 20 101.5 20 101 20H100Z" fill="#0066FF"/>
+    <path d="M108 23.5C108 19.3579 111.358 16 115.5 16C119.642 16 123 19.3579 123 23.5C123 27.6421 119.642 31 115.5 31C111.358 31 108 27.6421 108 23.5ZM115.5 20C113.567 20 112 21.567 112 23.5C112 25.433 113.567 27 115.5 27C117.433 27 119 25.433 119 23.5C119 21.567 117.433 20 115.5 20Z" fill="#0066FF"/>
+  </g>
+  
+  <!-- Tagline -->
+  <text x="50" y="41" font-family="Arial" font-size="8" fill="#777777">
+    Innovative Software Solutions
+  </text>
+</svg>

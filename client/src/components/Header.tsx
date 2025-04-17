@@ -68,9 +68,9 @@ export default function Header() {
         <Link href="/">
           <span className="flex items-center cursor-pointer">
             <img 
-              src="/images/ai-devduo-logo.svg" 
-              alt="Ai DevDuo" 
-              className="h-12 sm:h-16 w-auto hover:filter hover:brightness-110 transition-all duration-300"
+              src="/images/ai-devduo-logo-new.svg" 
+              alt="DevDuo" 
+              className="h-10 sm:h-12 w-auto hover:filter hover:brightness-110 transition-all duration-300"
             />
           </span>
         </Link>

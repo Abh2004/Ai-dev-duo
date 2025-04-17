@@ -80,8 +80,8 @@ export default function Footer() {
           {/* Company Information */}
           <div className="md:col-span-1">
             <motion.img 
-              src="/images/ai-devduo-logo-dark.svg" 
-              alt="Ai DevDuo" 
+              src="/images/ai-devduo-logo-new-dark.svg" 
+              alt="DevDuo" 
               className="h-10 w-auto mb-4"
               whileHover={{ scale: 1.05 }}
               transition={{ duration: 0.2 }}
