@@ -17,20 +17,45 @@ const SocialIcon = ({ children }: { children: React.ReactNode }) => (
   </motion.div>
 );
 
-// Navigation link with hover animation
+// Navigation link with animated hover effect
 const NavLink = ({ to, children }: { to: string, children: React.ReactNode }) => (
-  <Link 
-    to={to} 
-    className="text-[#777] hover:text-[#0066FF] text-sm transition-all duration-300"
-  >
-    {children}
-  </Link>
+  <motion.div whileHover={{ y: -2 }} transition={{ type: "spring", stiffness: 500 }}>
+    <Link 
+      to={to} 
+      className="text-[#777] hover:text-[#0066FF] text-sm transition-all duration-300 relative group"
+    >
+      {children}
+      <motion.span 
+        className="absolute left-0 -bottom-1 w-0 h-[1px] bg-[#0066FF] group-hover:w-full transition-all duration-300"
+        initial={{ width: "0%" }}
+        whileHover={{ width: "100%" }}
+      ></motion.span>
+    </Link>
+  </motion.div>
 );
 
-// Tech link component with animation
+// Tech link component with enhanced animation
 const TechLink = ({ href, children }: { href: string, children: React.ReactNode }) => (
-  <motion.li whileHover={{ x: 3 }} transition={{ duration: 0.2 }}>
-    <a href={href} className="text-[#999] hover:text-white transition-colors duration-300 text-sm">
+  <motion.li 
+    initial={{ opacity: 0.9, x: 0 }}
+    whileHover={{ 
+      x: 5,
+      transition: { 
+        type: "spring", 
+        stiffness: 400, 
+        damping: 15 
+      } 
+    }}
+  >
+    <a 
+      href={href} 
+      className="text-[#999] hover:text-white transition-all duration-300 text-sm flex items-center group"
+    >
+      <motion.span 
+        className="w-0 h-[1px] bg-[#0066FF] mr-0 group-hover:mr-2 group-hover:w-3 transition-all duration-300"
+        animate={{ opacity: [0.5, 1, 0.5] }}
+        transition={{ duration: 2, repeat: Infinity }}
+      ></motion.span>
       {children}
     </a>
   </motion.li>
@@ -197,8 +222,26 @@ export default function Footer() {
             <NavLink to="/company">Company</NavLink>
             <NavLink to="/work">Work</NavLink>
             <NavLink to="/contact">Contact</NavLink>
-            <a href="#" className="text-[#777] hover:text-[#0066FF] text-sm transition-colors duration-300">Privacy Policy</a>
-            <a href="#" className="text-[#777] hover:text-[#0066FF] text-sm transition-colors duration-300">Terms of Service</a>
+            <motion.div whileHover={{ y: -2 }} transition={{ type: "spring", stiffness: 500 }}>
+              <a href="#" className="text-[#777] hover:text-[#0066FF] text-sm transition-all duration-300 relative group">
+                Privacy Policy
+                <motion.span 
+                  className="absolute left-0 -bottom-1 w-0 h-[1px] bg-[#0066FF] group-hover:w-full transition-all duration-300"
+                  initial={{ width: "0%" }}
+                  whileHover={{ width: "100%" }}
+                ></motion.span>
+              </a>
+            </motion.div>
+            <motion.div whileHover={{ y: -2 }} transition={{ type: "spring", stiffness: 500 }}>
+              <a href="#" className="text-[#777] hover:text-[#0066FF] text-sm transition-all duration-300 relative group">
+                Terms of Service
+                <motion.span 
+                  className="absolute left-0 -bottom-1 w-0 h-[1px] bg-[#0066FF] group-hover:w-full transition-all duration-300"
+                  initial={{ width: "0%" }}
+                  whileHover={{ width: "100%" }}
+                ></motion.span>
+              </a>
+            </motion.div>
           </div>
         </div>
       </div>
