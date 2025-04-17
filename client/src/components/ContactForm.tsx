@@ -71,13 +71,19 @@ export default function ContactForm() {
     border-b 
     ${focused === fieldName ? 'border-[#0066FF]' : 'border-[#333]'} 
     rounded-none 
-    py-3 
-    px-4 
+    py-2 
+    sm:py-3 
+    px-3 
+    sm:px-4 
+    text-sm
+    sm:text-base
     text-white 
     focus:border-[#0066FF] 
     focus:ring-0
     focus:outline-none
     placeholder:text-[#555]
+    placeholder:text-sm
+    sm:placeholder:text-base
     transition-all
     duration-300
     hover:border-[#555]
@@ -91,7 +97,7 @@ export default function ContactForm() {
     visible: {
       opacity: 1,
       transition: {
-        staggerChildren: 0.1
+        staggerChildren: 0.08
       }
     }
   };
@@ -102,7 +108,7 @@ export default function ContactForm() {
       y: 0, 
       opacity: 1,
       transition: { 
-        duration: 0.5,
+        duration: 0.4,
         ease: "easeOut"
       } 
     }
@@ -111,8 +117,14 @@ export default function ContactForm() {
   return (
     <div className="relative">
       {/* Decorative elements */}
-      <div className="absolute top-10 right-10 w-20 h-20 rounded-full bg-[#0066FF]/5 blur-2xl"></div>
-      <div className="absolute bottom-20 left-10 w-40 h-40 rounded-full bg-[#0066FF]/5 blur-3xl"></div>
+      <div className="absolute top-5 sm:top-10 right-5 sm:right-10 w-12 sm:w-20 h-12 sm:h-20 rounded-full bg-[#0066FF]/5 blur-xl sm:blur-2xl"></div>
+      <div className="absolute bottom-10 sm:bottom-20 left-5 sm:left-10 w-20 sm:w-40 h-20 sm:h-40 rounded-full bg-[#0066FF]/5 blur-2xl sm:blur-3xl"></div>
+      
+      {/* Form header */}
+      <div className="mb-6 sm:mb-8">
+        <h3 className="text-lg sm:text-xl font-bold mb-2">Send Us a Message</h3>
+        <p className="text-xs sm:text-sm text-[#999]">We'd love to hear from you! Fill out the form below and we'll get back to you as soon as possible.</p>
+      </div>
       
       <Form {...form}>
         <motion.form 
@@ -120,9 +132,9 @@ export default function ContactForm() {
           animate="visible"
           variants={formAnimation}
           onSubmit={form.handleSubmit(onSubmit)} 
-          className="space-y-8 relative"
+          className="space-y-5 sm:space-y-8 relative"
         >
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-5 sm:gap-8">
             <motion.div variants={itemAnimation}>
               <FormField
                 control={form.control}
@@ -141,7 +153,7 @@ export default function ContactForm() {
                         <div className="absolute bottom-0 left-0 w-0 h-[2px] bg-[#0066FF] group-hover:w-full transition-all duration-300 z-0"></div>
                       </div>
                     </FormControl>
-                    <FormMessage className="text-sm mt-1 text-red-400" />
+                    <FormMessage className="text-xs sm:text-sm mt-1 text-red-400" />
                   </FormItem>
                 )}
               />
@@ -166,14 +178,14 @@ export default function ContactForm() {
                         <div className="absolute bottom-0 left-0 w-0 h-[2px] bg-[#0066FF] group-hover:w-full transition-all duration-300 z-0"></div>
                       </div>
                     </FormControl>
-                    <FormMessage className="text-sm mt-1 text-red-400" />
+                    <FormMessage className="text-xs sm:text-sm mt-1 text-red-400" />
                   </FormItem>
                 )}
               />
             </motion.div>
           </div>
           
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-5 sm:gap-8">
             <motion.div variants={itemAnimation}>
               <FormField
                 control={form.control}
@@ -193,7 +205,7 @@ export default function ContactForm() {
                         <div className="absolute bottom-0 left-0 w-0 h-[2px] bg-[#0066FF] group-hover:w-full transition-all duration-300 z-0"></div>
                       </div>
                     </FormControl>
-                    <FormMessage className="text-sm mt-1 text-red-400" />
+                    <FormMessage className="text-xs sm:text-sm mt-1 text-red-400" />
                   </FormItem>
                 )}
               />
@@ -217,7 +229,7 @@ export default function ContactForm() {
                         <div className="absolute bottom-0 left-0 w-0 h-[2px] bg-[#0066FF] group-hover:w-full transition-all duration-300 z-0"></div>
                       </div>
                     </FormControl>
-                    <FormMessage className="text-sm mt-1 text-red-400" />
+                    <FormMessage className="text-xs sm:text-sm mt-1 text-red-400" />
                   </FormItem>
                 )}
               />
@@ -234,7 +246,7 @@ export default function ContactForm() {
                     <div className="relative group">
                       <Textarea
                         {...field}
-                        className={`${inputClasses("message")} resize-none min-h-[140px]`}
+                        className={`${inputClasses("message")} resize-none min-h-[100px] sm:min-h-[140px]`}
                         placeholder="Message"
                         onFocus={() => setFocused("message")}
                         onBlur={() => setFocused(null)}
@@ -242,21 +254,21 @@ export default function ContactForm() {
                       <div className="absolute bottom-0 left-0 w-0 h-[2px] bg-[#0066FF] group-hover:w-full transition-all duration-300 z-0"></div>
                     </div>
                   </FormControl>
-                  <FormMessage className="text-sm mt-1 text-red-400" />
+                  <FormMessage className="text-xs sm:text-sm mt-1 text-red-400" />
                 </FormItem>
               )}
             />
           </motion.div>
           
-          <motion.div variants={itemAnimation} className="flex justify-end">
+          <motion.div variants={itemAnimation} className="flex justify-start sm:justify-end pt-2">
             <Button 
               type="submit" 
               disabled={isSubmitting}
-              className="bg-[#0066FF] hover:bg-[#0055DD] text-white font-medium py-3 px-8 rounded-md flex items-center gap-2 group relative overflow-hidden"
+              className="bg-[#0066FF] hover:bg-[#0055DD] text-white text-sm sm:text-base font-medium py-2 sm:py-3 px-6 sm:px-8 rounded-md w-full sm:w-auto flex items-center justify-center gap-2 group relative overflow-hidden"
             >
               <div className="absolute inset-0 bg-gradient-to-r from-blue-600 to-blue-500 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
               <span className="relative">{isSubmitting ? "Sending..." : "Submit"}</span>
-              <Send className="h-4 w-4 relative transition-transform group-hover:translate-x-1" />
+              <Send className="h-3 w-3 sm:h-4 sm:w-4 relative transition-transform group-hover:translate-x-1" />
               <div className="absolute -inset-px rounded-md opacity-0 group-hover:opacity-20 group-active:opacity-30 bg-white transition-opacity"></div>
               <div className="absolute -z-10 -bottom-1 left-1/2 w-1/2 h-8 blur-xl bg-blue-400 transform -translate-x-1/2 opacity-20 group-hover:opacity-40 transition-opacity"></div>
             </Button>
