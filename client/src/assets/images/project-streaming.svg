@@ -1,0 +1,12 @@
+<svg width="600" height="800" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 800">
+  <rect width="600" height="800" fill="#240042" />
+  <rect x="100" y="200" width="400" height="250" rx="10" fill="#3a0070" />
+  <rect x="130" y="230" width="340" height="190" rx="5" fill="#5c00ad" />
+  <polygon points="275,280 350,325 275,370" fill="#ffffff" />
+  <circle cx="300" cy="500" r="20" fill="#9d00ff" />
+  <rect x="150" y="550" width="300" height="20" rx="10" fill="#5c00ad" />
+  <rect x="200" y="590" width="200" height="20" rx="10" fill="#5c00ad" />
+  <rect x="220" y="630" width="160" height="20" rx="10" fill="#5c00ad" />
+  <text x="170" y="130" font-family="Arial" font-size="24" fill="#ffffff">STREAMING PLATFORM</text>
+  <path d="M150 700 L450 700" stroke="#9d00ff" stroke-width="2" />
+</svg>

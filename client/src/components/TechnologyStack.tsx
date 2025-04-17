@@ -22,48 +22,125 @@ interface TechItem {
   name: string;
 }
 
+// Import more icons
+import { 
+  SiVuejs, SiLaravel, SiDotnet, SiApachekafka, SiRabbitmq, SiMicrosoft,
+  SiRust, SiSvelte, SiFlutter, SiKotlin, SiSwift, SiWebrtc, SiApache,
+  SiPhp, SiJava, SiSpring, SiNestjs, SiAdonisjs, SiJupyter, SiTensorflow,
+  SiPandas, SiScikitlearn, SiOpenai, SiCss3, SiSass, SiJest, SiCypress,
+  SiRedux, SiWebpack, SiHasura, SiElasticsearch, SiNuxtdotjs, SiAngular,
+  SiApple, SiAndroid, SiIonic, SiStripe, SiAuthy, SiJwt, SiXamarin,
+  SiSqlite, SiAzuredevops, SiJenkins, SiProxy, SiRails, SiMariadb
+} from "react-icons/si";
+
+import { 
+  FaDatabase, FaJava, FaNodeJs, FaGithub, FaBrain, FaCloudUploadAlt,
+  FaTools, FaNetworkWired, FaServer, FaMobile
+} from "react-icons/fa";
+
+import { GrMysql } from "react-icons/gr";
+import { TbApi, TbBrandPython } from "react-icons/tb";
+
 // Define tech stacks for each category with enhanced modern tech
 const techStacks: Record<TechCategory, TechItem[]> = {
   web: [
     { icon: <SiReact className="text-[#61DAFB]" size={42} />, name: "React.js" },
     { icon: <SiNextdotjs className="text-white" size={42} />, name: "Next.js" },
+    { icon: <SiVuejs className="text-[#4FC08D]" size={42} />, name: "Vue.js" },
+    { icon: <SiNuxtdotjs className="text-[#00DC82]" size={42} />, name: "Nuxt.js" },
+    { icon: <SiAngular className="text-[#DD0031]" size={42} />, name: "Angular" },
+    { icon: <SiSvelte className="text-[#FF3E00]" size={42} />, name: "Svelte" },
+    { icon: <SiRedux className="text-[#764ABC]" size={42} />, name: "Redux" },
     { icon: <SiTypescript className="text-[#3178C6]" size={42} />, name: "TypeScript" },
+    { icon: <SiJavascript className="text-[#F7DF1E]" size={42} />, name: "JavaScript" },
     { icon: <SiNodedotjs className="text-[#339933]" size={42} />, name: "Node.js" },
     { icon: <SiExpress className="text-white" size={42} />, name: "Express.js" },
+    { icon: <SiNestjs className="text-[#E0234E]" size={42} />, name: "NestJS" },
+    { icon: <SiAdonisjs className="text-[#5A45FF]" size={42} />, name: "AdonisJS" },
     { icon: <SiMongodb className="text-[#47A248]" size={42} />, name: "MongoDB" },
     { icon: <SiPostgresql className="text-[#336791]" size={42} />, name: "PostgreSQL" },
+    { icon: <SiHasura className="text-[#1EB4D4]" size={42} />, name: "Hasura" },
+    { icon: <GrMysql className="text-[#4479A1]" size={42} />, name: "MySQL" },
+    { icon: <SiMariadb className="text-[#003545]" size={42} />, name: "MariaDB" },
     { icon: <SiDjango className="text-[#092E20]" size={42} />, name: "Django" },
     { icon: <SiPython className="text-[#3776AB]" size={42} />, name: "Python" },
     { icon: <SiFastapi className="text-[#009688]" size={42} />, name: "FastAPI" },
     { icon: <SiTailwindcss className="text-[#06B6D4]" size={42} />, name: "Tailwind CSS" },
+    { icon: <SiCss3 className="text-[#1572B6]" size={42} />, name: "CSS3" },
+    { icon: <SiSass className="text-[#CC6699]" size={42} />, name: "Sass" },
+    { icon: <SiLaravel className="text-[#FF2D20]" size={42} />, name: "Laravel" },
+    { icon: <SiPhp className="text-[#777BB4]" size={42} />, name: "PHP" },
+    { icon: <SiRails className="text-[#CC0000]" size={42} />, name: "Ruby on Rails" },
     { icon: <SiGraphql className="text-[#E10098]" size={42} />, name: "GraphQL" },
     { icon: <SiPrisma className="text-white" size={42} />, name: "Prisma" },
     { icon: <TbBrandThreejs className="text-white" size={42} />, name: "Three.js" },
-    { icon: <SiVite className="text-[#646CFF]" size={42} />, name: "Vite" }
+    { icon: <SiVite className="text-[#646CFF]" size={42} />, name: "Vite" },
+    { icon: <SiWebpack className="text-[#8DD6F9]" size={42} />, name: "Webpack" },
+    { icon: <SiJest className="text-[#C21325]" size={42} />, name: "Jest" },
+    { icon: <SiCypress className="text-[#17202C]" size={42} />, name: "Cypress" },
+    { icon: <SiDotnet className="text-[#512BD4]" size={42} />, name: ".NET" },
+    { icon: <SiStripe className="text-[#008CDD]" size={42} />, name: "Stripe" },
+    { icon: <SiJwt className="text-[#000000]" size={42} />, name: "JWT" },
+    { icon: <SiWebrtc className="text-[#333333]" size={42} />, name: "WebRTC" },
+    { icon: <SiElasticsearch className="text-[#005571]" size={42} />, name: "Elasticsearch" },
+    { icon: <TbApi className="text-[#00ACC1]" size={42} />, name: "RESTful APIs" }
   ],
   mobile: [
     { icon: <FaReact className="text-[#61DAFB]" size={42} />, name: "React Native" },
+    { icon: <SiFlutter className="text-[#02569B]" size={42} />, name: "Flutter" },
+    { icon: <SiIonic className="text-[#3880FF]" size={42} />, name: "Ionic" },
+    { icon: <SiKotlin className="text-[#7F52FF]" size={42} />, name: "Kotlin" },
+    { icon: <SiSwift className="text-[#F05138]" size={42} />, name: "Swift" },
+    { icon: <SiApple className="text-[#000000]" size={42} />, name: "iOS Development" },
+    { icon: <SiAndroid className="text-[#3DDC84]" size={42} />, name: "Android Development" },
     { icon: <SiTypescript className="text-[#3178C6]" size={42} />, name: "TypeScript" },
+    { icon: <SiJavascript className="text-[#F7DF1E]" size={42} />, name: "JavaScript" },
     { icon: <SiFirebase className="text-[#FFCA28]" size={42} />, name: "Firebase" },
     { icon: <SiMongodb className="text-[#47A248]" size={42} />, name: "MongoDB" },
+    { icon: <SiSqlite className="text-[#003B57]" size={42} />, name: "SQLite" },
     { icon: <SiGraphql className="text-[#E10098]" size={42} />, name: "GraphQL" },
     { icon: <SiRedis className="text-[#DC382D]" size={42} />, name: "Redis" },
     { icon: <SiSupabase className="text-[#3ECF8E]" size={42} />, name: "Supabase" },
     { icon: <SiExpress className="text-white" size={42} />, name: "Express.js" },
     { icon: <SiNodedotjs className="text-[#339933]" size={42} />, name: "Node.js" },
-    { icon: <FaGitAlt className="text-[#F05032]" size={42} />, name: "Git" }
+    { icon: <SiJava className="text-[#007396]" size={42} />, name: "Java" },
+    { icon: <SiXamarin className="text-[#3498DB]" size={42} />, name: "Xamarin" },
+    { icon: <FaMobile className="text-[#0088CC]" size={42} />, name: "Mobile UX/UI" },
+    { icon: <SiStripe className="text-[#008CDD]" size={42} />, name: "Stripe" },
+    { icon: <SiAuthy className="text-[#EC1C24]" size={42} />, name: "Auth Systems" },
+    { icon: <FaGitAlt className="text-[#F05032]" size={42} />, name: "Git" },
+    { icon: <FaGithub className="text-white" size={42} />, name: "GitHub" }
   ],
   nextgen: [
     { icon: <SiDocker className="text-[#2496ED]" size={42} />, name: "Docker" },
     { icon: <SiKubernetes className="text-[#326CE5]" size={42} />, name: "Kubernetes" },
     { icon: <FaAws className="text-[#FF9900]" size={42} />, name: "AWS" },
     { icon: <SiGooglecloud className="text-[#4285F4]" size={42} />, name: "Google Cloud" },
+    { icon: <SiMicrosoft className="text-[#5E5E5E]" size={42} />, name: "Microsoft Azure" },
     { icon: <SiDigitalocean className="text-[#0080FF]" size={42} />, name: "DigitalOcean" },
     { icon: <SiVercel className="text-white" size={42} />, name: "Vercel" },
     { icon: <SiNetlify className="text-[#00C7B7]" size={42} />, name: "Netlify" },
     { icon: <SiGithubactions className="text-[#2088FF]" size={42} />, name: "GitHub Actions" },
+    { icon: <SiJenkins className="text-[#D24939]" size={42} />, name: "Jenkins" },
+    { icon: <SiAzuredevops className="text-[#0078D7]" size={42} />, name: "Azure DevOps" },
     { icon: <SiTerraform className="text-[#7B42BC]" size={42} />, name: "Terraform" },
-    { icon: <SiCloudflare className="text-[#F38020]" size={42} />, name: "Cloudflare" }
+    { icon: <SiCloudflare className="text-[#F38020]" size={42} />, name: "Cloudflare" },
+    { icon: <SiApache className="text-[#D22128]" size={42} />, name: "Apache" },
+    { icon: <SiProxy className="text-[#00AFC8]" size={42} />, name: "Nginx/Proxy" },
+    { icon: <FaCloudUploadAlt className="text-[#3498DB]" size={42} />, name: "Cloud Storage" },
+    { icon: <SiApachekafka className="text-[#000000]" size={42} />, name: "Kafka" },
+    { icon: <SiRabbitmq className="text-[#FF6600]" size={42} />, name: "RabbitMQ" },
+    { icon: <SiJupyter className="text-[#F37626]" size={42} />, name: "Jupyter" },
+    { icon: <SiTensorflow className="text-[#FF6F00]" size={42} />, name: "TensorFlow" },
+    { icon: <SiPandas className="text-[#150458]" size={42} />, name: "Pandas" },
+    { icon: <SiScikitlearn className="text-[#F7931E]" size={42} />, name: "Scikit-learn" },
+    { icon: <SiOpenai className="text-white" size={42} />, name: "OpenAI" },
+    { icon: <FaBrain className="text-[#9C27B0]" size={42} />, name: "Machine Learning" },
+    { icon: <TbBrandPython className="text-[#3776AB]" size={42} />, name: "Python ML/AI" },
+    { icon: <SiRust className="text-[#000000]" size={42} />, name: "Rust" },
+    { icon: <FaServer className="text-[#6C757D]" size={42} />, name: "Server Management" },
+    { icon: <FaNetworkWired className="text-[#0078D7]" size={42} />, name: "Network Architecture" },
+    { icon: <FaTools className="text-[#FFC107]" size={42} />, name: "DevOps Tools" }
   ]
 };
 

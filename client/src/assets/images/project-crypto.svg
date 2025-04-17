@@ -1,0 +1,13 @@
+<svg width="600" height="800" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 800">
+  <rect width="600" height="800" fill="#03153e" />
+  <circle cx="300" cy="300" r="150" fill="#0d215e" />
+  <path d="M250 240 L350 240 L350 360 L250 360 Z" fill="#1a3c9f" />
+  <circle cx="300" cy="300" r="30" fill="#4a7aff" />
+  <path d="M245 190 L355 190 L355 410 L245 410 Z" stroke="#7d97ff" stroke-width="2" fill="none" />
+  <text x="240" y="500" font-family="Arial" font-size="24" fill="#ffffff">CRYPTOCURRENCY</text>
+  <path d="M200 550 L400 550" stroke="#4a7aff" stroke-width="2" />
+  <circle cx="230" cy="600" r="15" fill="#4a7aff" />
+  <circle cx="300" cy="600" r="15" fill="#1a3c9f" />
+  <circle cx="370" cy="600" r="15" fill="#4a7aff" />
+  <path d="M200 650 L400 650" stroke="#4a7aff" stroke-width="2" />
+</svg>
