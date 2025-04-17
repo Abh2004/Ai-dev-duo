@@ -336,94 +336,122 @@ export default function ServiceDetails() {
     <section className="py-20 bg-black">
       <div className="container mx-auto px-4">
         <div className="flex flex-col lg:flex-row gap-12">
-          {/* Left side - Service Navigation - Exactly matching the provided image */}
+          {/* Left side - Service Navigation - Matching the new image exactly */}
           <div className="lg:w-1/3">
-            <div className="relative pl-2">
-              {/* Vertical connecting line with glowing effect */}
-              <div className="absolute h-full w-[1px] bg-[#222] left-[7px] top-0 z-0">
-                {/* Glowing blue light that moves along the line */}
-                <div 
-                  className="absolute w-[3px] h-[40px] bg-[#0066FF] blur-[4px] left-[-1px] animate-pulse opacity-50"
-                  style={{
-                    animation: "moveLight 8s infinite",
-                    boxShadow: "0 0 8px 2px rgba(0, 102, 255, 0.3)"
-                  }}
-                ></div>
-
-                {/* Small animated sparkles along the line */}
-                <div 
-                  className="absolute w-[3px] h-[3px] bg-[#0099FF] rounded-full blur-[2px] left-[-1px] top-[20%]"
-                  style={{
-                    animation: "sparkle 1.5s infinite",
-                    boxShadow: "0 0 4px 1px rgba(0, 120, 255, 0.6)"
-                  }}
-                ></div>
-                <div 
-                  className="absolute w-[3px] h-[3px] bg-[#0099FF] rounded-full blur-[2px] left-[-1px] top-[40%]" 
-                  style={{
-                    animation: "sparkle 2s infinite 0.5s",
-                    boxShadow: "0 0 4px 1px rgba(0, 120, 255, 0.6)"
-                  }}
-                ></div>
-                <div 
-                  className="absolute w-[3px] h-[3px] bg-[#0099FF] rounded-full blur-[2px] left-[-1px] top-[60%]"
-                  style={{
-                    animation: "sparkle 2.5s infinite 1s",
-                    boxShadow: "0 0 4px 1px rgba(0, 120, 255, 0.6)"
-                  }}
-                ></div>
-                <div 
-                  className="absolute w-[3px] h-[3px] bg-[#0099FF] rounded-full blur-[2px] left-[-1px] top-[80%]"
-                  style={{
-                    animation: "sparkle 2s infinite 1.5s",
-                    boxShadow: "0 0 4px 1px rgba(0, 120, 255, 0.6)"
-                  }}
-                ></div>
-              </div>
-
+            <div className="relative pl-8">
               {services.map((service, index) => {
                 const isActive = activeService === service.id;
+                const isAboveActive = index > 0 && services[index-1].id === activeService;
+                const isBelowActive = index < services.length - 1 && services[index+1].id === activeService;
                 
                 return (
-                  <div key={service.id} className="flex items-center mb-8 relative">
-                    {/* Connecting line between dots */}
-                    {index < services.length - 1 && (
-                      <div className="absolute h-8 w-[1px] bg-[#222] left-[7px] top-[14px]"></div>
-                    )}
-                    
-                    {/* Dot indicator */}
-                    <div className="relative z-10">
+                  <div key={service.id} className="mb-10 relative">
+                    {/* Connecting line to the dot above (only if not the first item) */}
+                    {index > 0 && (
                       <div 
                         className={cn(
-                          "w-[14px] h-[14px] rounded-full flex-shrink-0 transition-colors duration-300",
-                          isActive 
-                            ? "bg-[#0066FF]" 
-                            : "border-[1.5px] border-[#333] bg-transparent"
+                          "absolute w-[1px] h-10 left-[-15px] top-[-10px]",
+                          isActive || isAboveActive 
+                            ? "bg-gradient-to-t from-[#0066FF] to-transparent" 
+                            : "bg-[#222]"
                         )}
-                      ></div>
-                      
-                      {/* Glow effect for active dot */}
-                      {isActive && (
+                        style={{
+                          opacity: isActive || isAboveActive ? "1" : "0.5"
+                        }}
+                      >
+                        {/* Animated glow for active connection */}
+                        {(isActive || isAboveActive) && (
+                          <div 
+                            className="absolute inset-0 w-full h-full"
+                            style={{
+                              boxShadow: "0 0 4px 1px rgba(0, 102, 255, 0.3)",
+                              animation: "pulseGlow 2s infinite"
+                            }}
+                          ></div>
+                        )}
+                      </div>
+                    )}
+                    
+                    {/* Connecting line to the dot below (only if not the last item) */}
+                    {index < services.length - 1 && (
+                      <div 
+                        className={cn(
+                          "absolute w-[1px] h-10 left-[-15px] top-[15px]",
+                          isActive || isBelowActive 
+                            ? "bg-gradient-to-b from-[#0066FF] to-transparent" 
+                            : "bg-[#222]"
+                        )}
+                        style={{
+                          opacity: isActive || isBelowActive ? "1" : "0.5"
+                        }}
+                      >
+                        {/* Animated glow for active connection */}
+                        {(isActive || isBelowActive) && (
+                          <div 
+                            className="absolute inset-0 w-full h-full"
+                            style={{
+                              boxShadow: "0 0 4px 1px rgba(0, 102, 255, 0.3)",
+                              animation: "pulseGlow 2s infinite"
+                            }}
+                          ></div>
+                        )}
+                      </div>
+                    )}
+                    
+                    <div className="flex items-center">
+                      {/* Dot indicator */}
+                      <div 
+                        className="relative"
+                        style={{
+                          marginLeft: "-23px"
+                        }}
+                      >
+                        {/* The actual dot */}
                         <div 
-                          className="absolute w-[20px] h-[20px] rounded-full top-[-3px] left-[-3px] z-[-1]"
+                          className={cn(
+                            "w-[15px] h-[15px] rounded-full transition-all duration-500",
+                            isActive 
+                              ? "bg-[#0066FF]" 
+                              : "border border-[#333] bg-transparent"
+                          )}
+                        ></div>
+                        
+                        {/* Glow effect for active dot */}
+                        {isActive && (
+                          <div 
+                            className="absolute w-[25px] h-[25px] rounded-full top-[-5px] left-[-5px] z-[-1]"
+                            style={{
+                              background: "radial-gradient(circle, rgba(0,102,255,0.4) 0%, rgba(0,102,255,0) 70%)",
+                              boxShadow: "0 0 8px 2px rgba(0, 102, 255, 0.3)",
+                              animation: "pulseDot 2s infinite"
+                            }}
+                          ></div>
+                        )}
+
+                        {/* Small blue spark that appears on hover */}
+                        <div 
+                          className="absolute w-[3px] h-[3px] bg-[#0099FF] rounded-full 
+                                    blur-[1px] opacity-0 hover:opacity-100 transition-opacity duration-300"
                           style={{
-                            background: "radial-gradient(circle, rgba(0,102,255,0.3) 0%, rgba(0,102,255,0) 70%)",
-                            boxShadow: "0 0 10px 2px rgba(0, 102, 255, 0.4)"
+                            top: "6px",
+                            left: "6px",
+                            boxShadow: "0 0 4px 1px rgba(0, 120, 255, 0.6)",
+                            animation: "spark 1.5s infinite"
                           }}
                         ></div>
-                      )}
+                      </div>
+                      
+                      {/* Service name */}
+                      <button
+                        className={cn(
+                          "text-left transition-colors duration-300 ml-4",
+                          isActive ? "text-[#0066FF]" : "text-[#777] hover:text-white"
+                        )}
+                        onClick={() => setActiveService(service.id)}
+                      >
+                        {service.name}
+                      </button>
                     </div>
-                    
-                    {/* Service name */}
-                    <button
-                      className={cn(
-                        "ml-5 text-left transition-colors duration-300",
-                        isActive ? "text-[#0066FF]" : "text-[#777] hover:text-white"
-                      )}
-                      onClick={() => setActiveService(service.id)}
-                    >
-                      {service.name}
-                    </button>
                   </div>
                 );
               })}
