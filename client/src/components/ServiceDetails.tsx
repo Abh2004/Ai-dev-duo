@@ -17,21 +17,110 @@ const serviceContentMap: Record<string, ServiceContent> = {
     title: "StartUp Accelerator",
     icon: (
       <svg width="60" height="60" viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <path d="M30 10L30 50" stroke="white" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
-        <path d="M30 10L22 18" stroke="white" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
-        <path d="M30 10L38 18" stroke="white" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
-        <path d="M15 25C15 22.7909 16.7909 21 19 21H41C43.2091 21 45 22.7909 45 25V45C45 47.2091 43.2091 49 41 49H19C16.7909 49 15 47.2091 15 45V25Z" stroke="white" strokeWidth="1.5"/>
+        <rect width="60" height="60" rx="30" fill="#111111" />
+        <rect x="1" y="1" width="58" height="58" rx="29" stroke="#222222" strokeWidth="0.5" />
+        
+        {/* Rocket Body */}
+        <path 
+          d="M30 10C30 10 20 18 20 32C20 38 24 42 30 42C36 42 40 38 40 32C40 18 30 10 30 10Z" 
+          stroke="white" 
+          strokeWidth="1.5"
+          fill="#111111"
+        />
+        
+        {/* Rocket Details */}
+        <circle cx="30" cy="25" r="3" stroke="white" strokeWidth="1" fill="#111111" />
+        <circle cx="30" cy="33" r="2" stroke="white" strokeWidth="1" fill="#111111" />
+        
+        {/* Rocket Flame */}
+        <path 
+          d="M27 42C27 42 28 48 30 50C32 48 33 42 33 42" 
+          stroke="white" 
+          strokeWidth="1.5" 
+          strokeLinecap="round"
+          strokeDasharray="1 2"
+        />
+        
+        {/* Grid Lines */}
+        <line x1="12" y1="30" x2="48" y2="30" stroke="#333333" strokeWidth="0.5" strokeDasharray="1 3" />
+        <line x1="30" y1="12" x2="30" y2="48" stroke="#333333" strokeWidth="0.5" strokeDasharray="1 3" />
+        
+        {/* Measurement Marks */}
+        <circle cx="20" cy="30" r="1" stroke="white" strokeWidth="0.5" fill="none" />
+        <circle cx="40" cy="30" r="1" stroke="white" strokeWidth="0.5" fill="none" />
+        <circle cx="30" cy="20" r="1" stroke="white" strokeWidth="0.5" fill="none" />
+        <circle cx="30" cy="40" r="1" stroke="white" strokeWidth="0.5" fill="none" />
+        
+        {/* Constellation Points */}
+        <circle cx="20" cy="15" r="0.8" fill="white" opacity="0.7" />
+        <circle cx="40" cy="15" r="0.8" fill="white" opacity="0.7" />
+        <circle cx="15" cy="40" r="0.8" fill="white" opacity="0.7" />
+        <circle cx="45" cy="40" r="0.8" fill="white" opacity="0.7" />
+        <line x1="20" y1="15" x2="40" y2="15" stroke="white" strokeWidth="0.5" opacity="0.3" />
+        <line x1="40" y1="15" x2="45" y2="40" stroke="white" strokeWidth="0.5" opacity="0.3" />
+        <line x1="45" y1="40" x2="15" y2="40" stroke="white" strokeWidth="0.5" opacity="0.3" />
+        <line x1="15" y1="40" x2="20" y2="15" stroke="white" strokeWidth="0.5" opacity="0.3" />
       </svg>
     ),
-    description: "We put in place a strategic plan and create a roadmap for your business and properly research the market and the segment in which you plan to grow your business in. Strategic planning is one of the key services provided by Troibits Infotech. Our customers partner with us to plan critical steps for their startup business. Our continuous analysis of the market trends and dynamics keeps us alert to changes and developments in different market sectors.",
+    description: "We put in place a strategic plan and create a roadmap for your business and properly research the market and the segment in which you plan to grow your business in. Strategic planning is one of the key services provided by Ai DevDuo. Our customers partner with us to plan critical steps for their startup business. Our continuous analysis of the market trends and dynamics keeps us alert to changes and developments in different market sectors.",
     features: ["Strategy Planning", "Pitch Deck", "B2B, B2C Marketing", "ROI Management"]
   },
   "product-design": {
     title: "Product Design",
     icon: (
       <svg width="60" height="60" viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <path d="M45 30C45 38.2843 38.2843 45 30 45C21.7157 45 15 38.2843 15 30C15 21.7157 21.7157 15 30 15C38.2843 15 45 21.7157 45 30Z" stroke="white" strokeWidth="1.5"/>
-        <path d="M30 19V30H41" stroke="white" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+        <rect width="60" height="60" rx="30" fill="#111111" />
+        <rect x="1" y="1" width="58" height="58" rx="29" stroke="#222222" strokeWidth="0.5" />
+        
+        {/* Pen tool shape */}
+        <path 
+          d="M38 22L42 26L28 40L18 42L20 32L34 18L38 22Z" 
+          stroke="white" 
+          strokeWidth="1.5"
+          fill="#111111"
+        />
+        
+        {/* Control handle lines */}
+        <path 
+          d="M38 22L42 26" 
+          stroke="white" 
+          strokeWidth="1" 
+          strokeLinecap="round"
+        />
+        <path 
+          d="M34 18L38 22" 
+          stroke="white" 
+          strokeWidth="1" 
+          strokeLinecap="round"
+        />
+        
+        {/* Selection points */}
+        <circle cx="38" cy="22" r="1.5" stroke="white" strokeWidth="0.5" fill="#111111" />
+        <circle cx="42" cy="26" r="1.5" stroke="white" strokeWidth="0.5" fill="#111111" />
+        <circle cx="34" cy="18" r="1.5" stroke="white" strokeWidth="0.5" fill="#111111" />
+        <circle cx="18" cy="42" r="1.5" stroke="white" strokeWidth="0.5" fill="#111111" />
+        
+        {/* Grid Lines */}
+        <line x1="12" y1="30" x2="48" y2="30" stroke="#333333" strokeWidth="0.5" strokeDasharray="1 3" />
+        <line x1="30" y1="12" x2="30" y2="48" stroke="#333333" strokeWidth="0.5" strokeDasharray="1 3" />
+        
+        {/* Ruler marks */}
+        <line x1="15" y1="28" x2="15" y2="32" stroke="white" strokeWidth="0.5" opacity="0.7" />
+        <line x1="20" y1="28" x2="20" y2="32" stroke="white" strokeWidth="0.5" opacity="0.7" />
+        <line x1="25" y1="28" x2="25" y2="32" stroke="white" strokeWidth="0.5" opacity="0.7" />
+        <line x1="35" y1="28" x2="35" y2="32" stroke="white" strokeWidth="0.5" opacity="0.7" />
+        <line x1="40" y1="28" x2="40" y2="32" stroke="white" strokeWidth="0.5" opacity="0.7" />
+        <line x1="45" y1="28" x2="45" y2="32" stroke="white" strokeWidth="0.5" opacity="0.7" />
+        
+        {/* Curved line for artistic element */}
+        <path 
+          d="M12 20C18 15 30 45 48 25" 
+          stroke="white" 
+          strokeWidth="0.5" 
+          strokeDasharray="1 2" 
+          opacity="0.3"
+          fill="none"
+        />
       </svg>
     ),
     description: "Our design team creates innovative and user-centric product designs that captivate users and drive engagement. We believe in designing products that not only look great but also offer exceptional usability and functionality. Our design process involves deep research into user needs, behavior patterns, and industry standards to create solutions that truly stand out.",
@@ -41,10 +130,61 @@ const serviceContentMap: Record<string, ServiceContent> = {
     title: "Mobile App Development",
     icon: (
       <svg width="60" height="60" viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <rect x="20" y="10" width="20" height="40" rx="2" stroke="white" strokeWidth="1.5"/>
-        <line x1="20" y1="16" x2="40" y2="16" stroke="white" strokeWidth="1.5"/>
-        <line x1="20" y1="44" x2="40" y2="44" stroke="white" strokeWidth="1.5"/>
-        <circle cx="30" cy="48" r="1" fill="white"/>
+        <rect width="60" height="60" rx="30" fill="#111111" />
+        <rect x="1" y="1" width="58" height="58" rx="29" stroke="#222222" strokeWidth="0.5" />
+        
+        {/* Phone outline */}
+        <rect 
+          x="22" 
+          y="12" 
+          width="16" 
+          height="36" 
+          rx="3" 
+          stroke="white" 
+          strokeWidth="1.5"
+          fill="#111111"
+        />
+        
+        {/* Screen */}
+        <rect 
+          x="24" 
+          y="16" 
+          width="12" 
+          height="24" 
+          rx="1" 
+          stroke="white" 
+          strokeWidth="0.5"
+          fill="#111111"
+        />
+        
+        {/* App Icons on screen - more minimalist, professional look */}
+        <rect x="26" y="18" width="2.5" height="2.5" rx="0.5" stroke="white" strokeWidth="0.5" fill="none" />
+        <rect x="30" y="18" width="2.5" height="2.5" rx="0.5" stroke="white" strokeWidth="0.5" fill="none" />
+        <rect x="26" y="22" width="2.5" height="2.5" rx="0.5" stroke="white" strokeWidth="0.5" fill="none" />
+        <rect x="30" y="22" width="2.5" height="2.5" rx="0.5" stroke="white" strokeWidth="0.5" fill="none" />
+        <rect x="26" y="26" width="2.5" height="2.5" rx="0.5" stroke="white" strokeWidth="0.5" fill="none" />
+        <rect x="30" y="26" width="2.5" height="2.5" rx="0.5" stroke="white" strokeWidth="0.5" fill="none" />
+        
+        {/* Home button */}
+        <circle cx="30" cy="44" r="2" stroke="white" strokeWidth="0.5" fill="none" />
+        
+        {/* Device details */}
+        <line x1="24" y1="14" x2="36" y2="14" stroke="white" strokeWidth="0.5" opacity="0.7" />
+        <line x1="24" y1="42" x2="36" y2="42" stroke="white" strokeWidth="0.5" opacity="0.7" />
+        
+        {/* Technical blueprint elements */}
+        <line x1="19" y1="30" x2="21" y2="30" stroke="white" strokeWidth="0.5" opacity="0.7" />
+        <line x1="39" y1="30" x2="41" y2="30" stroke="white" strokeWidth="0.5" opacity="0.7" />
+        <line x1="30" y1="9" x2="30" y2="11" stroke="white" strokeWidth="0.5" opacity="0.7" />
+        <line x1="30" y1="49" x2="30" y2="51" stroke="white" strokeWidth="0.5" opacity="0.7" />
+        
+        {/* Dimension lines for technical look */}
+        <path d="M14 12L14 48" stroke="white" strokeWidth="0.5" strokeDasharray="1 2" opacity="0.3" />
+        <path d="M46 12L46 48" stroke="white" strokeWidth="0.5" strokeDasharray="1 2" opacity="0.3" />
+        <path d="M14 12L22 12" stroke="white" strokeWidth="0.5" strokeDasharray="1 2" opacity="0.3" />
+        <path d="M14 48L22 48" stroke="white" strokeWidth="0.5" strokeDasharray="1 2" opacity="0.3" />
+        <path d="M38 12L46 12" stroke="white" strokeWidth="0.5" strokeDasharray="1 2" opacity="0.3" />
+        <path d="M38 48L46 48" stroke="white" strokeWidth="0.5" strokeDasharray="1 2" opacity="0.3" />
       </svg>
     ),
     description: "Our mobile app development team creates innovative applications for iOS and Android platforms that deliver exceptional user experiences. We utilize the latest technologies and development practices to build high-performance, scalable, and feature-rich mobile applications that meet the unique needs of your business and users.",
@@ -54,11 +194,65 @@ const serviceContentMap: Record<string, ServiceContent> = {
     title: "Web Development",
     icon: (
       <svg width="60" height="60" viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <rect x="10" y="15" width="40" height="30" rx="2" stroke="white" strokeWidth="1.5"/>
-        <line x1="10" y1="23" x2="50" y2="23" stroke="white" strokeWidth="1.5"/>
-        <circle cx="15" cy="19" r="1" fill="white"/>
-        <circle cx="19" cy="19" r="1" fill="white"/>
-        <circle cx="23" cy="19" r="1" fill="white"/>
+        <rect width="60" height="60" rx="30" fill="#111111" />
+        <rect x="1" y="1" width="58" height="58" rx="29" stroke="#222222" strokeWidth="0.5" />
+        
+        {/* Browser outline */}
+        <rect 
+          x="12" 
+          y="14" 
+          width="36" 
+          height="28" 
+          rx="3" 
+          stroke="white" 
+          strokeWidth="1.5"
+          fill="#111111"
+        />
+        
+        {/* Browser header */}
+        <path d="M12 17h36" stroke="white" strokeWidth="0.5" />
+        
+        {/* Browser controls */}
+        <circle cx="16" cy="17" r="1" stroke="white" strokeWidth="0.5" fill="none" />
+        <circle cx="20" cy="17" r="1" stroke="white" strokeWidth="0.5" fill="none" />
+        <circle cx="24" cy="17" r="1" stroke="white" strokeWidth="0.5" fill="none" />
+        
+        {/* Address bar */}
+        <rect x="28" y="15" width="16" height="3" rx="1.5" stroke="white" strokeWidth="0.5" fill="none" />
+        
+        {/* Page content - streamlined for professional look */}
+        <line x1="16" y1="22" x2="44" y2="22" stroke="white" strokeWidth="0.5" opacity="0.8" />
+        <line x1="16" y1="26" x2="36" y2="26" stroke="white" strokeWidth="0.5" opacity="0.6" />
+        <line x1="16" y1="30" x2="40" y2="30" stroke="white" strokeWidth="0.5" opacity="0.6" />
+        <line x1="16" y1="34" x2="32" y2="34" stroke="white" strokeWidth="0.5" opacity="0.6" />
+        
+        {/* Code brackets for tech feel */}
+        <path 
+          d="M20 40L16 36L20 32" 
+          stroke="white" 
+          strokeWidth="0.8" 
+          strokeLinecap="round" 
+          strokeLinejoin="round" 
+          fill="none"
+        />
+        <path 
+          d="M40 40L44 36L40 32" 
+          stroke="white" 
+          strokeWidth="0.8" 
+          strokeLinecap="round" 
+          strokeLinejoin="round" 
+          fill="none"
+        />
+        
+        {/* Technical details and measurement lines */}
+        <line x1="8" y1="14" x2="10" y2="14" stroke="white" strokeWidth="0.5" opacity="0.4" />
+        <line x1="8" y1="42" x2="10" y2="42" stroke="white" strokeWidth="0.5" opacity="0.4" />
+        <line x1="50" y1="14" x2="52" y2="14" stroke="white" strokeWidth="0.5" opacity="0.4" />
+        <line x1="50" y1="42" x2="52" y2="42" stroke="white" strokeWidth="0.5" opacity="0.4" />
+        
+        {/* Dimension lines */}
+        <path d="M8 14v28" stroke="white" strokeWidth="0.5" opacity="0.2" strokeDasharray="1 2" />
+        <path d="M52 14v28" stroke="white" strokeWidth="0.5" opacity="0.2" strokeDasharray="1 2" />
       </svg>
     ),
     description: "Our web development team specializes in creating responsive, high-performance websites and web applications that drive business growth. We combine cutting-edge technologies with innovative design to deliver seamless user experiences that engage visitors and convert them into customers. Our web solutions are built to be scalable, secure, and easy to maintain.",
