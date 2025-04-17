@@ -93,6 +93,7 @@ export default function Footer() {
               </div>
               <div className="flex flex-col">
                 <div>
+                  <span className="text-white font-bold text-xl">Ai </span>
                   <span className="text-white font-bold text-xl">Dev</span>
                   <span className="text-[#0066FF] font-bold text-xl">Duo</span>
                 </div>
