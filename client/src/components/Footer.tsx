@@ -22,7 +22,7 @@ const NavLink = ({ to, children }: { to: string, children: React.ReactNode }) =>
   <motion.div whileHover={{ y: -2 }} transition={{ type: "spring", stiffness: 500 }}>
     <Link 
       to={to} 
-      className="text-[#777] hover:text-[#0066FF] text-sm transition-all duration-300 relative group"
+      className="text-[#777] hover:text-[#0066FF] text-sm font-display uppercase tracking-wider transition-all duration-300 relative group"
     >
       {children}
       <motion.span 
@@ -49,7 +49,7 @@ const TechLink = ({ href, children }: { href: string, children: React.ReactNode 
   >
     <a 
       href={href} 
-      className="text-[#999] hover:text-white transition-all duration-300 text-sm flex items-center group"
+      className="text-[#999] hover:text-white transition-all duration-300 text-xs font-display tracking-wide flex items-center group"
     >
       <motion.span 
         className="w-0 h-[1px] bg-[#0066FF] mr-0 group-hover:mr-2 group-hover:w-3 transition-all duration-300"
@@ -101,7 +101,7 @@ export default function Footer() {
               </div>
             </motion.div>
             
-            <p className="text-[#999] text-sm mb-5 max-w-xs">
+            <p className="text-[#999] text-sm mb-5 max-w-xs font-body leading-relaxed">
               We design and develop cutting-edge digital solutions for businesses 
               looking to innovate and transform their digital presence.
             </p>
@@ -225,7 +225,7 @@ export default function Footer() {
         {/* Newsletter & Copyright */}
         <div className="flex flex-col md:flex-row justify-between items-center border-t border-[#111] pt-8">
           <div className="mb-6 md:mb-0 flex flex-col md:flex-row items-center md:items-start gap-4">
-            <p className="text-[#666] text-sm">
+            <p className="text-[#666] text-sm font-body">
               © 2025 Ai DevDuo Technologies. All rights reserved.
             </p>
           </div>
@@ -237,7 +237,7 @@ export default function Footer() {
             <NavLink to="/work">Work</NavLink>
             <NavLink to="/contact">Contact</NavLink>
             <motion.div whileHover={{ y: -2 }} transition={{ type: "spring", stiffness: 500 }}>
-              <a href="#" className="text-[#777] hover:text-[#0066FF] text-sm transition-all duration-300 relative group">
+              <a href="#" className="text-[#777] hover:text-[#0066FF] text-sm font-display uppercase tracking-wider transition-all duration-300 relative group">
                 Privacy Policy
                 <motion.span 
                   className="absolute left-0 -bottom-1 w-0 h-[1px] bg-[#0066FF] group-hover:w-full transition-all duration-300"
@@ -247,7 +247,7 @@ export default function Footer() {
               </a>
             </motion.div>
             <motion.div whileHover={{ y: -2 }} transition={{ type: "spring", stiffness: 500 }}>
-              <a href="#" className="text-[#777] hover:text-[#0066FF] text-sm transition-all duration-300 relative group">
+              <a href="#" className="text-[#777] hover:text-[#0066FF] text-sm font-display uppercase tracking-wider transition-all duration-300 relative group">
                 Terms of Service
                 <motion.span 
                   className="absolute left-0 -bottom-1 w-0 h-[1px] bg-[#0066FF] group-hover:w-full transition-all duration-300"
