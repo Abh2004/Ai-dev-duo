@@ -105,56 +105,34 @@ export default function Contact() {
               </div>
             </div>
             
-            {/* Contact Cards */}
-            <div className="grid grid-cols-1 gap-6 mb-6">
-              {/* Visit Our Office */}
+            {/* Email and Phone */}
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+              {/* Email card */}
               <div className="bg-[#080813] border border-[#1A1A30] rounded-lg p-6 relative overflow-hidden group">
-                <div className="absolute top-0 right-0 w-32 h-32 bg-[#0066FF] rounded-full opacity-[0.03] blur-[50px] group-hover:opacity-[0.08] transition-opacity duration-500"></div>
-                
                 <div className="flex items-start">
-                  <div className="w-10 h-10 rounded-lg bg-[#0A0A15] flex items-center justify-center mr-5 border border-[#1a1a2a]">
-                    <MapPin className="h-5 w-5 text-[#0066FF]" />
+                  <div className="w-10 h-10 rounded-lg bg-[#0A0A15] flex items-center justify-center mr-4 border border-[#1a1a2a]">
+                    <Mail className="h-5 w-5 text-[#0066FF]" />
                   </div>
                   <div>
-                    <h4 className="text-white font-medium mb-2">Visit Our Office</h4>
-                    <p className="text-[#999] text-sm leading-relaxed">
-                      221 JMD Megapolis, Sohna Road<br />
-                      Highway, Sector 48 Gurugram,<br />
-                      Haryana India, 122011
-                    </p>
+                    <h4 className="text-white font-medium mb-2">Email Us</h4>
+                    <a href="mailto:contact@aidevduo.com" className="text-[#999] hover:text-[#0066FF] transition-colors text-sm">
+                      contact@aidevduo.com
+                    </a>
                   </div>
                 </div>
               </div>
               
-              {/* Email and Phone */}
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                {/* Email card */}
-                <div className="bg-[#080813] border border-[#1A1A30] rounded-lg p-6 relative overflow-hidden group">
-                  <div className="flex items-start">
-                    <div className="w-9 h-9 rounded-lg bg-[#0A0A15] flex items-center justify-center mr-4 border border-[#1a1a2a]">
-                      <Mail className="h-4 w-4 text-[#0066FF]" />
-                    </div>
-                    <div>
-                      <h4 className="text-white font-medium mb-1 text-sm">Email Us</h4>
-                      <a href="mailto:contact@aidevduo.com" className="text-[#999] hover:text-[#0066FF] transition-colors text-sm">
-                        contact@aidevduo.com
-                      </a>
-                    </div>
+              {/* Phone card */}
+              <div className="bg-[#080813] border border-[#1A1A30] rounded-lg p-6 relative overflow-hidden group">
+                <div className="flex items-start">
+                  <div className="w-10 h-10 rounded-lg bg-[#0A0A15] flex items-center justify-center mr-4 border border-[#1a1a2a]">
+                    <Phone className="h-5 w-5 text-[#0066FF]" />
                   </div>
-                </div>
-                
-                {/* Phone card */}
-                <div className="bg-[#080813] border border-[#1A1A30] rounded-lg p-6 relative overflow-hidden group">
-                  <div className="flex items-start">
-                    <div className="w-9 h-9 rounded-lg bg-[#0A0A15] flex items-center justify-center mr-4 border border-[#1a1a2a]">
-                      <Phone className="h-4 w-4 text-[#0066FF]" />
-                    </div>
-                    <div>
-                      <h4 className="text-white font-medium mb-1 text-sm">Call Us</h4>
-                      <a href="tel:+919899500873" className="text-[#999] hover:text-[#0066FF] transition-colors text-sm">
-                        +91 989 950 0873
-                      </a>
-                    </div>
+                  <div>
+                    <h4 className="text-white font-medium mb-2">Call Us</h4>
+                    <a href="tel:+919899500873" className="text-[#999] hover:text-[#0066FF] transition-colors text-sm">
+                      +91 989 950 0873
+                    </a>
                   </div>
                 </div>
               </div>
