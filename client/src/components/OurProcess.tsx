@@ -133,17 +133,17 @@ export default function OurProcess() {
           </p>
         </motion.div>
         
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-16 items-center">
           {/* Left column - Process Illustration */}
           <motion.div
-            className="relative flex justify-center"
+            className="relative flex justify-center mb-8 lg:mb-0 order-1 lg:order-none"
             initial={{ opacity: 0, x: -30 }}
             whileInView={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8 }}
             viewport={{ once: true }}
           >
             {/* Main illustration */}
-            <div className="relative">
+            <div className="relative w-full max-w-sm md:max-w-md mx-auto">
               <motion.img 
                 src={processIllustration} 
                 alt="Our development process" 
@@ -170,7 +170,7 @@ export default function OurProcess() {
             </div>
             
             {/* Connecting nodes and dots decoration */}
-            <div className="absolute inset-0">
+            <div className="absolute inset-0 hidden md:block">
               {[0, 1, 2, 3].map((i) => (
                 <motion.div
                   key={i}
@@ -196,17 +196,17 @@ export default function OurProcess() {
           
           {/* Right column - Process Timeline */}
           <motion.div
-            className="relative"
+            className="relative order-2 lg:order-none"
             initial={{ opacity: 0, x: 30 }}
             whileInView={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8 }}
             viewport={{ once: true }}
           >
             {/* Vertical Line with gradient - Centered with the dots */}
-            <div className="absolute top-0 bottom-0 left-[12px] w-[2px] bg-gradient-to-b from-[#0066FF] via-[#0066FF] to-[#0066FF]/30" />
+            <div className="absolute top-0 bottom-0 left-[12px] md:left-[12px] w-[2px] bg-gradient-to-b from-[#0066FF] via-[#0066FF] to-[#0066FF]/30" />
             
             {/* Timeline Steps with enhanced interactive elements */}
-            <div className="space-y-8 relative">
+            <div className="space-y-4 md:space-y-8 relative">
               {processSteps.map((step, index) => (
                 <motion.div
                   key={index}
@@ -223,10 +223,15 @@ export default function OurProcess() {
                     setActiveStep(null);
                     setIsDotHovered(false);
                   }}
+                  onClick={() => {
+                    // For mobile - toggle active state on click
+                    setActiveStep(activeStep === index ? null : index);
+                    setIsDotHovered(activeStep !== index);
+                  }}
                 >
                   {/* Enhanced dot with glow effect - Properly centered */}
                   <motion.div 
-                    className="absolute left-0 top-1/2 -translate-y-1/2 w-6 h-6 rounded-full bg-[#0066FF] z-10 flex items-center justify-center"
+                    className="absolute left-0 top-1/2 -translate-y-1/2 w-5 h-5 md:w-6 md:h-6 rounded-full bg-[#0066FF] z-10 flex items-center justify-center"
                     animate={{
                       boxShadow: activeStep === index 
                         ? "0 0 10px 2px rgba(0, 102, 255, 0.7)" 
@@ -254,7 +259,7 @@ export default function OurProcess() {
                   {/* Dot connecting line when hovered */}
                   {activeStep === index && (
                     <motion.div 
-                      className="absolute top-1/2 -translate-y-1/2 left-[24px] h-[1px] bg-[#0066FF]"
+                      className="absolute top-1/2 -translate-y-1/2 left-[20px] md:left-[24px] h-[1px] bg-[#0066FF]"
                       initial={{ width: 0 }}
                       animate={{ width: 15 }}
                       transition={{ duration: 0.3 }}
@@ -263,7 +268,7 @@ export default function OurProcess() {
                   
                   {/* Step content with hover effect */}
                   <motion.div
-                    className="relative bg-[#0A0A0A] rounded-lg p-4 border border-[#222]"
+                    className="relative bg-[#0A0A0A] rounded-lg p-3 md:p-4 border border-[#222]"
                     animate={{
                       borderColor: activeStep === index ? '#0066FF' : '#222',
                       backgroundColor: activeStep === index ? 'rgba(0, 20, 50, 0.2)' : 'rgba(10, 10, 10, 0.7)'
@@ -276,20 +281,20 @@ export default function OurProcess() {
                     }}
                   >
                     {/* Step title with icon */}
-                    <div className="flex items-center mb-2">
+                    <div className="flex items-center mb-1 md:mb-2">
                       <span className="text-white opacity-70 mr-2">
                         {step.icon}
                       </span>
-                      <h3 className={`text-lg font-medium ${
+                      <h3 className={`text-base md:text-lg font-medium ${
                         activeStep === index ? 'text-[#0066FF]' : 'text-white'
                       }`}>
                         {step.name}
                       </h3>
                     </div>
                     
-                    {/* Step description - shows on hover */}
+                    {/* Step description - shows on hover or touch on mobile */}
                     <motion.p 
-                      className="text-sm text-[#AAA]"
+                      className="text-xs md:text-sm text-[#AAA] leading-relaxed"
                       initial={{ opacity: 0, height: 0 }}
                       animate={{ 
                         opacity: activeStep === index ? 1 : 0,
