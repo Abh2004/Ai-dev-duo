@@ -30,7 +30,7 @@ function App() {
   return (
     <QueryClientProvider client={queryClient}>
       <ScrollToTop />
-      <div className="flex flex-col min-h-screen bg-black text-white">
+      <div className="flex flex-col min-h-screen bg-black text-white ">
         <Header />
         <Router />
         <Footer />

@@ -70,7 +70,7 @@ export default function Header() {
 
   return (
     <header className={cn(
-      "fixed w-full bg-black/90 backdrop-blur-sm z-50 transition-all duration-300",
+      " bg-black/90 backdrop-blur-sm z-50 transition-all duration-300",
       scrolled ? "py-2 shadow-md shadow-black/20" : "py-3 md:py-5"
     )}>
       <div className="container mx-auto px-4 flex justify-between items-center">
