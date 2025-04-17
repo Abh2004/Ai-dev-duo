@@ -8,7 +8,8 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { apiRequest } from "@/lib/queryClient";
 import { useToast } from "@/hooks/use-toast";
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, Send } from "lucide-react";
+import { motion } from "framer-motion";
 
 // Define form schema
 const formSchema = z.object({
@@ -24,6 +25,7 @@ type FormValues = z.infer<typeof formSchema>;
 export default function ContactForm() {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const { toast } = useToast();
+  const [focused, setFocused] = useState<string | null>(null);
 
   // Initialize the form
   const form = useForm<FormValues>({
@@ -64,109 +66,202 @@ export default function ContactForm() {
     }
   };
 
+  const inputClasses = (fieldName: string) => `
+    bg-transparent 
+    border-b 
+    ${focused === fieldName ? 'border-[#0066FF]' : 'border-[#333]'} 
+    rounded-none 
+    py-3 
+    px-4 
+    text-white 
+    focus:border-[#0066FF] 
+    focus:ring-0 
+    placeholder:text-[#555]
+    transition-all
+    duration-300
+    hover:border-[#555]
+    relative
+    z-10
+  `;
+
+  // Animation variants
+  const formAnimation = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.1
+      }
+    }
+  };
+
+  const itemAnimation = {
+    hidden: { y: 20, opacity: 0 },
+    visible: { 
+      y: 0, 
+      opacity: 1,
+      transition: { 
+        duration: 0.5,
+        ease: "easeOut"
+      } 
+    }
+  };
+
   return (
-    <Form {...form}>
-      <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-          <FormField
-            control={form.control}
-            name="name"
-            render={({ field }) => (
-              <FormItem>
-                <FormControl>
-                  <Input
-                    {...field}
-                    className="bg-transparent border-b border-[#333] rounded-none py-2 px-0 text-white focus:border-white focus:ring-0 placeholder:text-[#555]"
-                    placeholder="Name"
-                  />
-                </FormControl>
-                <FormMessage />
-              </FormItem>
-            )}
-          />
-          
-          <FormField
-            control={form.control}
-            name="email"
-            render={({ field }) => (
-              <FormItem>
-                <FormControl>
-                  <Input
-                    {...field}
-                    type="email"
-                    className="bg-transparent border-b border-[#333] rounded-none py-2 px-0 text-white focus:border-white focus:ring-0 placeholder:text-[#555]"
-                    placeholder="Email"
-                  />
-                </FormControl>
-                <FormMessage />
-              </FormItem>
-            )}
-          />
-        </div>
-        
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-          <FormField
-            control={form.control}
-            name="phone"
-            render={({ field }) => (
-              <FormItem>
-                <FormControl>
-                  <Input
-                    {...field}
-                    type="tel"
-                    className="bg-transparent border-b border-[#333] rounded-none py-2 px-0 text-white focus:border-white focus:ring-0 placeholder:text-[#555]"
-                    placeholder="Phone or Skype"
-                  />
-                </FormControl>
-                <FormMessage />
-              </FormItem>
-            )}
-          />
-          
-          <FormField
-            control={form.control}
-            name="subject"
-            render={({ field }) => (
-              <FormItem>
-                <FormControl>
-                  <Input
-                    {...field}
-                    className="bg-transparent border-b border-[#333] rounded-none py-2 px-0 text-white focus:border-white focus:ring-0 placeholder:text-[#555]"
-                    placeholder="Subject"
-                  />
-                </FormControl>
-                <FormMessage />
-              </FormItem>
-            )}
-          />
-        </div>
-        
-        <FormField
-          control={form.control}
-          name="message"
-          render={({ field }) => (
-            <FormItem>
-              <FormControl>
-                <Textarea
-                  {...field}
-                  className="bg-transparent border-b border-[#333] rounded-none py-2 px-0 text-white focus:border-white focus:ring-0 resize-none min-h-[100px] placeholder:text-[#555]"
-                  placeholder="Message"
-                />
-              </FormControl>
-              <FormMessage />
-            </FormItem>
-          )}
-        />
-        
-        <Button 
-          type="submit" 
-          disabled={isSubmitting}
-          className="bg-[#0066FF] hover:bg-[#0055DD] text-white font-medium py-2 px-8 rounded-none flex items-center space-x-2 float-right"
+    <div className="relative">
+      {/* Decorative elements */}
+      <div className="absolute top-10 right-10 w-20 h-20 rounded-full bg-[#0066FF]/5 blur-2xl"></div>
+      <div className="absolute bottom-20 left-10 w-40 h-40 rounded-full bg-[#0066FF]/5 blur-3xl"></div>
+      
+      <Form {...form}>
+        <motion.form 
+          initial="hidden"
+          animate="visible"
+          variants={formAnimation}
+          onSubmit={form.handleSubmit(onSubmit)} 
+          className="space-y-8 relative"
         >
-          <span>{isSubmitting ? "Submitting" : "Submit"}</span>
-          <ArrowRight className="h-4 w-4" />
-        </Button>
-      </form>
-    </Form>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <motion.div variants={itemAnimation}>
+              <FormField
+                control={form.control}
+                name="name"
+                render={({ field }) => (
+                  <FormItem>
+                    <FormControl>
+                      <div className="relative group">
+                        <Input
+                          {...field}
+                          className={inputClasses("name")}
+                          placeholder="Name"
+                          onFocus={() => setFocused("name")}
+                          onBlur={() => setFocused(null)}
+                        />
+                        <div className="absolute bottom-0 left-0 w-0 h-[2px] bg-[#0066FF] group-hover:w-full transition-all duration-300 z-0"></div>
+                      </div>
+                    </FormControl>
+                    <FormMessage className="text-sm mt-1 text-red-400" />
+                  </FormItem>
+                )}
+              />
+            </motion.div>
+            
+            <motion.div variants={itemAnimation}>
+              <FormField
+                control={form.control}
+                name="email"
+                render={({ field }) => (
+                  <FormItem>
+                    <FormControl>
+                      <div className="relative group">
+                        <Input
+                          {...field}
+                          type="email"
+                          className={inputClasses("email")}
+                          placeholder="Email"
+                          onFocus={() => setFocused("email")}
+                          onBlur={() => setFocused(null)}
+                        />
+                        <div className="absolute bottom-0 left-0 w-0 h-[2px] bg-[#0066FF] group-hover:w-full transition-all duration-300 z-0"></div>
+                      </div>
+                    </FormControl>
+                    <FormMessage className="text-sm mt-1 text-red-400" />
+                  </FormItem>
+                )}
+              />
+            </motion.div>
+          </div>
+          
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <motion.div variants={itemAnimation}>
+              <FormField
+                control={form.control}
+                name="phone"
+                render={({ field }) => (
+                  <FormItem>
+                    <FormControl>
+                      <div className="relative group">
+                        <Input
+                          {...field}
+                          type="tel"
+                          className={inputClasses("phone")}
+                          placeholder="Phone or Skype"
+                          onFocus={() => setFocused("phone")}
+                          onBlur={() => setFocused(null)}
+                        />
+                        <div className="absolute bottom-0 left-0 w-0 h-[2px] bg-[#0066FF] group-hover:w-full transition-all duration-300 z-0"></div>
+                      </div>
+                    </FormControl>
+                    <FormMessage className="text-sm mt-1 text-red-400" />
+                  </FormItem>
+                )}
+              />
+            </motion.div>
+            
+            <motion.div variants={itemAnimation}>
+              <FormField
+                control={form.control}
+                name="subject"
+                render={({ field }) => (
+                  <FormItem>
+                    <FormControl>
+                      <div className="relative group">
+                        <Input
+                          {...field}
+                          className={inputClasses("subject")}
+                          placeholder="Subject"
+                          onFocus={() => setFocused("subject")}
+                          onBlur={() => setFocused(null)}
+                        />
+                        <div className="absolute bottom-0 left-0 w-0 h-[2px] bg-[#0066FF] group-hover:w-full transition-all duration-300 z-0"></div>
+                      </div>
+                    </FormControl>
+                    <FormMessage className="text-sm mt-1 text-red-400" />
+                  </FormItem>
+                )}
+              />
+            </motion.div>
+          </div>
+          
+          <motion.div variants={itemAnimation}>
+            <FormField
+              control={form.control}
+              name="message"
+              render={({ field }) => (
+                <FormItem>
+                  <FormControl>
+                    <div className="relative group">
+                      <Textarea
+                        {...field}
+                        className={`${inputClasses("message")} resize-none min-h-[140px]`}
+                        placeholder="Message"
+                        onFocus={() => setFocused("message")}
+                        onBlur={() => setFocused(null)}
+                      />
+                      <div className="absolute bottom-0 left-0 w-0 h-[2px] bg-[#0066FF] group-hover:w-full transition-all duration-300 z-0"></div>
+                    </div>
+                  </FormControl>
+                  <FormMessage className="text-sm mt-1 text-red-400" />
+                </FormItem>
+              )}
+            />
+          </motion.div>
+          
+          <motion.div variants={itemAnimation} className="flex justify-end">
+            <Button 
+              type="submit" 
+              disabled={isSubmitting}
+              className="bg-[#0066FF] hover:bg-[#0055DD] text-white font-medium py-3 px-8 rounded-md flex items-center gap-2 group relative overflow-hidden"
+            >
+              <div className="absolute inset-0 bg-gradient-to-r from-blue-600 to-blue-500 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+              <span className="relative">{isSubmitting ? "Sending..." : "Submit"}</span>
+              <Send className="h-4 w-4 relative transition-transform group-hover:translate-x-1" />
+              <div className="absolute -inset-px rounded-md opacity-0 group-hover:opacity-20 group-active:opacity-30 bg-white transition-opacity"></div>
+              <div className="absolute -z-10 -bottom-1 left-1/2 w-1/2 h-8 blur-xl bg-blue-400 transform -translate-x-1/2 opacity-20 group-hover:opacity-40 transition-opacity"></div>
+            </Button>
+          </motion.div>
+        </motion.form>
+      </Form>
+    </div>
   );
 }
