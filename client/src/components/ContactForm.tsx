@@ -75,7 +75,8 @@ export default function ContactForm() {
     px-4 
     text-white 
     focus:border-[#0066FF] 
-    focus:ring-0 
+    focus:ring-0
+    focus:outline-none
     placeholder:text-[#555]
     transition-all
     duration-300

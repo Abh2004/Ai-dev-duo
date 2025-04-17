@@ -10,4 +10,31 @@
   body {
     @apply font-sans antialiased bg-background text-foreground;
   }
+  
+  input:focus, textarea:focus, button:focus, select:focus {
+    @apply outline-none;
+  }
+}
+
+/* Override for shadcn UI form components */
+.form-input:focus, 
+.form-textarea:focus, 
+.form-select:focus,
+.form-multiselect:focus {
+  outline: none !important;
+  box-shadow: none !important;
+  border-color: #0066FF !important;
+}
+
+/* Override for any white outlines or borders on focus */
+*:focus {
+  outline: none !important;
+  box-shadow: none !important;
+}
+
+/* Specific override for contact form inputs */
+#contact input, 
+#contact textarea {
+  outline: none !important;
+  box-shadow: none !important;
 }
