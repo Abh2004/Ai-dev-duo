@@ -79,13 +79,26 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-4 gap-10 mb-12">
           {/* Company Information */}
           <div className="md:col-span-1">
-            <motion.img 
-              src="/images/ai-devduo-logo-new-dark.svg" 
-              alt="DevDuo" 
-              className="h-10 w-auto mb-4"
+            <motion.div 
+              className="flex items-center mb-4"
               whileHover={{ scale: 1.05 }}
               transition={{ duration: 0.2 }}
-            />
+            >
+              <div className="bg-[#0066FF] w-10 h-10 flex items-center justify-center mr-2 relative" 
+                   style={{clipPath: 'polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%)'}}>
+                <div className="bg-[#030308] w-7 h-7 flex items-center justify-center absolute" 
+                     style={{clipPath: 'polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%)'}}>
+                  <span className="text-white text-lg">⌂</span>
+                </div>
+              </div>
+              <div className="flex flex-col">
+                <div>
+                  <span className="text-white font-bold text-xl">Dev</span>
+                  <span className="text-[#0066FF] font-bold text-xl">Duo</span>
+                </div>
+                <span className="text-[#777] text-xs">Innovative Software Solutions</span>
+              </div>
+            </motion.div>
             
             <p className="text-[#999] text-sm mb-5 max-w-xs">
               We design and develop cutting-edge digital solutions for businesses 

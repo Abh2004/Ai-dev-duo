@@ -67,11 +67,19 @@ export default function Header() {
         {/* Logo */}
         <Link href="/">
           <span className="flex items-center cursor-pointer">
-            <img 
-              src="/images/ai-devduo-logo-new.svg" 
-              alt="DevDuo" 
-              className="h-10 sm:h-12 w-auto hover:filter hover:brightness-110 transition-all duration-300"
-            />
+            <div className="flex items-center">
+              <div className="bg-[#0066FF] w-10 h-10 flex items-center justify-center mr-2 relative" 
+                   style={{clipPath: 'polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%)'}}>
+                <div className="bg-black w-7 h-7 flex items-center justify-center absolute" 
+                     style={{clipPath: 'polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%)'}}>
+                  <span className="text-white text-lg">⌂</span>
+                </div>
+              </div>
+              <div>
+                <span className="text-white font-bold text-xl">Dev</span>
+                <span className="text-[#0066FF] font-bold text-xl">Duo</span>
+              </div>
+            </div>
           </span>
         </Link>
         
