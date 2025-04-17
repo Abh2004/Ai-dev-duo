@@ -17,7 +17,7 @@ function NavigationItem({
     <div className="relative group">
       <Link href={href}>
         <span className={cn(
-          "transition-colors duration-300 font-medium cursor-pointer",
+          "transition-colors duration-300 font-display text-sm uppercase tracking-wider font-medium cursor-pointer",
           active ? "text-[#0066FF]" : "text-white hover:text-[#0066FF]"
         )}>
           {children}
@@ -75,10 +75,13 @@ export default function Header() {
                   <span className="text-white text-lg">⌂</span>
                 </div>
               </div>
-              <div>
-                <span className="text-white font-bold text-xl">Ai </span>
-                <span className="text-white font-bold text-xl">Dev</span>
-                <span className="text-[#0066FF] font-bold text-xl">Duo</span>
+              <div className="flex flex-col">
+                <div>
+                  <span className="text-white font-display font-bold text-xl tracking-tight">Ai</span>
+                  <span className="text-white font-display font-bold text-xl tracking-tight">Dev</span>
+                  <span className="text-[#0066FF] font-display font-bold text-xl tracking-tight">Duo</span>
+                </div>
+                <span className="text-[#777] text-[8px] uppercase tracking-widest">Innovative Solutions</span>
               </div>
             </div>
           </span>
@@ -123,31 +126,31 @@ export default function Header() {
         <div className="px-4 py-3 space-y-3">
           <Link href="/">
             <span className={cn(
-              "block font-medium py-2 cursor-pointer",
+              "block font-display text-sm uppercase tracking-wider font-medium py-2 cursor-pointer",
               location === "/" ? "text-[#0066FF]" : "text-white hover:text-[#0066FF]"
             )}>Home</span>
           </Link>
           <Link href="/services">
             <span className={cn(
-              "block font-medium py-2 cursor-pointer",
+              "block font-display text-sm uppercase tracking-wider font-medium py-2 cursor-pointer",
               location === "/services" ? "text-[#0066FF]" : "text-white hover:text-[#0066FF]"
             )}>Services</span>
           </Link>
           <Link href="/work">
             <span className={cn(
-              "block font-medium py-2 cursor-pointer",
+              "block font-display text-sm uppercase tracking-wider font-medium py-2 cursor-pointer",
               location === "/work" ? "text-[#0066FF]" : "text-white hover:text-[#0066FF]"
             )}>Work</span>
           </Link>
           <Link href="/company">
             <span className={cn(
-              "block font-medium py-2 cursor-pointer",
+              "block font-display text-sm uppercase tracking-wider font-medium py-2 cursor-pointer",
               location === "/company" ? "text-[#0066FF]" : "text-white hover:text-[#0066FF]"
             )}>Company</span>
           </Link>
           <Link href="/contact">
             <span className={cn(
-              "block font-medium py-2 cursor-pointer",
+              "block font-display text-sm uppercase tracking-wider font-medium py-2 cursor-pointer",
               location === "/contact" ? "text-[#0066FF]" : "text-white hover:text-[#0066FF]"
             )}>Contact</span>
           </Link>
