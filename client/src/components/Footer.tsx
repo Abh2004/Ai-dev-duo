@@ -93,11 +93,11 @@ export default function Footer() {
               </div>
               <div className="flex flex-col">
                 <div>
-                  <span className="text-white font-bold text-xl">Ai </span>
-                  <span className="text-white font-bold text-xl">Dev</span>
-                  <span className="text-[#0066FF] font-bold text-xl">Duo</span>
+                  <span className="text-white font-display font-bold text-xl tracking-tight">Ai </span>
+                  <span className="text-white font-display font-bold text-xl tracking-tight">Dev</span>
+                  <span className="text-[#0066FF] font-display font-bold text-xl tracking-tight">Duo</span>
                 </div>
-                <span className="text-[#777] text-xs">Innovative Software Solutions</span>
+                <span className="text-[#777] text-[8px] uppercase tracking-widest">Innovative Solutions</span>
               </div>
             </motion.div>
             
@@ -139,7 +139,7 @@ export default function Footer() {
           
           {/* Quick Links - Mobile, Web, Tech, Company */}
           <div>
-            <h4 className="text-white text-base font-medium mb-4 relative">
+            <h4 className="text-white text-base font-display font-medium mb-4 relative uppercase tracking-wider">
               Mobile
               <span className="absolute -bottom-1 left-0 w-8 h-[2px] bg-[#0066FF]"></span>
             </h4>
@@ -153,7 +153,7 @@ export default function Footer() {
           </div>
           
           <div>
-            <h4 className="text-white text-base font-medium mb-4 relative">
+            <h4 className="text-white text-base font-display font-medium mb-4 relative uppercase tracking-wider">
               Web
               <span className="absolute -bottom-1 left-0 w-8 h-[2px] bg-[#0066FF]"></span>
             </h4>
@@ -167,7 +167,7 @@ export default function Footer() {
           </div>
           
           <div>
-            <h4 className="text-white text-base font-medium mb-4 relative">
+            <h4 className="text-white text-base font-display font-medium mb-4 relative uppercase tracking-wider">
               Company
               <span className="absolute -bottom-1 left-0 w-8 h-[2px] bg-[#0066FF]"></span>
             </h4>
@@ -191,7 +191,7 @@ export default function Footer() {
               </svg>
             </div>
             <div>
-              <h4 className="text-white text-sm font-medium">Office Location</h4>
+              <h4 className="text-white text-sm font-display font-medium uppercase tracking-wider">Office Location</h4>
               <p className="text-[#888] text-xs">Sector 48, Gurgaon, Haryana 122001</p>
             </div>
           </div>
@@ -204,7 +204,7 @@ export default function Footer() {
               </svg>
             </div>
             <div>
-              <h4 className="text-white text-sm font-medium">Email Us</h4>
+              <h4 className="text-white text-sm font-display font-medium uppercase tracking-wider">Email Us</h4>
               <p className="text-[#888] text-xs">info@aidevduo.com</p>
             </div>
           </div>
@@ -216,7 +216,7 @@ export default function Footer() {
               </svg>
             </div>
             <div>
-              <h4 className="text-white text-sm font-medium">Call Us</h4>
+              <h4 className="text-white text-sm font-display font-medium uppercase tracking-wider">Call Us</h4>
               <p className="text-[#888] text-xs">+91 1234567890</p>
             </div>
           </div>
