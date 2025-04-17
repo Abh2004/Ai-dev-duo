@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="200" height="60" viewBox="0 0 200 60" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background elements - cosmic dots -->
+  <g class="background">
+    <circle cx="20" cy="15" r="1" fill="#0066FF" opacity="0.6" />
+    <circle cx="30" cy="10" r="0.8" fill="#0066FF" opacity="0.5" />
+    <circle cx="15" cy="25" r="0.6" fill="#0066FF" opacity="0.7" />
+    <circle cx="35" cy="20" r="0.7" fill="#0066FF" opacity="0.6" />
+    <circle cx="25" cy="30" r="0.5" fill="#0066FF" opacity="0.8" />
+    <circle cx="40" cy="25" r="0.8" fill="#0066FF" opacity="0.4" />
+    <circle cx="10" cy="15" r="0.6" fill="#0066FF" opacity="0.5" />
+  </g>
+
+  <!-- Main Logo Shape - Hexagon with glow -->
+  <g class="logo-container" transform="translate(10, 5)">
+    <!-- Outer glow -->
+    <path d="M25,2 L45,15 L45,41 L25,54 L5,41 L5,15 L25,2 Z" 
+          fill="none" 
+          stroke="#0055DD" 
+          stroke-width="1" 
+          opacity="0.3" 
+          filter="blur(5px)" />
+    
+    <!-- Main hexagon -->
+    <path d="M25,5 L42,16 L42,38 L25,49 L8,38 L8,16 L25,5 Z" 
+          fill="#0066FF" />
+    
+    <!-- Inner highlight -->
+    <path d="M25,8 L39,17 L39,35 L25,44 L11,35 L11,17 L25,8 Z" 
+          fill="#0080FF" />
+    
+    <!-- Inner core -->
+    <path d="M25,12 L35,19 L35,33 L25,40 L15,33 L15,19 L25,12 Z" 
+          fill="#0099FF" />
+    
+    <!-- Center circle -->
+    <circle cx="25" cy="26" r="12" fill="#000" opacity="0.7" />
+    
+    <!-- AI connectivity lines -->
+    <g stroke="#00DDFF" stroke-width="0.75" opacity="0.8">
+      <line x1="22" y1="20" x2="28" y2="32" />
+      <line x1="28" y1="20" x2="22" y2="32" />
+      <line x1="19" y1="26" x2="31" y2="26" />
+    </g>
+
+    <!-- The letters "ai" -->
+    <text x="20" y="31" font-family="Arial, sans-serif" font-weight="bold" font-size="14" fill="white">ai</text>
+  </g>
+
+  <!-- Text "DevDuo" -->
+  <text x="60" y="36" font-family="Arial, sans-serif" font-weight="bold" font-size="24" fill="white">DevDuo</text>
+  
+  <!-- Slogan -->
+  <text x="62" y="48" font-family="Arial, sans-serif" font-size="8" fill="#AAAAAA">Innovative Software Solutions</text>
+  
+  <!-- Decorative elements -->
+  <g class="decorative-elements">
+    <!-- Accent line -->
+    <line x1="60" y1="38" x2="140" y2="38" stroke="#0066FF" stroke-width="0.5" opacity="0.7" />
+    
+    <!-- Orbit rings -->
+    <g transform="translate(25, 30)">
+      <circle cx="0" cy="0" r="45" fill="none" stroke="#0066FF" stroke-width="0.2" opacity="0.15" />
+      <circle cx="0" cy="0" r="52" fill="none" stroke="#0066FF" stroke-width="0.2" opacity="0.1" />
+    </g>
+  </g>
+
+  <!-- Animation for stars - to be handled with CSS in implementation -->
+</svg>

@@ -167,11 +167,12 @@ export default function Footer() {
         </div>
         
         <div className="flex flex-col md:flex-row items-center justify-between pt-8">
-          <div className="flex items-center space-x-2 mb-4 md:mb-0">
-            <div className="h-8 w-8 bg-transparent border border-white flex items-center justify-center mr-2">
-              <span className="text-white font-bold text-xs">A</span>
-            </div>
-            <span className="text-white font-medium text-sm">Ai DevDuo</span>
+          <div className="flex items-center mb-4 md:mb-0">
+            <img 
+              src="/images/ai-devduo-logo.svg" 
+              alt="Ai DevDuo" 
+              className="h-8 w-auto"
+            />
           </div>
           
           <p className="text-[#777] text-sm mb-4 md:mb-0">

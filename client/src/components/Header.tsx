@@ -66,11 +66,12 @@ export default function Header() {
       <div className="container mx-auto px-4 flex justify-between items-center">
         {/* Logo */}
         <Link href="/">
-          <span className="flex items-center space-x-2 cursor-pointer">
-            <div className="w-10 h-10 bg-[#0066FF] rounded flex items-center justify-center shadow-[0_0_15px_rgba(0,102,255,0.5),0_0_30px_rgba(0,102,255,0.3)]">
-              <span className="text-white font-bold text-xl">A</span>
-            </div>
-            <span className="text-white font-bold text-xl">Ai DevDuo</span>
+          <span className="flex items-center cursor-pointer">
+            <img 
+              src="/images/ai-devduo-logo.svg" 
+              alt="Ai DevDuo" 
+              className="h-10 sm:h-12 w-auto hover:filter hover:brightness-110 transition-all duration-300"
+            />
           </span>
         </Link>
         
