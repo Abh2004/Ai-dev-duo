@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
+import { cn } from "@/lib/utils";
 import { 
   SiReact, SiAngular, SiVuedotjs, SiNextdotjs, SiDjango, 
   SiTypescript, SiTailwindcss, SiFastapi, SiFlask, SiPython, 
@@ -7,13 +8,24 @@ import {
   SiPostgresql, SiMysql, SiElasticsearch, SiRedis, SiSupabase,
   SiFirebase, SiDocker, SiKubernetes, SiAmazon, SiGooglecloud,
   SiDigitalocean, SiVercel, SiNetlify, SiNginx, SiCloudflare,
-  SiGithubactions, SiJenkins, SiTerraform, SiAnsible, SiVite
+  SiGithubactions, SiJenkins, SiTerraform, SiAnsible, SiVite,
+  SiLaravel, SiDotnet, SiApachekafka, SiRabbitmq, 
+  SiRust, SiSvelte, SiFlutter, SiKotlin, SiSwift, SiWebrtc, SiApache,
+  SiPhp, SiSpring, SiNestjs, SiAdonisjs, SiJupyter, SiTensorflow,
+  SiPandas, SiScikitlearn, SiOpenai, SiCss3, SiSass, SiJest, SiCypress,
+  SiRedux, SiWebpack, SiHasura, SiNuxtdotjs,
+  SiApple, SiAndroid, SiIonic, SiStripe, SiAuth0, 
+  SiSqlite, SiAzure, SiJava, SiMariadb, SiJavascript
 } from "react-icons/si";
+
 import { 
-  FaReact, FaAws, FaGitAlt, FaJava, FaGithub, FaJs, FaDatabase 
+  FaReact, FaAws, FaGitAlt, FaJava as FaJavaIcon, FaGithub, FaJs, 
+  FaDatabase, FaNodeJs, FaBrain, FaCloudUploadAlt,
+  FaTools, FaNetworkWired, FaServer, FaMobile
 } from "react-icons/fa";
-import { TbBrandThreejs } from "react-icons/tb";
-import { cn } from "@/lib/utils";
+
+import { GrMysql } from "react-icons/gr";
+import { TbBrandThreejs, TbApi, TbBrandPython } from "react-icons/tb";
 
 type TechCategory = "web" | "mobile" | "nextgen";
 
@@ -21,25 +33,6 @@ interface TechItem {
   icon: React.ReactNode;
   name: string;
 }
-
-// Import more icons
-import { 
-  SiVuejs, SiLaravel, SiDotnet, SiApachekafka, SiRabbitmq, SiMicrosoft,
-  SiRust, SiSvelte, SiFlutter, SiKotlin, SiSwift, SiWebrtc, SiApache,
-  SiPhp, SiJava, SiSpring, SiNestjs, SiAdonisjs, SiJupyter, SiTensorflow,
-  SiPandas, SiScikitlearn, SiOpenai, SiCss3, SiSass, SiJest, SiCypress,
-  SiRedux, SiWebpack, SiHasura, SiElasticsearch, SiNuxtdotjs, SiAngular,
-  SiApple, SiAndroid, SiIonic, SiStripe, SiAuthy, SiJwt, SiXamarin,
-  SiSqlite, SiAzuredevops, SiJenkins, SiProxy, SiRails, SiMariadb
-} from "react-icons/si";
-
-import { 
-  FaDatabase, FaJava, FaNodeJs, FaGithub, FaBrain, FaCloudUploadAlt,
-  FaTools, FaNetworkWired, FaServer, FaMobile
-} from "react-icons/fa";
-
-import { GrMysql } from "react-icons/gr";
-import { TbApi, TbBrandPython } from "react-icons/tb";
 
 // Define tech stacks for each category with enhanced modern tech
 const techStacks: Record<TechCategory, TechItem[]> = {

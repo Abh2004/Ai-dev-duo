@@ -1,0 +1,21 @@
+<svg width="600" height="800" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 800">
+  <rect width="600" height="800" fill="#1b1b1b" />
+  <rect x="100" y="150" width="400" height="250" rx="10" fill="#2d2d2d" />
+  <rect x="120" y="170" width="360" height="210" rx="5" fill="#3e3e3e" />
+  <circle cx="300" cy="275" r="80" fill="#4d4d4d" />
+  <path d="M260 265 L335 265 M260 285 L335 285" stroke="#00e5ff" stroke-width="4" />
+  <path d="M290 235 L290 315 M310 235 L310 315" stroke="#ff3e3e" stroke-width="4" />
+  <rect x="150" y="430" width="300" height="40" rx="5" fill="#3e3e3e" />
+  <rect x="150" y="490" width="300" height="40" rx="5" fill="#3e3e3e" />
+  <rect x="150" y="550" width="300" height="40" rx="5" fill="#3e3e3e" />
+  <circle cx="170" cy="450" r="10" fill="#00e5ff" />
+  <circle cx="200" cy="450" r="10" fill="#ff3e3e" />
+  <circle cx="230" cy="450" r="10" fill="#00e5ff" />
+  <circle cx="170" cy="510" r="10" fill="#ff3e3e" />
+  <circle cx="200" cy="510" r="10" fill="#00e5ff" />
+  <circle cx="230" cy="510" r="10" fill="#ff3e3e" />
+  <circle cx="170" cy="570" r="10" fill="#00e5ff" />
+  <circle cx="200" cy="570" r="10" fill="#ff3e3e" />
+  <circle cx="230" cy="570" r="10" fill="#00e5ff" />
+  <text x="220" y="640" font-family="Arial" font-size="24" fill="#ffffff">ESPORTS HUB</text>
+</svg>

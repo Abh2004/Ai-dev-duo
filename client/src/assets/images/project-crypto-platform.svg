@@ -1,0 +1,23 @@
+<svg width="600" height="800" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 800">
+  <rect width="600" height="800" fill="#562e00" />
+  <rect x="100" y="150" width="400" height="300" rx="10" fill="#6e3b00" />
+  <rect x="120" y="170" width="360" height="100" rx="5" fill="#8c4c00" />
+  <rect x="120" y="290" width="170" height="140" rx="5" fill="#8c4c00" />
+  <rect x="310" y="290" width="170" height="140" rx="5" fill="#8c4c00" />
+  <circle cx="170" cy="220" r="30" fill="#ff8c00" />
+  <circle cx="250" cy="220" r="30" fill="#ffb700" />
+  <circle cx="330" cy="220" r="30" fill="#ff8c00" />
+  <circle cx="410" cy="220" r="30" fill="#ffb700" />
+  <path d="M150 320 L260 320 M150 350 L260 350 M150 380 L260 380" stroke="#ffb700" stroke-width="2" />
+  <path d="M330 320 L440 320 M330 350 L440 350 M330 380 L440 380" stroke="#ffb700" stroke-width="2" />
+  <rect x="150" y="500" width="300" height="40" rx="5" fill="#8c4c00" />
+  <rect x="150" y="560" width="300" height="40" rx="5" fill="#8c4c00" />
+  <rect x="150" y="620" width="300" height="40" rx="5" fill="#8c4c00" />
+  <text x="170" y="525" font-family="Arial" font-size="16" fill="#ffffff">BTC: 0.035</text>
+  <text x="170" y="585" font-family="Arial" font-size="16" fill="#ffffff">ETH: 1.25</text>
+  <text x="170" y="645" font-family="Arial" font-size="16" fill="#ffffff">DOGE: 1250.00</text>
+  <path d="M400 515 L425 525 L400 535" stroke="#ffb700" stroke-width="2" fill="none" />
+  <path d="M400 575 L425 585 L400 595" stroke="#ffb700" stroke-width="2" fill="none" />
+  <path d="M400 635 L425 645 L400 655" stroke="#ffb700" stroke-width="2" fill="none" />
+  <text x="150" y="100" font-family="Arial" font-size="24" fill="#ffffff">CRYPTOCURRENCY PLATFORM</text>
+</svg>

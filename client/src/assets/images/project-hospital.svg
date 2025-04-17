@@ -1,0 +1,19 @@
+<svg width="600" height="800" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 800">
+  <rect width="600" height="800" fill="#6b0a0a" />
+  <rect x="200" y="150" width="200" height="300" fill="#8c0e0e" />
+  <rect x="230" y="180" width="140" height="80" fill="#c51c1c" />
+  <rect x="230" y="280" width="140" height="80" fill="#c51c1c" />
+  <rect x="230" y="380" width="140" height="40" fill="#c51c1c" />
+  <path d="M290 230 L310 230 L310 210 L290 210 Z" fill="#ffffff" />
+  <path d="M290 330 L310 330 L310 310 L290 310 Z" fill="#ffffff" />
+  <rect x="150" y="450" width="300" height="40" rx="5" fill="#8c0e0e" />
+  <rect x="150" y="510" width="300" height="40" rx="5" fill="#8c0e0e" />
+  <rect x="150" y="570" width="300" height="40" rx="5" fill="#8c0e0e" />
+  <circle cx="180" cy="470" r="15" fill="#c51c1c" />
+  <circle cx="180" cy="530" r="15" fill="#c51c1c" />
+  <circle cx="180" cy="590" r="15" fill="#c51c1c" />
+  <path d="M175 465 L185 475 M175 475 L185 465" stroke="#ffffff" stroke-width="2" />
+  <path d="M175 525 L185 535 M175 535 L185 525" stroke="#ffffff" stroke-width="2" />
+  <path d="M175 585 L185 595 M175 595 L185 585" stroke="#ffffff" stroke-width="2" />
+  <text x="180" y="650" font-family="Arial" font-size="24" fill="#ffffff">HEALTHCARE SOLUTION</text>
+</svg>

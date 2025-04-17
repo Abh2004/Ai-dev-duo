@@ -1,0 +1,15 @@
+<svg width="600" height="800" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 800">
+  <rect width="600" height="800" fill="#0e2c57" />
+  <rect x="150" y="200" width="300" height="200" rx="10" fill="#1a3d6b" />
+  <rect x="200" y="250" width="200" height="100" rx="5" fill="#265494" />
+  <rect x="220" y="270" width="160" height="60" rx="3" fill="#3771c8" />
+  <path d="M250 300 L350 300" stroke="#ffffff" stroke-width="2" />
+  <path d="M250 320 L350 320" stroke="#ffffff" stroke-width="2" />
+  <rect x="250" y="400" width="100" height="100" fill="#1a3d6b" />
+  <path d="M280 415 L290 435 L310 435 L295 450 L300 470 L280 460 L260 470 L265 450 L250 435 L270 435 Z" fill="#3771c8" />
+  <rect x="200" y="550" width="200" height="40" rx="20" fill="#265494" />
+  <text x="230" y="575" font-family="Arial" font-size="16" fill="#ffffff">SCAN QR CODE</text>
+  <path d="M200 450 L150 500 L200 550" stroke="#3771c8" stroke-width="2" fill="none" />
+  <path d="M400 450 L450 500 L400 550" stroke="#3771c8" stroke-width="2" fill="none" />
+  <text x="210" y="150" font-family="Arial" font-size="24" fill="#ffffff">DIGITAL WALLET</text>
+</svg>
