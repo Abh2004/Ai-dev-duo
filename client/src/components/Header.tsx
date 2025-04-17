@@ -61,7 +61,7 @@ export default function Header() {
   return (
     <header className={cn(
       "fixed w-full bg-black/90 backdrop-blur-sm z-50 transition-all duration-300",
-      scrolled ? "py-2" : "py-4"
+      scrolled ? "py-3" : "py-5"
     )}>
       <div className="container mx-auto px-4 flex justify-between items-center">
         {/* Logo */}
@@ -70,7 +70,7 @@ export default function Header() {
             <img 
               src="/images/ai-devduo-logo.svg" 
               alt="Ai DevDuo" 
-              className="h-10 sm:h-12 w-auto hover:filter hover:brightness-110 transition-all duration-300"
+              className="h-12 sm:h-16 w-auto hover:filter hover:brightness-110 transition-all duration-300"
             />
           </span>
         </Link>

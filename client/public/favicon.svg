@@ -1,49 +1,108 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <svg width="48" height="48" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
-  <!-- Background elements - cosmic dots -->
+  <!-- Subtle glowing background -->
+  <radialGradient id="bg-glow" cx="24" cy="24" r="30" gradientUnits="userSpaceOnUse">
+    <stop offset="0%" stop-color="#0066FF" stop-opacity="0.15" />
+    <stop offset="100%" stop-color="#000000" stop-opacity="0" />
+  </radialGradient>
+  <rect x="0" y="0" width="48" height="48" fill="url(#bg-glow)" />
+
+  <!-- Background elements - cosmic dots with animation -->
   <g class="background">
-    <circle cx="10" cy="10" r="0.5" fill="#0066FF" opacity="0.6" />
-    <circle cx="15" cy="5" r="0.4" fill="#0066FF" opacity="0.5" />
-    <circle cx="7" cy="15" r="0.3" fill="#0066FF" opacity="0.7" />
-    <circle cx="40" cy="10" r="0.4" fill="#0066FF" opacity="0.6" />
-    <circle cx="35" cy="35" r="0.3" fill="#0066FF" opacity="0.8" />
-    <circle cx="20" cy="40" r="0.4" fill="#0066FF" opacity="0.4" />
-    <circle cx="5" cy="30" r="0.3" fill="#0066FF" opacity="0.5" />
+    <circle cx="10" cy="10" r="0.5" fill="#0080FF" opacity="0.6">
+      <animate attributeName="opacity" values="0.6;0.9;0.6" dur="3s" repeatCount="indefinite" />
+    </circle>
+    <circle cx="15" cy="5" r="0.4" fill="#0080FF" opacity="0.5">
+      <animate attributeName="opacity" values="0.5;0.8;0.5" dur="4s" repeatCount="indefinite" />
+    </circle>
+    <circle cx="35" cy="15" r="0.4" fill="#0080FF" opacity="0.6">
+      <animate attributeName="opacity" values="0.6;0.8;0.6" dur="3.5s" repeatCount="indefinite" />
+    </circle>
+    <circle cx="40" cy="30" r="0.3" fill="#00A0FF" opacity="0.8">
+      <animate attributeName="opacity" values="0.8;1;0.8" dur="2.5s" repeatCount="indefinite" />
+    </circle>
+    <circle cx="20" cy="40" r="0.4" fill="#0080FF" opacity="0.4">
+      <animate attributeName="opacity" values="0.4;0.7;0.4" dur="4.5s" repeatCount="indefinite" />
+    </circle>
+    <circle cx="5" cy="30" r="0.3" fill="#0080FF" opacity="0.5">
+      <animate attributeName="opacity" values="0.5;0.8;0.5" dur="3.8s" repeatCount="indefinite" />
+    </circle>
   </g>
+
+  <!-- Gradient definitions -->
+  <defs>
+    <linearGradient id="hexGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0066FF" />
+      <stop offset="100%" stop-color="#0099FF" />
+    </linearGradient>
+    <linearGradient id="innerGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0080FF" />
+      <stop offset="100%" stop-color="#00B0FF" />
+    </linearGradient>
+    <linearGradient id="coreGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0099FF" />
+      <stop offset="100%" stop-color="#00C0FF" />
+    </linearGradient>
+    
+    <filter id="glow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="1.5" result="blur" />
+      <feComposite in="SourceGraphic" in2="blur" operator="over" />
+    </filter>
+  </defs>
 
   <!-- Main Logo Shape - Hexagon with glow -->
   <g class="logo-container" transform="translate(0, 0)">
     <!-- Outer glow -->
     <path d="M24,4 L42,14 L42,34 L24,44 L6,34 L6,14 L24,4 Z" 
           fill="none" 
-          stroke="#0055DD" 
-          stroke-width="1" 
-          opacity="0.3" 
-          filter="blur(3px)" />
+          stroke="#0099FF" 
+          stroke-width="0.5" 
+          opacity="0.6" 
+          filter="url(#glow)" />
     
     <!-- Main hexagon -->
     <path d="M24,6 L40,15 L40,33 L24,42 L8,33 L8,15 L24,6 Z" 
-          fill="#0066FF" />
+          fill="url(#hexGradient)">
+      <animate attributeName="opacity" values="1;0.9;1" dur="3s" repeatCount="indefinite" />
+    </path>
     
     <!-- Inner highlight -->
     <path d="M24,8 L38,16 L38,32 L24,40 L10,32 L10,16 L24,8 Z" 
-          fill="#0080FF" />
+          fill="url(#innerGradient)">
+      <animate attributeName="opacity" values="1;0.92;1" dur="4s" repeatCount="indefinite" />
+    </path>
     
     <!-- Inner core -->
     <path d="M24,11 L34,17 L34,31 L24,37 L14,31 L14,17 L24,11 Z" 
-          fill="#0099FF" />
+          fill="url(#coreGradient)">
+      <animate attributeName="opacity" values="1;0.94;1" dur="5s" repeatCount="indefinite" />
+    </path>
     
     <!-- Center circle -->
-    <circle cx="24" cy="24" r="10" fill="#000" opacity="0.7" />
+    <circle cx="24" cy="24" r="10" fill="#000" opacity="0.85" />
     
-    <!-- AI connectivity lines -->
-    <g stroke="#00DDFF" stroke-width="0.75" opacity="0.8">
+    <!-- Digital circuit pattern -->
+    <g stroke="#00EEFF" stroke-width="0.5" opacity="0.8">
+      <path d="M18,24 C18,20 20,18 24,18 C28,18 30,20 30,24 C30,28 28,30 24,30 C20,30 18,28 18,24" 
+            fill="none" 
+            stroke-dasharray="1,1" />
       <line x1="21" y1="19" x2="27" y2="29" />
       <line x1="27" y1="19" x2="21" y2="29" />
       <line x1="18" y1="24" x2="30" y2="24" />
+      <circle cx="21" cy="19" r="0.8" fill="#00EEFF" />
+      <circle cx="27" cy="19" r="0.8" fill="#00EEFF" />
+      <circle cx="21" cy="29" r="0.8" fill="#00EEFF" />
+      <circle cx="27" cy="29" r="0.8" fill="#00EEFF" />
+      <circle cx="18" cy="24" r="0.8" fill="#00EEFF" />
+      <circle cx="30" cy="24" r="0.8" fill="#00EEFF" />
     </g>
 
-    <!-- The letters "ai" -->
-    <text x="18.5" y="28" font-family="Arial, sans-serif" font-weight="bold" font-size="10" fill="white">ai</text>
+    <!-- The letters "ai" with glow -->
+    <text x="18.5" y="28" 
+          font-family="Arial, sans-serif" 
+          font-weight="bold" 
+          font-size="10" 
+          fill="white"
+          filter="url(#glow)">ai</text>
   </g>
 </svg>

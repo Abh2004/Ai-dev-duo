@@ -171,7 +171,7 @@ export default function Footer() {
             <img 
               src="/images/ai-devduo-logo.svg" 
               alt="Ai DevDuo" 
-              className="h-8 w-auto"
+              className="h-10 w-auto"
             />
           </div>
           
