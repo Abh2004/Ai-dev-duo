@@ -336,38 +336,101 @@ export default function ServiceDetails() {
     <section className="py-20 bg-black">
       <div className="container mx-auto px-4">
         <div className="flex flex-col lg:flex-row gap-12">
-          {/* Left side - Service Navigation */}
+          {/* Left side - Service Navigation - Exactly matching the provided image */}
           <div className="lg:w-1/3">
-            <div className="relative">
-              {services.map((service, index) => (
-                <div key={service.id} className="flex items-center mb-8 relative">
-                  {/* Vertical line connecting dots */}
-                  {index < services.length - 1 && (
-                    <div className="absolute h-8 w-px bg-[#333] left-2 top-4"></div>
-                  )}
-                  
-                  {/* Dot indicator */}
-                  <div 
-                    className={cn(
-                      "w-4 h-4 rounded-full border border-[#333] z-10 flex-shrink-0",
-                      activeService === service.id ? "bg-[#0066FF] border-[#0066FF]" : "bg-transparent"
+            <div className="relative pl-2">
+              {/* Vertical connecting line with glowing effect */}
+              <div className="absolute h-full w-[1px] bg-[#222] left-[7px] top-0 z-0">
+                {/* Glowing blue light that moves along the line */}
+                <div 
+                  className="absolute w-[3px] h-[40px] bg-[#0066FF] blur-[4px] left-[-1px] animate-pulse opacity-50"
+                  style={{
+                    animation: "moveLight 8s infinite",
+                    boxShadow: "0 0 8px 2px rgba(0, 102, 255, 0.3)"
+                  }}
+                ></div>
+
+                {/* Small animated sparkles along the line */}
+                <div 
+                  className="absolute w-[3px] h-[3px] bg-[#0099FF] rounded-full blur-[2px] left-[-1px] top-[20%]"
+                  style={{
+                    animation: "sparkle 1.5s infinite",
+                    boxShadow: "0 0 4px 1px rgba(0, 120, 255, 0.6)"
+                  }}
+                ></div>
+                <div 
+                  className="absolute w-[3px] h-[3px] bg-[#0099FF] rounded-full blur-[2px] left-[-1px] top-[40%]" 
+                  style={{
+                    animation: "sparkle 2s infinite 0.5s",
+                    boxShadow: "0 0 4px 1px rgba(0, 120, 255, 0.6)"
+                  }}
+                ></div>
+                <div 
+                  className="absolute w-[3px] h-[3px] bg-[#0099FF] rounded-full blur-[2px] left-[-1px] top-[60%]"
+                  style={{
+                    animation: "sparkle 2.5s infinite 1s",
+                    boxShadow: "0 0 4px 1px rgba(0, 120, 255, 0.6)"
+                  }}
+                ></div>
+                <div 
+                  className="absolute w-[3px] h-[3px] bg-[#0099FF] rounded-full blur-[2px] left-[-1px] top-[80%]"
+                  style={{
+                    animation: "sparkle 2s infinite 1.5s",
+                    boxShadow: "0 0 4px 1px rgba(0, 120, 255, 0.6)"
+                  }}
+                ></div>
+              </div>
+
+              {services.map((service, index) => {
+                const isActive = activeService === service.id;
+                
+                return (
+                  <div key={service.id} className="flex items-center mb-8 relative">
+                    {/* Connecting line between dots */}
+                    {index < services.length - 1 && (
+                      <div className="absolute h-8 w-[1px] bg-[#222] left-[7px] top-[14px]"></div>
                     )}
-                  ></div>
-                  
-                  {/* Service name button */}
-                  <button
-                    className={cn(
-                      "ml-4 text-left transition-colors duration-300",
-                      activeService === service.id ? "text-[#0066FF]" : "text-[#777] hover:text-white"
-                    )}
-                    onClick={() => setActiveService(service.id)}
-                  >
-                    {service.name}
-                  </button>
-                </div>
-              ))}
+                    
+                    {/* Dot indicator */}
+                    <div className="relative z-10">
+                      <div 
+                        className={cn(
+                          "w-[14px] h-[14px] rounded-full flex-shrink-0 transition-colors duration-300",
+                          isActive 
+                            ? "bg-[#0066FF]" 
+                            : "border-[1.5px] border-[#333] bg-transparent"
+                        )}
+                      ></div>
+                      
+                      {/* Glow effect for active dot */}
+                      {isActive && (
+                        <div 
+                          className="absolute w-[20px] h-[20px] rounded-full top-[-3px] left-[-3px] z-[-1]"
+                          style={{
+                            background: "radial-gradient(circle, rgba(0,102,255,0.3) 0%, rgba(0,102,255,0) 70%)",
+                            boxShadow: "0 0 10px 2px rgba(0, 102, 255, 0.4)"
+                          }}
+                        ></div>
+                      )}
+                    </div>
+                    
+                    {/* Service name */}
+                    <button
+                      className={cn(
+                        "ml-5 text-left transition-colors duration-300",
+                        isActive ? "text-[#0066FF]" : "text-[#777] hover:text-white"
+                      )}
+                      onClick={() => setActiveService(service.id)}
+                    >
+                      {service.name}
+                    </button>
+                  </div>
+                );
+              })}
             </div>
           </div>
+
+
           
           {/* Right side - Service Content */}
           <div className="lg:w-2/3">
@@ -395,19 +458,56 @@ export default function ServiceDetails() {
                 {activeContent.description}
               </p>
               
-              {/* Feature grid */}
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-8">
+              {/* Feature grid - enhanced with premium styling */}
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
                 {activeContent.features.map((feature, index) => (
-                  <div key={index} className="bg-[#111] p-4 rounded">
-                    <p className="text-white">{feature}</p>
+                  <div 
+                    key={index} 
+                    className="bg-[#111] p-5 rounded border border-[#222] hover:border-[#333] transition-all duration-300 relative group"
+                    style={{
+                      boxShadow: "0 4px 12px rgba(0, 0, 0, 0.2)"
+                    }}
+                  >
+                    {/* Blue accent corner */}
+                    <div className="absolute top-0 left-0 w-[3px] h-[30px] bg-[#0066FF] rounded-tl"></div>
+                    <div className="absolute top-0 left-0 w-[30px] h-[3px] bg-[#0066FF] rounded-tl"></div>
+                    
+                    {/* Subtle glow on hover */}
+                    <div 
+                      className="absolute inset-0 opacity-0 group-hover:opacity-20 transition-opacity duration-500 rounded"
+                      style={{
+                        background: "radial-gradient(circle at 50% 0%, rgba(0, 102, 255, 0.3) 0%, transparent 70%)"
+                      }}
+                    ></div>
+                    
+                    <p className="text-white text-lg pl-2">{feature}</p>
                   </div>
                 ))}
               </div>
               
-              {/* Know more button */}
-              <button className="text-[#0066FF] flex items-center hover:underline mt-4">
-                Know more
-                <ArrowRight className="ml-2 h-4 w-4" />
+              {/* Premium Know more button */}
+              <button 
+                className="flex items-center py-2.5 px-5 mt-6 rounded-md relative overflow-hidden group border border-[#0066FF] bg-transparent"
+                style={{
+                  boxShadow: "0 0 15px rgba(0, 102, 255, 0.15)"
+                }}
+              >
+                {/* Background glow effect that appears on hover */}
+                <div 
+                  className="absolute inset-0 opacity-0 group-hover:opacity-20 transition-all duration-300"
+                  style={{
+                    background: "linear-gradient(45deg, rgba(0, 102, 255, 0.5) 0%, rgba(0, 102, 255, 0.1) 100%)"
+                  }}
+                ></div>
+                
+                {/* Button text with icon */}
+                <span className="text-[#0066FF] font-medium mr-2 z-10 group-hover:text-white transition-colors duration-300">
+                  Know more
+                </span>
+                <ArrowRight className="h-4 w-4 text-[#0066FF] group-hover:text-white transition-colors duration-300 z-10 group-hover:translate-x-1 transition-transform" />
+                
+                {/* Bottom line animation */}
+                <div className="absolute bottom-0 left-0 h-[2px] w-0 bg-[#0066FF] group-hover:w-full transition-all duration-300"></div>
               </button>
             </motion.div>
           </div>
