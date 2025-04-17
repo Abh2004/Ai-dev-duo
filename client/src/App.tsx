@@ -10,6 +10,7 @@ import Contact from "@/pages/Contact";
 import NotFound from "@/pages/not-found";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import ScrollToTop from "@/components/ScrollToTop";
 
 function Router() {
   return (
@@ -28,7 +29,8 @@ function Router() {
 function App() {
   return (
     <QueryClientProvider client={queryClient}>
-      <div className="flex flex-col min-h-screen bg-black text-white font-['Poppins']">
+      <ScrollToTop />
+      <div className="flex flex-col min-h-screen bg-black text-white">
         <Header />
         <Router />
         <Footer />
