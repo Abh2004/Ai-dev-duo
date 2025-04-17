@@ -3,6 +3,7 @@ import CompanyIntro from "@/components/CompanyIntro";
 import WhatWeStandFor from "@/components/WhatWeStandFor";
 import OurProcess from "@/components/OurProcess";
 import ThemeCube from "@/components/ThemeCube";
+import OurTeam from "@/components/OurTeam";
 import { motion, AnimatePresence } from "framer-motion";
 import { useState, useRef } from "react";
 
@@ -192,6 +193,9 @@ export default function CompanyPage() {
       
       {/* Our Process - kept as is */}
       <OurProcess />
+      
+      {/* Our Team Section */}
+      <OurTeam />
       
       {/* About Section - Partners section removed */}
       <div className="container mx-auto px-4 py-16 relative z-10">
