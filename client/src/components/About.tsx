@@ -17,17 +17,17 @@ export default function About() {
     <section id="company" className="py-20 relative overflow-hidden">
       <ThemeCube className="-top-10 left-[15%]" opacity={10} />
       <ThemeCube className="bottom-20 right-[5%]" opacity={20} />
-      
+
       {/* 3D Element */}
       <div className="absolute left-[60%] top-40 w-64 h-64 opacity-20 hidden lg:block">
-        <Sphere3D 
-          radius={1.5} 
-          color="#0066FF" 
-          wireframe={true} 
+        <Sphere3D
+          radius={1.5}
+          color="#0066FF"
+          wireframe={true}
           rotation={{ x: 0.002, y: 0.003, z: 0.001 }}
         />
       </div>
-      
+
       <div className="container mx-auto px-4 relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
           <motion.div
@@ -36,97 +36,99 @@ export default function About() {
             transition={{ duration: 0.8 }}
             viewport={{ once: true }}
           >
-            <AnimatedText 
-              text="A Creative Company" 
+            <AnimatedText
+              text="A Creative Company"
               tagName="h2"
               className="text-3xl md:text-4xl font-bold mb-6"
               duration={0.05}
             />
-            
-            <motion.p 
+
+            <motion.p
               className="text-[#AAAAAA] mb-6 leading-relaxed"
               initial={{ opacity: 0 }}
               whileInView={{ opacity: 1 }}
               transition={{ delay: 0.3, duration: 0.7 }}
               viewport={{ once: true }}
             >
-              Since our founding, Ai DevDuo has been dedicated to handling tech challenges for startups and companies.
-              We combine AI expertise with creative development to deliver software solutions
-              that not only meet but exceed our clients' expectations.
+              Since our founding, DevDuo has been dedicated to handling tech
+              challenges for startups and companies. We combine AI expertise
+              with creative development to deliver software solutions that not
+              only meet but exceed our clients' expectations.
             </motion.p>
-            
-            <motion.p 
+
+            <motion.p
               className="text-[#AAAAAA] mb-8 leading-relaxed"
               initial={{ opacity: 0 }}
               whileInView={{ opacity: 1 }}
               transition={{ delay: 0.5, duration: 0.7 }}
               viewport={{ once: true }}
             >
-              Our team of passionate developers, AI specialists, and strategists work collaboratively 
-              to transform ideas into impactful technical solutions. We focus on building 
-              long-term partnerships with startups and companies, understanding their business goals, 
-              and developing software that drives growth.
+              Our team of passionate developers, AI specialists, and strategists
+              work collaboratively to transform ideas into impactful technical
+              solutions. We focus on building long-term partnerships with
+              startups and companies, understanding their business goals, and
+              developing software that drives growth.
             </motion.p>
-            
-            <motion.div 
+
+            <motion.div
               className="grid grid-cols-2 md:grid-cols-3 gap-6 mb-8"
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.7, duration: 0.5 }}
               viewport={{ once: true }}
             >
-              <motion.div 
+              <motion.div
                 className="text-center"
                 whileHover={{ scale: 1.05, y: -5 }}
                 transition={{ type: "spring", stiffness: 300 }}
               >
-                <motion.div 
+                <motion.div
                   className="text-[#0066FF] text-3xl font-bold mb-2"
                   initial={{ opacity: 0, scale: 0.5 }}
                   whileInView={{ opacity: 1, scale: 1 }}
                   transition={{ delay: 0.7, duration: 0.5 }}
                   viewport={{ once: true }}
                 >
-                  150+
+                  100+
                 </motion.div>
                 <p className="text-[#AAAAAA] text-sm">Projects Completed</p>
               </motion.div>
-              
-              <motion.div 
+
+              <motion.div
                 className="text-center"
                 whileHover={{ scale: 1.05, y: -5 }}
                 transition={{ type: "spring", stiffness: 300 }}
               >
-                <motion.div 
+                <motion.div
                   className="text-[#0066FF] text-3xl font-bold mb-2"
                   initial={{ opacity: 0, scale: 0.5 }}
                   whileInView={{ opacity: 1, scale: 1 }}
                   transition={{ delay: 0.8, duration: 0.5 }}
                   viewport={{ once: true }}
                 >
-                  50+
+                  20+
                 </motion.div>
                 <p className="text-[#AAAAAA] text-sm">Happy Clients</p>
               </motion.div>
-              
-              <motion.div 
+
+              <motion.div
                 className="text-center"
                 whileHover={{ scale: 1.05, y: -5 }}
                 transition={{ type: "spring", stiffness: 300 }}
               >
-                <motion.div 
+                <motion.div
                   className="text-[#0066FF] text-3xl font-bold mb-2"
                   initial={{ opacity: 0, scale: 0.5 }}
                   whileInView={{ opacity: 1, scale: 1 }}
                   transition={{ delay: 0.9, duration: 0.5 }}
                   viewport={{ once: true }}
                 >
-                  25+
+                  10+
                 </motion.div>
                 <p className="text-[#AAAAAA] text-sm">Team Members</p>
               </motion.div>
             </motion.div>
-            
+
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -146,8 +148,8 @@ export default function About() {
               </Link>
             </motion.div>
           </motion.div>
-          
-          <motion.div 
+
+          <motion.div
             className="relative"
             initial={{ opacity: 0, x: 30 }}
             whileInView={{ opacity: 1, x: 0 }}
@@ -156,7 +158,7 @@ export default function About() {
           >
             <div className="grid grid-cols-2 gap-4">
               <div className="space-y-4">
-                <motion.div 
+                <motion.div
                   className="rounded-xl overflow-hidden"
                   initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
@@ -164,12 +166,12 @@ export default function About() {
                   whileHover={{ scale: 1.03 }}
                   viewport={{ once: true }}
                 >
-                  <div 
-                    className="w-full h-auto aspect-[5/3] bg-cover bg-center" 
-                    style={{ backgroundImage: `url('${images[0]}')` }} 
+                  <div
+                    className="w-full h-auto aspect-[5/3] bg-cover bg-center"
+                    style={{ backgroundImage: `url('${images[0]}')` }}
                   />
                 </motion.div>
-                <motion.div 
+                <motion.div
                   className="rounded-xl overflow-hidden"
                   initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
@@ -177,14 +179,14 @@ export default function About() {
                   whileHover={{ scale: 1.03 }}
                   viewport={{ once: true }}
                 >
-                  <div 
-                    className="w-full h-auto aspect-[5/3] bg-cover bg-center" 
-                    style={{ backgroundImage: `url('${images[1]}')` }} 
+                  <div
+                    className="w-full h-auto aspect-[5/3] bg-cover bg-center"
+                    style={{ backgroundImage: `url('${images[1]}')` }}
                   />
                 </motion.div>
               </div>
               <div className="space-y-4 mt-8">
-                <motion.div 
+                <motion.div
                   className="rounded-xl overflow-hidden"
                   initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
@@ -192,12 +194,12 @@ export default function About() {
                   whileHover={{ scale: 1.03 }}
                   viewport={{ once: true }}
                 >
-                  <div 
-                    className="w-full h-auto aspect-[5/3] bg-cover bg-center" 
-                    style={{ backgroundImage: `url('${images[2]}')` }} 
+                  <div
+                    className="w-full h-auto aspect-[5/3] bg-cover bg-center"
+                    style={{ backgroundImage: `url('${images[2]}')` }}
                   />
                 </motion.div>
-                <motion.div 
+                <motion.div
                   className="rounded-xl overflow-hidden"
                   initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
@@ -205,24 +207,24 @@ export default function About() {
                   whileHover={{ scale: 1.03 }}
                   viewport={{ once: true }}
                 >
-                  <div 
-                    className="w-full h-auto aspect-[5/3] bg-cover bg-center" 
-                    style={{ backgroundImage: `url('${images[3]}')` }} 
+                  <div
+                    className="w-full h-auto aspect-[5/3] bg-cover bg-center"
+                    style={{ backgroundImage: `url('${images[3]}')` }}
                   />
                 </motion.div>
               </div>
             </div>
-            
-            <motion.div 
+
+            <motion.div
               className="absolute -bottom-4 -right-4 w-32 h-32 bg-[#0066FF]/20 rounded-full blur-xl z-0"
               animate={{
                 scale: [1, 1.2, 1],
-                opacity: [0.2, 0.3, 0.2]
+                opacity: [0.2, 0.3, 0.2],
               }}
               transition={{
                 duration: 8,
                 repeat: Infinity,
-                repeatType: "reverse"
+                repeatType: "reverse",
               }}
             />
           </motion.div>
