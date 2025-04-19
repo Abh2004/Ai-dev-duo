@@ -4,14 +4,14 @@ import { Button } from "@/components/ui/button";
 import ThemeCube from "./ThemeCube";
 import AnimatedText from "./AnimatedText";
 import Sphere3D from "./Sphere3D";
-import about1 from "@/assets/images/about1.svg";
-import about2 from "@/assets/images/about2.svg";
-import about3 from "@/assets/images/about3.svg";
-import about4 from "@/assets/images/about4.svg";
+import iitKgpImage from "@/assets/images/IIT_Kharagpur_main_building.jpg";
+import duoImage from "@/assets/images/duo.jpg";
+import blakeWiszImage from "@/assets/images/blake-wisz-Xn5FbEM9564-unsplash.jpg";
+import duo2Image from "@/assets/images/duo2.avif";
 
 export default function About() {
-  // Use local images
-  const images = [about1, about2, about3, about4];
+  // Use new images
+  const images = [iitKgpImage, duoImage, blakeWiszImage, duo2Image];
 
   return (
     <section id="company" className="py-20 relative overflow-hidden">
@@ -50,10 +50,12 @@ export default function About() {
               transition={{ delay: 0.3, duration: 0.7 }}
               viewport={{ once: true }}
             >
-              Since our founding, DevDuo has been dedicated to handling tech
-              challenges for startups and companies. We combine AI expertise
-              with creative development to deliver software solutions that not
-              only meet but exceed our clients' expectations.
+              As a startup founded by IIT graduates, Dev Duo specializes in
+              helping early-stage startups and companies handle their technology
+              challenges. We understand the unique obstacles new businesses face
+              and provide tailored tech solutions that allow founders to focus
+              on their core business while we manage the technical
+              implementation.
             </motion.p>
 
             <motion.p
@@ -63,11 +65,12 @@ export default function About() {
               transition={{ delay: 0.5, duration: 0.7 }}
               viewport={{ once: true }}
             >
-              Our team of passionate developers, AI specialists, and strategists
-              work collaboratively to transform ideas into impactful technical
-              solutions. We focus on building long-term partnerships with
-              startups and companies, understanding their business goals, and
-              developing software that drives growth.
+              Our nimble team combines academic excellence with practical
+              development skills to deliver cost-effective solutions that scale
+              with your business. We specialize in building MVPs, creating
+              custom software, and implementing tech infrastructure that gives
+              early-stage companies the competitive edge they need to succeed in
+              today's market.
             </motion.p>
 
             <motion.div
@@ -77,7 +80,7 @@ export default function About() {
               transition={{ delay: 0.7, duration: 0.5 }}
               viewport={{ once: true }}
             >
-              <motion.div
+              {/* <motion.div
                 className="text-center"
                 whileHover={{ scale: 1.05, y: -5 }}
                 transition={{ type: "spring", stiffness: 300 }}
@@ -89,12 +92,12 @@ export default function About() {
                   transition={{ delay: 0.7, duration: 0.5 }}
                   viewport={{ once: true }}
                 >
-                  100+
+                  20+
                 </motion.div>
                 <p className="text-[#AAAAAA] text-sm">Projects Completed</p>
-              </motion.div>
+              </motion.div> */}
 
-              <motion.div
+              {/* <motion.div
                 className="text-center"
                 whileHover={{ scale: 1.05, y: -5 }}
                 transition={{ type: "spring", stiffness: 300 }}
@@ -106,12 +109,12 @@ export default function About() {
                   transition={{ delay: 0.8, duration: 0.5 }}
                   viewport={{ once: true }}
                 >
-                  20+
+                  10+
                 </motion.div>
                 <p className="text-[#AAAAAA] text-sm">Happy Clients</p>
-              </motion.div>
+              </motion.div> */}
 
-              <motion.div
+              {/* <motion.div
                 className="text-center"
                 whileHover={{ scale: 1.05, y: -5 }}
                 transition={{ type: "spring", stiffness: 300 }}
@@ -126,7 +129,7 @@ export default function About() {
                   10+
                 </motion.div>
                 <p className="text-[#AAAAAA] text-sm">Team Members</p>
-              </motion.div>
+              </motion.div> */}
             </motion.div>
 
             <motion.div

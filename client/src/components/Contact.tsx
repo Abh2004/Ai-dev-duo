@@ -147,9 +147,9 @@ export default function Contact() {
                   Our Global Presence
                 </h3>
                 <p className="text-[#888] mb-4 sm:mb-6 text-xs sm:text-sm leading-relaxed">
-                  Strategically located in IIT Kharagpur, Kharagpur - a thriving
-                  tech hub in the National Capital Region, we're positioned to
-                  serve clients across India and globally.
+                  Based within the IIT Kharagpur innovation ecosystem, we’re
+                  strategically positioned to deliver cutting‑edge solutions for
+                  clients nationwide and internationally.
                 </p>
 
                 <div className="flex flex-col sm:flex-row items-start sm:space-x-4 space-y-3 sm:space-y-0 mb-4 sm:mb-6">

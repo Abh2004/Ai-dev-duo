@@ -128,7 +128,7 @@ import project3 from "@/assets/images/project3.svg";
 import project4 from "@/assets/images/project4.svg";
 
 // Import new project images
-import theraTech from "@/assets/images/DewinterMicroscope.png";
+import theraTech from "@/assets/images/theratech.jpg";
 import prevacare from "@/assets/images/prevacare.png";
 import silverheights from "@/assets/images/silverheights.png";
 import drumIITKGP from "@/assets/images/DRUM-IITKGP.png";
