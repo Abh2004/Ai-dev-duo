@@ -27,7 +27,7 @@ import silverheightsImage from "@/assets/images/silverheights.png";
 import dewinterImage from "@/assets/images/DewinterMicroscope.png";
 import prevacareImage from "@/assets/images/prevacare.png";
 import drumImage from "@/assets/images/DRUM-IITKGP.png";
-import xenovateImage from "@/assets/images/XENOVATE.png";
+import xenovateImage from "@/assets/images/Xenovate.png";
 
 interface ProjectProps {
   title: string;
